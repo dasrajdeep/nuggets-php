@@ -3,7 +3,7 @@ Engine::uses("Config");
 
 class Engine {
     
-    private static $version="1.0";
+    private static $version="1.1";
 
     private static $paths=array(
         "webroot"=>"webroot/",
