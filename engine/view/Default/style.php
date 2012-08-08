@@ -60,10 +60,19 @@ textarea {
     <?php echo CSSHelper::getShadow(0, 0, 5, '1c5a85', TRUE); ?>
 }
 
+table {
+    background-color:#c8c8c8;
+    border-radius:5px;
+}
+
 th {
+    padding:5px;
     background-color:#ebedee;
     color:#1c5a85;
-    border-radius:3px;
+}
+
+td {
+    padding: 5px;
 }
 
 .right_align {

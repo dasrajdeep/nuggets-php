@@ -4,7 +4,19 @@
         themeLink();
         themeButton();
         themeText();
+        themeTable();
     });
+    function themeTable() {
+        var sel='table[class="themed"]';
+        $(sel).css({'color':'#2c7cb4'});
+        $(sel).attr("cellspacing", "0px");
+        var flag=0;
+        $(sel).find('tr').each(function(){
+            if(flag==0) $(this).css({'background-color':'#b0b0b0'});
+            flag=1-flag;
+        });
+        $('<tr><td></td></tr>').appendTo(sel);
+    }
     function themeLink() {
         $('a').hover(function(){
             $(this).css({'color':'#FF6347'});
@@ -13,18 +25,29 @@
         });
     }
     function themeButton() {
-        $('input[type=button],button').hover(function(){$(this).css({
-            'color':'#0c2638',
-            'box-shadow':'0px 0px 5px #123a55',
-            '-moz-box-shadow':'0px 0px 5px #123a55',
-            '-webkit-box-shadow':'0px 0px 5px #123a55',
-            'text-shadow':'0px 0px 5px #123a55'
+        var sel='input[type=button],button,input[type=submit],input[type=reset]';
+        $(sel).hover(function(){$(this).css({
+            'color':'#1c5a85',
+            'box-shadow':'0px 0px 5px #ebedee',
+            '-moz-box-shadow':'0px 0px 5px #ebedee',
+            '-webkit-box-shadow':'0px 0px 5px #ebedee',
+            'text-shadow':'0px 0px 5px #3093c7'
         });}, function(){$(this).css({
-            'color':'#232323',
+            'color':'#1c5a85',
             'box-shadow':'none',
             '-moz-box-shadow':'none',
             '-webkit-box-shadow':'none',
             'text-shadow':'none'
+        });});
+        $(sel).mousedown(function(){$(this).css({
+            'box-shadow':'inset 0px 0px 5px #333333',
+            '-moz-box-shadow':'inset 0px 0px 5px #333333',
+            '-webkit-box-shadow':'inset 0px 0px 5px #333333'
+        });});
+        $(sel).mouseup(function(){$(this).css({
+            'box-shadow':'0px 0px 5px #ebedee',
+            '-moz-box-shadow':'0px 0px 5px #ebedee',
+            '-webkit-box-shadow':'0px 0px 5px #ebedee'
         });});
     }
     function themeText() {

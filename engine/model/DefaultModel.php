@@ -33,9 +33,8 @@ class DefaultModel extends Model {
                 <site>
                         <title></title>
                         <header></header>
-                        <moto></moto>
+                        <caption></caption>
                         <footer></footer>
-                        <domain></domain>
                 </site></config>';
             fwrite($file, $data);
             fclose($file);

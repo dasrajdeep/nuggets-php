@@ -38,6 +38,6 @@
         require_once $this->getViewPath().$file;
     ?>
     <div class="separator"></div>
-    <h5 id="footer" align="center">2012 nuggets PHP Application Framework</h5>
+    <h5 id="footer" align="center"><?php echo Config::read("site", "footer"); ?></h5>
 </body>
 </html>

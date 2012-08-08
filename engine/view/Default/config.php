@@ -30,7 +30,9 @@ $site_data=$this->getVar("site");
         <table class="config_fields">
         <?php
         echo sprintf($format,"Site Title",HTMLHelper::getInput("text", "title",$site_data["title"]));
-        echo sprintf($format,"Site Caption",HTMLHelper::getInput("text", "domain",$site_data["caption"]));
+        echo sprintf($format,"Site Header",HTMLHelper::getInput("text", "header",$site_data["header"]));
+        echo sprintf($format,"Site Caption",HTMLHelper::getInput("text", "caption",$site_data["caption"]));
+        echo sprintf($format,"Site Footer",HTMLHelper::getInput("text", "footer",$site_data["footer"]));
         ?>
         </table>
     </div>

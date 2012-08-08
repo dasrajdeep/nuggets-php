@@ -5,7 +5,7 @@
     function saveConfig() {
         var query=new Array();
         var cnt=0;
-        $('#database_config').find('input[type=text]').each(function(){
+        $('#database_config').find('input[type=text],input[type=password]').each(function(){
             query[cnt++]="db_"+$(this).attr('name')+"="+$(this).val();
         });
         $('#site_config').find('input[type=text]').each(function(){
