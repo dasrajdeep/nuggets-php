@@ -1,0 +1,1 @@
+This directory contains the hosted files of the web application created using the framework.

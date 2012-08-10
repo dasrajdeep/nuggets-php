@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE theme PUBLIC 'SYSTEM:file://C:/Users/USER/Documents/Projects/Web/techroar/engine/core/view/config_theme.dtd' 'null'>
+
+<theme>
+    <template>default_template.php</template>
+    <styles>
+        <style>default.php</style>
+    </styles>
+    <scripts>
+        <script>default.php</script>
+    </scripts>
+    <images></images>
+    <loaders></loaders>
+</theme>

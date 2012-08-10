@@ -10,7 +10,13 @@ class Upload {
         $this->serverHandler=Engine::path("uploader")."server/php.php";
     }
     
+<<<<<<< HEAD
     public function upload() {
+=======
+    public function upload($subdir) {
+        $this->upload_dir.=$subdir.'/';
+        $upload_dir=  $this->upload_dir;
+>>>>>>> version 2.0 start
         require_once $this->serverHandler;
     }
 }

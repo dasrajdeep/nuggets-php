@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- TODO define your own vocabulary/syntax. Example follows:  -->
+<!ELEMENT __ROOT__ ANY>
+<!ATTLIST __ROOT__ version CDATA #REQUIRED>
+
+<!ELEMENT theme (template,styles,scripts,images,loaders)>
+<!ELEMENT template (#PCDATA)>
+<!ELEMENT styles (style*)>
+<!ELEMENT scripts (script*)>
+<!ELEMENT images (image*)>
+<!ELEMENT loaders (loader*)>
+<!ELEMENT image (name,file)>
+<!ELEMENT loader (name,file)>
+<!ELEMENT style (#PCDATA)>
+<!ELEMENT script (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT file (#PCDATA)>

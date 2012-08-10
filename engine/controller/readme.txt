@@ -1,0 +1,1 @@
+This directory contains the controllers of your application. Please follow the naming conventions while creating the files.

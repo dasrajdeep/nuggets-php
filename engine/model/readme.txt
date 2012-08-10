@@ -1,0 +1,1 @@
+This directory contains the models of your application. Pleas note that each model must have an appropriate controller which invokes it.

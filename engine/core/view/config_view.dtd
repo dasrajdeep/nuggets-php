@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT __ROOT__ ANY>
+<!ATTLIST __ROOT__ version CDATA #REQUIRED>
+
+<!ELEMENT views (view)>
+<!ELEMENT view (name,type,category,file,styles,scripts)>
+<!ELEMENT styles (style)>
+<!ELEMENT scripts (script)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+<!ELEMENT file (#PCDATA)>
+<!ELEMENT style (#PCDATA)>
+<!ELEMENT script (#PCDATA)>

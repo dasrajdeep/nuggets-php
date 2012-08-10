@@ -23,8 +23,16 @@ class Dispatcher {
         $route=Router::getRoute($cmd);
         $controllerName=$route[0]."Controller";
         Engine::uses("Controller");
+<<<<<<< HEAD
         import("nuggets.controller.".$controllerName);
         $controller=new $controllerName();
+=======
+        
+        if(Router::isEngineCommand($cmd)) import("nuggets.core.controller.".$controllerName);
+        else import("nuggets.controller.".$controllerName);
+        $controller=new $controllerName();
+        if(Router::isEngineCommand($cmd)) $controller->core=true;
+>>>>>>> version 2.0 start
         $this->initController($controller,$route[0],$params);
         $controller->$route[1]();
         echo $controller->getResponse();
@@ -34,7 +42,11 @@ class Dispatcher {
         $controller->name=$entity;
         $controller->uses=$controller->modules;
         $controller->requestParams=$params;
+<<<<<<< HEAD
         $controller->viewPath=sprintf("engine/view/%s/",$entity);
+=======
+        if($entity!="Default") $controller->viewPath=sprintf("engine/view/%s/",$entity);
+>>>>>>> version 2.0 start
         $controller->methods=get_class_methods($controller);
         $controller->init();
     }

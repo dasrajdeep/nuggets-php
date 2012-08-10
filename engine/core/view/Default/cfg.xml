@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+    <view>
+        <name>default</name>
+        <type>html</type>
+        <category>page</category>
+        <file>default.php</file>
+        <styles>
+        </styles>
+        <scripts>
+        </scripts>
+    </view>
+    <view>
+        <name>config</name>
+        <type>html</type>
+        <category>page</category>
+        <file>config.php</file>
+        <styles>
+        </styles>
+        <scripts>
+            <script>script_config.php</script>
+        </scripts>
+    </view>
+</root>

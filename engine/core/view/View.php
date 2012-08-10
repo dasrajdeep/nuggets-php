@@ -12,6 +12,11 @@ class View {
     public $viewName;
     //name of layout
     public $layout;
+<<<<<<< HEAD
+=======
+    //whether view uses a template or not
+    public $usesTemplate=false;
+>>>>>>> version 2.0 start
     //extension name
     public $ext;
     //paths for layout
