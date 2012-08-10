@@ -15,11 +15,7 @@ class Controller {
     //response sent out by engine
     public $response=NULL;
     //path to views of this controller
-<<<<<<< HEAD
-    public $viewPath="engine/view/Default/";
-=======
     public $viewPath="engine/core/view/Default/";
->>>>>>> version 2.0 start
     //variables to be handed over to the view
     public $viewVars=array();
     //layout to be used fo view used by this controller
@@ -34,40 +30,26 @@ class Controller {
     public $usesView;
     //type fo view to be rendered
     public $viewType="HTML";
-<<<<<<< HEAD
-=======
     //template support
     public $usesTemplate=false;
->>>>>>> version 2.0 start
     //extention for view files
     public $ext="php";
     //methods of this controller
     public $methods;
-<<<<<<< HEAD
-=======
     //core or user-defined
     public $core=false;
->>>>>>> version 2.0 start
 
     public function init() {
         Engine::uses("View");
         Engine::uses("Model");
         $this->controllerName=$this->name."Controller";
-<<<<<<< HEAD
-        foreach($this->uses as $m) Engine::uses ($m);
-=======
         foreach($this->uses as $m) Engine::uses($m);
->>>>>>> version 2.0 start
         foreach($this->helpers as $h) Engine::helper($h);
         //declare model
         if($this->usesModel) {
             $modelName=$this->name."Model";
-<<<<<<< HEAD
-            import("nuggets.model.".$modelName);
-=======
             if($this->core) import("nuggets.core.model.".$modelName);
             else import("nuggets.model.".$modelName);
->>>>>>> version 2.0 start
             $this->model=new $modelName();
             //init model
             $model=$this->model;
@@ -88,10 +70,7 @@ class Controller {
             $view->layout=$this->layout;
             $view->ext=$this->ext;
             $view->viewVars=&$this->viewVars;
-<<<<<<< HEAD
-=======
             $view->usesTemplate=$this->usesTemplate;
->>>>>>> version 2.0 start
         }
     }
     

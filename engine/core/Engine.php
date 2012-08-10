@@ -1,17 +1,10 @@
 <?php
 Engine::uses("Config");
-<<<<<<< HEAD
-
-class Engine {
-    
-    private static $version="1.0";
-=======
 Engine::uses("Session");
 
 class Engine {
     
     private static $version="2.0";
->>>>>>> version 2.0 start
 
     private static $paths=array(
         "webroot"=>"webroot/",
@@ -23,11 +16,7 @@ class Engine {
         "jqueryui"=>"vendor/jquery-ui/",
         "base64"=>"vendor/base64.js",
         "uploader"=>"vendor/valums/",
-<<<<<<< HEAD
-        "scriptlib"=>"engine/view/scriptlib/"
-=======
         "scriptlib"=>"engine/core/view/scriptlib/"
->>>>>>> version 2.0 start
     );
 
     private static $entities=array(
@@ -36,10 +25,7 @@ class Engine {
         "Config"=>"engine/core/Config.php",
         "Dispatcher"=>"engine/core/Dispatcher.php",
         "Engine"=>"engine/core/Engine.php",
-<<<<<<< HEAD
-=======
         "Session"=>"engine/core/Session.php",
->>>>>>> version 2.0 start
         "Router"=>"engine/core/Router.php",
         "Database"=>"engine/core/dbstore/Database.php",
         "JSON"=>"engine/core/dbstore/JSON.php",
@@ -56,14 +42,10 @@ class Engine {
         "View"=>"engine/core/view/View.php",
         "Controller"=>"engine/core/controller/Controller.php",
         "Model"=>"engine/core/model/Model.php",
-<<<<<<< HEAD
-        "Upload"=>"engine/core/upload/Upload.php"
-=======
         "Upload"=>"engine/core/upload/Upload.php",
         "PasswordAuthentication"=>"engine/core/auth/PasswordAuthentication.php",
         "AJAXPoll"=>"engine/core/ajaxpoll/AJAXPoll.php",
         "ExternalDatabase"=>"engine/core/interface/ExternalDatabase.php"
->>>>>>> version 2.0 start
     );
     
     private static $view_helpers=array(
@@ -94,10 +76,7 @@ class Engine {
     private static $errorLogged=FALSE;
 
     public static function init(){
-<<<<<<< HEAD
-=======
         Session::init();
->>>>>>> version 2.0 start
         Router::init();
         Config::loadAll();
         Database::connect();
@@ -108,14 +87,11 @@ class Engine {
         self::$paths[$entity]=$path;
     }
     
-<<<<<<< HEAD
-=======
     public static function addIncludePath($path) {
         $newpath=get_include_path().PATH_SEPARATOR.$path;
         set_include_path($newpath);
     }
 
->>>>>>> version 2.0 start
     public static function path($file) {
         return self::$paths[$file];
     }

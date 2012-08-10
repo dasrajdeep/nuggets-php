@@ -23,21 +23,13 @@ class Database {
     
     //Operations on database.
     public static function get($table,$values,$criterion) {
-<<<<<<< HEAD
-        if(!self::$con) return FALSE;
-=======
         if(!self::$con) return NULL;
->>>>>>> version 2.0 start
         $table=Config::read("database", "prefix").$table;
         if($criterion!=FALSE) $criterion=" WHERE ".$criterion;
         else $criterion="";
         $query=sprintf("SELECT %s FROM %s%s",$values,$table,$criterion);
         $result=mysql_query($query,self::$con);
-<<<<<<< HEAD
-        if(!$result) return FALSE;
-=======
         if(!$result) return NULL;
->>>>>>> version 2.0 start
         $rows=array();
         while($row=mysql_fetch_assoc($result)) array_push($rows, $row); 
         return $rows;

@@ -1,18 +1,10 @@
 <?php
 //PEAR Mail must be installed.
-<<<<<<< HEAD
-require_once("Mail.php");
-require_once("Mail/mime.php");
-=======
->>>>>>> version 2.0 start
 
 class Mailer {
     
     public function sendMail($contact,$msg_text,$msg_html,$subject) {
-<<<<<<< HEAD
-=======
         $this->loadDependancies();
->>>>>>> version 2.0 start
         //Header information.
         $from=Config::read("mail", "sender")." <".Config::read("mail", "username").">";
         $to="<".$contact.">";
@@ -30,14 +22,11 @@ class Mailer {
         if (PEAR::isError($mail)) return false; 
         else return true;
     }
-<<<<<<< HEAD
-=======
     
     public function loadDependancies() {
         require_once("Mail.php");
         require_once("Mail/mime.php");
     }
->>>>>>> version 2.0 start
 }
 
 ?>

@@ -3,9 +3,6 @@
 class Config {
     public static $default_config=array();
     public static $non_default=array();
-<<<<<<< HEAD
-    
-=======
     public static $factory_config=array(
         "title"=>"Nuggets",
         "header"=>"Nuggets Application Framework",
@@ -13,7 +10,6 @@ class Config {
         "footer"=>"2012 nuggets PHP Application Framework"
     );
 
->>>>>>> version 2.0 start
     public static function loadAll() {
         Config::checkExtensions();
         Config::loadEngineConfig();
@@ -50,14 +46,10 @@ class Config {
             self::$default_config[$node->getName()]=array();
             foreach($node->children() as $n) self::$default_config[$node->getName()][$n->getName()]=$n;
         }
-<<<<<<< HEAD
-        if(self::$default_config["site"]["title"]=="") self::$default_config["site"]["title"]="Nuggets";
-=======
         if(self::$default_config["site"]["title"]=="") self::$default_config["site"]["title"]=self::$factory_config["title"];
         if(self::$default_config["site"]["header"]=="") self::$default_config["site"]["header"]=self::$factory_config["header"];
         if(self::$default_config["site"]["caption"]=="") self::$default_config["site"]["caption"]=self::$factory_config["caption"];
         if(self::$default_config["site"]["footer"]=="") self::$default_config["site"]["footer"]=self::$factory_config["footer"];
->>>>>>> version 2.0 start
     }
     
     public static function loadEngineConfig() {
