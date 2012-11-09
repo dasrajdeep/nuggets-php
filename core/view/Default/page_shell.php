@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><?php echo Config::read("app_title"); ?></title>
+    <title>Nuggets Application Framework</title>
     <?php
         $script='<script type="text/javascript" src="%s"></script>';
         $effects="jquery.effects.";
@@ -37,6 +37,7 @@
     <?php
         require_once $page_content;
     ?>
-    <footer align="center"><?php echo Config::read("app_footer"); ?></footer>
+	<hr/>
+    <footer align="center">Copyright 2012 Rajdeep Das</footer>
 </body>
 </html>

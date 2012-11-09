@@ -79,13 +79,9 @@ td {
 
 footer {
     text-align:center;
-    width:100%;
-    background-color:#ebedee;
-    color:#555555;
     margin-top:25px;
     padding:10px;
     font-style:italic;
-    <?php echo CSSHelper::getShadow(0, 0, 5, '555555', TRUE); ?>
 }
 
 hr {

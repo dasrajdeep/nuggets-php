@@ -114,19 +114,15 @@ td {
         background-color:#ebedee;
         color:#1c5a85;
         border-radius:5px;
-        padding:10px;
+        padding:5px;
         margin:5px;
 }
 
 footer {
     text-align:center;
-    width:100%;
-    background-color:#ebedee;
-    color:#555555;
     margin-top:25px;
     padding:10px;
     font-style:italic;
-    <?php echo CSSHelper::getShadow(0, 0, 5, '555555', TRUE); ?>
 }
 
 #msg0 {

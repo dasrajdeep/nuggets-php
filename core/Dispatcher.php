@@ -23,10 +23,10 @@ class Dispatcher {
         $controllerName=$route[0]."Controller";
         Engine::uses("Controller");
         
-        if(Registry::isEngineCommand($cmd)) require_once(sprintf('core/controller/%s.php',$controllerName));
+        if(Registry::isEngineCommand($cmd) || $route[0]==="Default") require_once(sprintf('core/controller/%s.php',$controllerName));
         else require_once(sprintf('app/controller/%s.php',$controllerName));
         $controller=new $controllerName();
-        if(Registry::isEngineCommand($cmd)) $controller->core=true;
+        if(Registry::isEngineCommand($cmd) || $route[0]==="Default") $controller->core=true;
         $this->initController($controller,$route[0],$params);
         $controller->$route[1]();
         echo $controller->getResponse();
