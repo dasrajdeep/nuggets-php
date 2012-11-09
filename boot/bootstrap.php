@@ -1,16 +1,25 @@
 <?php
-    session_start();
-    
-    require_once 'boot/package_interpreter.php';
-    require_once 'boot/engine_loader.php';
-    
-    import("nuggets.core.Command");
-    import("nuggets.core.Dispatcher");
-    
-    $requestURI=explode('/',$_SERVER['REQUEST_URI']);
-    $scriptName=explode('/',$_SERVER['SCRIPT_NAME']);
 
-    for($i=0;$i<sizeof($scriptName);$i++) {
-            if ($requestURI[$i]==$scriptName[$i]) unset($requestURI[$i]);
-    }
+session_start();
+
+require_once('boot/errorHandler.php');
+
+require_once('core/Registry.php');
+require_once('core/Engine.php');
+require_once('core/Command.php');
+require_once('core/Dispatcher.php');
+require_once('core/Config.php');
+require_once('core/Session.php');
+
+Session::init();
+Registry::init();
+Config::init();
+
+/**require_once('core/Database.php');
+Database::connect();
+register_shutdown_function('shutdown');
+function shutdown() {
+	Database::disconnect();
+}*/
+
 ?>
