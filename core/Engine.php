@@ -2,19 +2,10 @@
 
 class Engine {
     
-    private static $version="2.0";
+    private static $version="3.0";
 
     private static $entities=array(
-        "Admin"=>"core/Admin.php",
-        "Command"=>"core/Config.php",
-        "Config"=>"core/Config.php",
-        "Dispatcher"=>"core/Dispatcher.php",
-        "Engine"=>"core/Engine.php",
-        "Session"=>"core/Session.php",
-        "Router"=>"core/Router.php",
-        "Database"=>"core/dbstore/Database.php",
-        "JSON"=>"core/dbstore/JSON.php",
-        "XML"=>"core/dbstore/XML.php",
+		"Database"=>"core/Database.php",
         "Helper"=>"core/helper/Helper.php",
         "CSSHelper"=>"core/helper/CSSHelper.php",
         "HTMLHelper"=>"core/helper/HTMLHelper.php",
@@ -24,13 +15,7 @@ class Engine {
         "HTMLView"=>"core/view/HTMLView.php",
         "JSONView"=>"core/view/JSONView.php",
         "XMLView"=>"core/view/XMLView.php",
-        "View"=>"core/view/View.php",
-        "Controller"=>"core/controller/Controller.php",
-        "Model"=>"core/model/Model.php",
-        "Upload"=>"core/upload/Upload.php",
-        "PasswordAuthentication"=>"core/auth/PasswordAuthentication.php",
-        "AJAXPoll"=>"core/ajaxpoll/AJAXPoll.php",
-        "ExternalDatabase"=>"core/interface/ExternalDatabase.php"
+        "PasswordAuthentication"=>"core/auth/PasswordAuthentication.php"
     );
     
     private static $view_helpers=array(

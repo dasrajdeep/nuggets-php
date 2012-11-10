@@ -15,11 +15,4 @@ Session::init();
 Registry::init();
 Config::init();
 
-/**require_once('core/Database.php');
-Database::connect();
-register_shutdown_function('shutdown');
-function shutdown() {
-	Database::disconnect();
-}*/
-
 ?>

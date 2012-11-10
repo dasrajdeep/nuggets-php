@@ -1,4 +1,5 @@
 <?php
+require_once('core/view/View.php');
 
 class HTMLView extends View {
     
@@ -14,8 +15,8 @@ class HTMLView extends View {
     
     function __construct() {
         $this->addPath("shell", "core/view/Default/page_shell.php");
-        $this->addPath("theme", "app/view/theme/");
-        $this->addPath("theme_images", "app/view/theme/images/");
+        $this->addPath("theme", "app/theme/");
+        $this->addPath("theme_images", "app/theme/images/");
         $this->addPath("default_style", "style.php");
         $this->addPath("default_script", "script.php");
     }

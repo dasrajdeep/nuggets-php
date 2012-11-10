@@ -40,13 +40,12 @@ class Controller {
     public $core=false;
 
     public function init() {
-        Engine::uses("View");
-        Engine::uses("Model");
         $this->controllerName=$this->name."Controller";
         foreach($this->uses as $m) Engine::uses($m);
         foreach($this->helpers as $h) Engine::helper($h);
         //declare model
         if($this->usesModel) {
+			require_once('core/model/Model.php');
             $modelName=$this->name."Model";
             if($this->core) require_once(sprintf('core/model/%s.php',$modelName));
             else require_once(sprintf('app/model/%s.php',$modelName));
