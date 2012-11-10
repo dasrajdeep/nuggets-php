@@ -10,6 +10,7 @@ class Command {
 		$this->data=$_POST;
 		$pairs=array_slice($commandArray,1);
 		foreach($pairs as $p) {
+			if(preg_match('/^.*=.*$/',$p)!==1) continue;
 			$pair=explode("=",$p);
 			$this->parameters[$pair[0]]=$pair[1];
 		}

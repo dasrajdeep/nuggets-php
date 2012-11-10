@@ -15,8 +15,7 @@ class Registry {
 		"jquery"=>"vendor/jquery.js",
 		"jqueryui"=>"vendor/jquery-ui/",
 		"base64"=>"vendor/base64.js",
-		"uploader"=>"vendor/valums/",
-		"scriptlib"=>"core/view/scriptlib/"
+		"scriptlib"=>"vendor/scriptlib/"
 	);
 	
 	public static function init() {

@@ -95,8 +95,8 @@ class Engine {
         }
         $uri=implode("/", $uri)."/";
         $port="";
-        if($_SERVER['SERVER_PORT']!='80') $port=$_SERVER['SERVER_PORT'];
-        $uri="http://".$_SERVER["SERVER_NAME"].":".$port.$uri;
+        if($_SERVER['SERVER_PORT']!='80') $port=":".$_SERVER['SERVER_PORT'];
+        $uri="http://".$_SERVER["SERVER_NAME"].$port.$uri;
         return $uri;
     }
     

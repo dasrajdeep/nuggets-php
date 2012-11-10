@@ -4,7 +4,7 @@
 <?php
 $default_path='core/view/Default/';
 if(Engine::engineError()) {
-    $icon=$default_path."images/icon_remove.png";
+    $icon="images/icon_remove.png";
     $message="Oops! It seems that the engine is not properly configured.";
     echo sprintf('<div id="msg0"><img src="%s" /><span>%s</span></div>',$icon,$message);
     $uri=Engine::getHostURL()."config";
@@ -12,7 +12,7 @@ if(Engine::engineError()) {
     $errors=Engine::getErrors();
     foreach($errors as $e) {
         $errmsg=Engine::getError($e);
-        $icon=$default_path."images/icon_warning.png";
+        $icon="images/icon_warning.png";
         echo sprintf('<div id="msg1"><img src="%s" /><span>%s</span></div>',$icon,$errmsg);
     }
 }

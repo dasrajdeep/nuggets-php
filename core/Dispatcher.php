@@ -36,7 +36,7 @@ class Dispatcher {
         $controller->name=$entity;
         $controller->uses=$controller->modules;
         $controller->requestParams=$params;
-        if($entity!="Default") $controller->viewPath=sprintf("app/view/%s/",$entity);
+        if($entity!=="Default") $controller->viewPath=sprintf("app/view/%s/",$entity);
         $controller->methods=get_class_methods($controller);
         $controller->init();
     }

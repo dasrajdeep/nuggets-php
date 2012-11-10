@@ -18,11 +18,6 @@ class View {
     public $ext;
     //paths for layout
     public $paths=array();
-
-    protected function loadViewCfg() {
-        $xml=simplexml_load_file($this->viewPath.'cfg.xml');
-        return $xml;
-    }
     
     public function getEntityName() {
         return $this->name;
