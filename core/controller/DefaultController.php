@@ -2,8 +2,8 @@
 
 class DefaultController extends Controller {
     
-    public $usesModel=TRUE;
-    public $usesView=TRUE;
+    public $usesModel=true;
+    public $usesView=true;
     public $modules=array();
     public $helpers=array("html","css");
     public $layout="default";
