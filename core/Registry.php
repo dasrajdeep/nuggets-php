@@ -44,7 +44,7 @@ class Registry {
 	
 	public static function getRoute($command) {
 		if(array_key_exists($command,self::$routes)) return self::$routes[$command];
-		else return self::$routes['default'];
+		else return null;
 	}
 }
 

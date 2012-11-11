@@ -19,6 +19,12 @@ class Dispatcher {
         if($cmd==NULL) $cmd="default";
         
         $route=Registry::getRoute($cmd);
+		
+		if(!$route) {
+			require_once('static/invalidCommand.php');
+			die();
+		}
+		
         $controllerName=$route[0]."Controller";
         require_once('core/controller/Controller.php');
         

@@ -15,7 +15,7 @@ class Engine {
 	
     private static $moduleClass=array(
 		'Database'=>'core/Database.php',
-		'Session'=>'core/Session.php'
+		'Session'=>'core/Session.php',
 		'HTMLHelper'=>'core/Helper/HTMLHelper.php',
 		'CSSHelper'=>'core/Helper/CSSHelper.php',
 		'HTMLView'=>'core/View/HTMLView.php'
