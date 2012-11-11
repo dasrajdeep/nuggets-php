@@ -1,5 +1,5 @@
 <?php
-Engine::uses("Helper");
+require_once('core/Helper/Helper.php');
 
 class HTMLHelper extends Helper {
     

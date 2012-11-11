@@ -3,20 +3,21 @@
 class Engine {
     
     private static $version="3.0";
-
-    private static $entities=array(
-		"Database"=>"core/Database.php",
-        "Helper"=>"core/helper/Helper.php",
-        "CSSHelper"=>"core/helper/CSSHelper.php",
-        "HTMLHelper"=>"core/helper/HTMLHelper.php",
-        "JSHelper"=>"core/helper/JSHelper.php",
-        "Mailer"=>"core/mailer/Mailer.php",
-        "Generator"=>"core/security/Generator.php",
-        "HTMLView"=>"core/view/HTMLView.php",
-        "JSONView"=>"core/view/JSONView.php",
-        "XMLView"=>"core/view/XMLView.php",
-        "PasswordAuthentication"=>"core/auth/PasswordAuthentication.php"
-    );
+	
+	private static $modules=array(
+		'Authentication',
+		'Controller',
+		'Helper',
+		'Mailer',
+		'Model',
+		'View'
+	);
+	
+    private static $moduleClass=array(
+		'HTMLHelper'=>'core/Helper/HTMLHelper.php',
+		'CSSHelper'=>'core/Helper/CSSHelper.php',
+		'HTMLView'=>'core/View/HTMLView.php'
+	);
     
     private static $view_helpers=array(
         "html"=>"HTMLHelper",
@@ -51,13 +52,13 @@ class Engine {
     }
     
     public static function helper($helper_name) {
-        $entity=self::$view_helpers[$helper_name];
-        self::uses($entity);
+        $class=self::$view_helpers[$helper_name];
+        self::uses($class);
     }
     
-    public static function uses($entity) {
-        $entity_path=self::$entities[$entity];
-        require_once $entity_path;
+    public static function uses($class) {
+        $classpath=self::$moduleClass[$class];
+        require_once $classpath;
     }
     
     public static function logError($entity,$error) {

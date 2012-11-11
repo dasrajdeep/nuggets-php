@@ -1,5 +1,5 @@
 <?php   
-    require_once 'boot/bootstrap.php';
+    require_once 'bootstrap.php';
 	
 	$requestURI=explode('/',$_SERVER['REQUEST_URI']);
 	$scriptName=explode('/',$_SERVER['SCRIPT_NAME']);

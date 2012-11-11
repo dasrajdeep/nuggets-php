@@ -1,0 +1,1 @@
+This folder contains the extension software required by your application.

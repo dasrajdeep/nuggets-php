@@ -71,16 +71,8 @@ td {
     padding: 5px;
 }
 
-.right_align {
-    text-align:right;
-}
-
-.separator {
-    margin:10px;
-    padding:0px;
-    height:1px;
-    width:100%;
-    background-color:#ebedee;
+hr {
+	color:#ebedee;
 }
 
 #navigation_bar {
@@ -92,8 +84,7 @@ td {
 }
 
 #header {
-	background-color:#ebedee;
-	color:#1c5a85;
+	font-weight:bold;
 	border-radius:5px;
 	padding:5px;
 	margin:5px;

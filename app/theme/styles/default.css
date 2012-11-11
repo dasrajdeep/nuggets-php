@@ -85,18 +85,6 @@ hr {
     border:none;
 }
 
-.right_align {
-    text-align:right;
-}
-
-.separator {
-    margin:10px;
-    padding:0px;
-    height:1px;
-    width:100%;
-    background-color:#ebedee;
-}
-
 #navigation_bar {
     position:fixed;
     left:0px;
