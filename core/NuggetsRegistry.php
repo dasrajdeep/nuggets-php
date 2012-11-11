@@ -1,5 +1,5 @@
 <?php
-class Registry {
+class NuggetsRegistry {
 	
 	//list of engine specific routes
 	private static $engine_routes=array("master","config","saveconfig");

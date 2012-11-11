@@ -7,7 +7,7 @@ class Dispatcher {
         $this->command=$command;
         if(Engine::engineError()) {
             $cmd=$this->command->getCommand();
-            if(!Registry::isEngineCommand($cmd)) $cmd="master";
+            if(!NuggetsRegistry::isEngineCommand($cmd)) $cmd="master";
             $this->command->setCommand($cmd);
         }
     }
@@ -18,7 +18,7 @@ class Dispatcher {
         
         if($cmd==NULL) $cmd="default";
         
-        $route=Registry::getRoute($cmd);
+        $route=NuggetsRegistry::getRoute($cmd);
 		
 		if(!$route) {
 			require_once('static/invalidCommand.php');
@@ -28,11 +28,11 @@ class Dispatcher {
         $controllerName=$route[0]."Controller";
         require_once('core/controller/Controller.php');
         
-        if(Registry::isEngineCommand($cmd) || $route[0]==="Default") require_once(sprintf('core/controller/%s.php',$controllerName));
+        if(NuggetsRegistry::isEngineCommand($cmd) || $route[0]==="Default") require_once(sprintf('core/controller/%s.php',$controllerName));
         else require_once(sprintf('app/controller/%s.php',$controllerName));
 		
         $controller=new $controllerName();
-        if(Registry::isEngineCommand($cmd) || $route[0]==="Default") $controller->core=true;
+        if(NuggetsRegistry::isEngineCommand($cmd) || $route[0]==="Default") $controller->core=true;
         $this->initController($controller,$route[0],$params);
         $controller->$route[1]();
         echo $controller->getResponse();
