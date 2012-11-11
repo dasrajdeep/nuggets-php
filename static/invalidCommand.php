@@ -32,7 +32,7 @@
 	</div>
 	<div>
 		<img src="static/images/icon_warning.png" />
-		<h2>OOPS! COULDN'T FIGURE OUT WHAT YOU'RE LOOKIN' FOR!</h2>
+		<h2>OOPS! COULDN'T FIGURE OUT WHAT YOU'RE LOOKING FOR!</h2>
 	</div>
 	<footer align="center" style="margin:50px"><i>Copyright 2012 Rajdeep Das</i></footer>
 </body>

@@ -3,7 +3,7 @@
 session_start();
 
 ini_set('display_errors',false);
-set_error_handler('defaultHandler');
+set_error_handler('defaultNuggetsHandler');
 
 require_once('core/Registry.php');
 require_once('core/Engine.php');
@@ -20,20 +20,20 @@ Config::init();
 
 <?php
 
- function defaultHandler($level,$message,$filename,$line) {
-	$msg=createMessage(func_get_args());
+ function defaultNuggetsHandler($level,$message,$filename,$line) {
+	$msg=nuggetsCreateMessage(func_get_args());
 	require_once('static/errorDefault.php');
 	die();
 }
 
-function fetchLevel($value) {
+function nuggetsFetchLevel($value) {
 	$errorLevels=array(1=>'FATAL',2=>'WARNING',4=>'PARSE',8=>'NOTICE');
 	if($value<10) return $errorLevels[$value];
 	else return 'INTERNAL';
 }
 
-function createMessage($args) {
-	$level=fetchLevel($args[0]);
+function nuggetsCreateMessage($args) {
+	$level=nuggetsFetchLevel($args[0]);
 	$message=$args[1];
 	$file=$args[2];
 	$line=$args[3];
