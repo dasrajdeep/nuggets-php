@@ -1,5 +1,7 @@
 <?php
 
+namespace nuggets;
+
 class Command {
 	private $command=null;
 	private $parameters=array();

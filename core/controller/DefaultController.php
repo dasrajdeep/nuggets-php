@@ -1,4 +1,5 @@
 <?php
+namespace nuggets;
 
 class DefaultController extends Controller {
     

@@ -1,5 +1,7 @@
 <?php
 
+namespace nuggets;
+
 class Database {
     private static $con=FALSE;
     

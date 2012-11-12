@@ -1,4 +1,6 @@
 <?php
+namespace nuggets;
+
 //PEAR Mail must be installed.
 
 class Mailer {

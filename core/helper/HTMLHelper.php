@@ -1,4 +1,6 @@
 <?php
+namespace nuggets;
+
 require_once('core/Helper/Helper.php');
 
 class HTMLHelper extends Helper {
@@ -27,12 +29,12 @@ class HTMLHelper extends Helper {
     }
 
     public static function getImage($path,$width='',$height='',$id='') {
-        $html=sprintf('<img width="%s" height="%s" src="%s%s" id="%s" />',$width,$height,NuggetsRegistry::getPath("view"),$path,$id);
+        $html=sprintf('<img width="%s" height="%s" src="%s%s" id="%s" />',$width,$height,Registry::getPath("view"),$path,$id);
         return $html;
     }
 
     public static function getLoader($path,$type,$id){
-        $html=sprintf('<div class="loader" id="%s"><img src="%s%sloader-%s.gif" /></div>',$id,NuggetsRegistry::getPath("view"),$path,$type);
+        $html=sprintf('<div class="loader" id="%s"><img src="%s%sloader-%s.gif" /></div>',$id,Registry::getPath("view"),$path,$type);
         return $html;
     }
     

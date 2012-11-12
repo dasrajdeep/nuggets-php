@@ -1,5 +1,7 @@
 <?php
 
+namespace nuggets;
+
 class Config {
 
     private static $config=null;

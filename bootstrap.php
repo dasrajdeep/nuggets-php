@@ -1,11 +1,13 @@
 <?php
 
+namespace nuggets;
+
 session_start();
 
 ini_set('display_errors',false);
 set_error_handler('defaultNuggetsHandler');
 
-require_once('core/NuggetsRegistry.php');
+require_once('core/Registry.php');
 require_once('core/Engine.php');
 require_once('core/Command.php');
 require_once('core/Dispatcher.php');
@@ -13,7 +15,7 @@ require_once('core/Config.php');
 require_once('core/Session.php');
 
 Session::init();
-NuggetsRegistry::init();
+Registry::init();
 Config::init();
 
 ?>

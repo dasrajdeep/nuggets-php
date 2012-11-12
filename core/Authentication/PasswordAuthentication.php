@@ -1,4 +1,5 @@
 <?php
+namespace nuggets;
 
 require_once('core/auth/Authentication.php');
 

@@ -1,4 +1,6 @@
 <?php
+namespace nuggets;
+
 require_once('core/view/View.php');
 
 class HTMLView extends View {

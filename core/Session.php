@@ -1,5 +1,7 @@
 <?php
 
+namespace nuggets;
+
 class Session {
     
     private static $authorized=false;

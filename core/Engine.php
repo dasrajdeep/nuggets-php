@@ -1,5 +1,7 @@
 <?php
 
+namespace nuggets;
+
 class Engine {
     
     private static $version="3.0";

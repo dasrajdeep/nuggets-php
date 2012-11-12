@@ -1,4 +1,6 @@
 <?php
+namespace nuggets;
+
 require_once('core/Helper/Helper.php');
 
 class CSSHelper extends Helper {
