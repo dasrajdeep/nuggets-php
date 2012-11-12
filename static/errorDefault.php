@@ -21,6 +21,19 @@
 			padding:5px;
 			margin:5px;
 		}
+		.error th {
+			background-color:#cc0000;
+			color:#FFC5BF;
+			border-radius:5px;
+			padding:5px;
+		}
+		.error td {
+			border:solid;
+			border-width:1px;
+			border-color:#cc0000;
+			border-radius:5px;
+			padding:5px;
+		}
 	</style>
 </head>
 
@@ -35,7 +48,9 @@
 		<h2>AN ERROR OCCURED. NUGGETS COULD NOT CONTINUE.</h2>
 	</div>
 	<div class="error">
-		<?php echo $msg; ?>
+		<?php 
+			echo '<div>'.$msg.'</div>'; 
+		?>
 	</div>
 	<footer align="center" style="margin:50px"><i>Copyright 2012 Rajdeep Das</i></footer>
 </body>

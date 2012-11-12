@@ -8,7 +8,7 @@ session_start();
 
 $basePath=getcwd();
 
-//ini_set('display_errors',false);
+ini_set('display_errors',false);
 set_error_handler('nuggets\defaultErrorHandler');
 
 require_once('core/Registry.php');
@@ -42,10 +42,17 @@ set_include_path(implode(PATH_SEPARATOR,$includePaths));
 
 spl_autoload_register('nuggets\nuggetsClassLoader',false);
 
+register_shutdown_function('nuggets\nuggetsShutdown');
+
 function nuggetsClassLoader($class) {
 	if(strpos($class,'nuggets')!==false) $class=substr($class,8);
 	$classPath=$class.'.php';
 	require_once($classPath);
+}
+
+function nuggetsShutdown() {
+	$error=error_get_last();
+	if($error) call_user_func_array('nuggets\defaultErrorHandler',array_values($error));
 }
 
 ?>
@@ -70,7 +77,7 @@ function createErrorMessage($args) {
 	$message=$args[1];
 	$file=$args[2];
 	$line=$args[3];
-	$error='['.$level.'] '.$message.' (at file: '.$file.', line '.$line.')';
+	$error='<table align="center"><tr><th>'.$level.'</th><td>'.$message.' *(at file: '.$file.', line '.$line.')*</td></tr></table>';
 	return $error;
 }
 

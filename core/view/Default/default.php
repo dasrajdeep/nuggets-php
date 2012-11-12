@@ -5,5 +5,5 @@
 </div>
 <div align="center">
 	<img src="core/view/Default/images/icon_tick.png" />
-	<h2>Nuggets is properly installed.</h2>
+	<h2>NUGGETS IS PROPERLY INSTALLED</h2>
 </div>
