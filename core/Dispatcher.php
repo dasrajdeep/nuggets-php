@@ -28,12 +28,10 @@ class Dispatcher {
 		}
 		
         $controllerName=$route[0]."Controller";
-        require_once('core/controller/Controller.php');
-        
-        if(Registry::isEngineCommand($cmd) || $route[0]==="Default") require_once(sprintf('core/controller/%s.php',$controllerName));
-        else require_once(sprintf('app/controller/%s.php',$controllerName));
 		
-        $controller=new $controllerName();
+		$class='nuggets\\'.$controllerName;
+        $controller=new $class();
+		
         if(Registry::isEngineCommand($cmd) || $route[0]==="Default") $controller->core=true;
         $this->initController($controller,$route[0],$params);
         $controller->$route[1]();

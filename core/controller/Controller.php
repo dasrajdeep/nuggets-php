@@ -47,9 +47,7 @@ class Controller {
         //declare model
         if($this->usesModel) {
 			require_once('core/model/Model.php');
-            $modelName=$this->name."Model";
-            if($this->core) require_once(sprintf('core/model/%s.php',$modelName));
-            else require_once(sprintf('app/model/%s.php',$modelName));
+            $modelName='nuggets\\'.$this->name."Model";
             $this->model=new $modelName();
             //init model
             $model=$this->model;
@@ -59,8 +57,7 @@ class Controller {
             $model->init();
         }
         if($this->usesView) {
-            $viewName=$this->viewType."View";
-            Engine::uses($viewName);
+            $viewName='nuggets\\'.$this->viewType."View";
             $this->view=new $viewName();
             //init view
             $view=$this->view;
