@@ -21,6 +21,9 @@
 			padding:5px;
 			margin:5px;
 		}
+		.error tr {
+			background-color:#FFC5BF;
+		}
 		.error th {
 			background-color:#cc0000;
 			color:#FFC5BF;

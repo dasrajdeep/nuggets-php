@@ -22,6 +22,8 @@ class HTMLView extends View {
 		$styles=array();
 		$scripts=array();
 		
+		foreach($view['script'] as $s) array_push($scripts,$this->getViewPath().$s);
+		
 		if($layout==='default') {
 			array_push($scripts,'core/view/Default/script.js');
 			array_push($styles,'core/view/Default/style.css');
@@ -30,12 +32,10 @@ class HTMLView extends View {
 			foreach($theme['script'] as $s) array_push($scripts,'app/theme/scripts/'.$s);
 		} else if($layout==='specific') {
 			foreach($view['style'] as $s) array_push($styles,$this->getViewPath().$s);
-			foreach($view['script'] as $s) array_push($scripts,$this->getViewPath().$s);
 		} else if($layout==='both') {
 			foreach($theme['style'] as $s) array_push($styles,'app/theme/styles/'.$s);
 			foreach($theme['script'] as $s) array_push($scripts,'app/theme/scripts/'.$s);
 			foreach($view['style'] as $s) array_push($styles,$this->getViewPath().$s);
-			foreach($view['script'] as $s) array_push($scripts,$this->getViewPath().$s);
 		}
 		
 		if($view['category']==='page') {
