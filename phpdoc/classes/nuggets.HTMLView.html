@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Nuggets-PHP » \nuggets\HTMLView</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Nuggets-PHP</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/nuggets.html"><i class="icon-folder-open"></i> nuggets</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">91</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public inherited"><a href="#method_addPath" title="addPath :: Adds a path to this view."><span class="description">Adds a path to this view.</span><pre>addPath()</pre></a></li>
+<li class="method public inherited"><a href="#method_getEntityName" title="getEntityName :: Fetches the name of the entity associated with this controller."><span class="description">Fetches the name of the entity associated with this controller.</span><pre>getEntityName()</pre></a></li>
+<li class="method public inherited"><a href="#method_getExtension" title="getExtension :: Fetches the extension of view files."><span class="description">Fetches the extension of view files.</span><pre>getExtension()</pre></a></li>
+<li class="method public inherited"><a href="#method_getLayoutName" title="getLayoutName :: Fetches the type of layout associated with this view."><span class="description">Fetches the type of layout associated with this view.</span><pre>getLayoutName()</pre></a></li>
+<li class="method public inherited"><a href="#method_getPath" title="getPath :: Fetches a path defined for this view."><span class="description">Fetches a path defined for this view.</span><pre>getPath()</pre></a></li>
+<li class="method public inherited"><a href="#method_getVar" title="getVar :: Fetches a variable set by the controller."><span class="description">Fetches a variable set by the controller.</span><pre>getVar()</pre></a></li>
+<li class="method public inherited"><a href="#method_getViewName" title="getViewName :: Fetches the name of this view."><span class="description">Fetches the name of this view.</span><pre>getViewName()</pre></a></li>
+<li class="method public inherited"><a href="#method_getViewPath" title="getViewPath :: Fetches the path associated with this view."><span class="description">Fetches the path associated with this view.</span><pre>getViewPath()</pre></a></li>
+<li class="method public "><a href="#method_renderView" title="renderView :: Renders a view in HTML."><span class="description">Renders a view in HTML.</span><pre>renderView()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul>
+<li class="property public inherited"><a href="#property_ext" title="$ext :: "><span class="description">$ext</span><pre>$ext</pre></a></li>
+<li class="property public inherited"><a href="#property_layout" title="$layout :: "><span class="description">$layout</span><pre>$layout</pre></a></li>
+<li class="property public inherited"><a href="#property_name" title="$name :: "><span class="description">$name</span><pre>$name</pre></a></li>
+<li class="property public inherited"><a href="#property_paths" title="$paths :: "><span class="description">$paths</span><pre>$paths</pre></a></li>
+<li class="property public inherited"><a href="#property_usesTemplate" title="$usesTemplate :: "><span class="description">$usesTemplate</span><pre>$usesTemplate</pre></a></li>
+<li class="property public inherited"><a href="#property_viewName" title="$viewName :: "><span class="description">$viewName</span><pre>$viewName</pre></a></li>
+<li class="property public inherited"><a href="#property_viewPath" title="$viewPath :: "><span class="description">$viewPath</span><pre>$viewPath</pre></a></li>
+<li class="property public inherited"><a href="#property_viewVars" title="$viewVars :: "><span class="description">$viewVars</span><pre>$viewVars</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\nuggets\HTMLView"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/nuggets.html">nuggets</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/nuggets.HTMLView.html">HTMLView</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">This class represents a HTML view.</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/nuggets.html">nuggets</a></td>
+</tr>
+<tr>
+<th>category</th>
+<td>PHP</td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:das.rajdeep97@gmail.com">Rajdeep Das</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright 2012 Rajdeep Das</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.gnu.org/licenses/gpl.txt">The GNU General Public License</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>GIT: v3.5</td>
+</tr>
+<tr>
+<th>link</th>
+<td><a href="https://github.com/dasrajdeep/nuggets-php">https://github.com/dasrajdeep/nuggets-php</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>Class available since Release 1.0</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_addPath"></a><div class="element clickable method public method_addPath" data-toggle="collapse" data-target=".method_addPath .collapse">
+<h2>Adds a path to this view.</h2>
+<pre>addPath(string $name, string $path) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::addPath()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$path</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_getEntityName"></a><div class="element clickable method public method_getEntityName" data-toggle="collapse" data-target=".method_getEntityName .collapse">
+<h2>Fetches the name of the entity associated with this controller.</h2>
+<pre>getEntityName() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::getEntityName()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getExtension"></a><div class="element clickable method public method_getExtension" data-toggle="collapse" data-target=".method_getExtension .collapse">
+<h2>Fetches the extension of view files.</h2>
+<pre>getExtension() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::getExtension()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getLayoutName"></a><div class="element clickable method public method_getLayoutName" data-toggle="collapse" data-target=".method_getLayoutName .collapse">
+<h2>Fetches the type of layout associated with this view.</h2>
+<pre>getLayoutName() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::getLayoutName()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getPath"></a><div class="element clickable method public method_getPath" data-toggle="collapse" data-target=".method_getPath .collapse">
+<h2>Fetches a path defined for this view.</h2>
+<pre>getPath(string $name) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::getPath()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getVar"></a><div class="element clickable method public method_getVar" data-toggle="collapse" data-target=".method_getVar .collapse">
+<h2>Fetches a variable set by the controller.</h2>
+<pre>getVar(string $key) : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::getVar()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_getViewName"></a><div class="element clickable method public method_getViewName" data-toggle="collapse" data-target=".method_getViewName .collapse">
+<h2>Fetches the name of this view.</h2>
+<pre>getViewName() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::getViewName()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getViewPath"></a><div class="element clickable method public method_getViewPath" data-toggle="collapse" data-target=".method_getViewPath .collapse">
+<h2>Fetches the path associated with this view.</h2>
+<pre>getViewPath() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::getViewPath()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_renderView"></a><div class="element clickable method public method_renderView" data-toggle="collapse" data-target=".method_renderView .collapse">
+<h2>Renders a view in HTML.</h2>
+<pre>renderView(string $view) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$view</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_ext"> </a><div class="element clickable property public property_ext" data-toggle="collapse" data-target=".property_ext .collapse">
+<h2>$ext</h2>
+<pre>$ext </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::$$ext</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_layout"> </a><div class="element clickable property public property_layout" data-toggle="collapse" data-target=".property_layout .collapse">
+<h2>$layout</h2>
+<pre>$layout </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::$$layout</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_name"> </a><div class="element clickable property public property_name" data-toggle="collapse" data-target=".property_name .collapse">
+<h2>$name</h2>
+<pre>$name </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::$$name</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_paths"> </a><div class="element clickable property public property_paths" data-toggle="collapse" data-target=".property_paths .collapse">
+<h2>$paths</h2>
+<pre>$paths </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::$$paths</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_usesTemplate"> </a><div class="element clickable property public property_usesTemplate" data-toggle="collapse" data-target=".property_usesTemplate .collapse">
+<h2>$usesTemplate</h2>
+<pre>$usesTemplate </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::$$usesTemplate</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_viewName"> </a><div class="element clickable property public property_viewName" data-toggle="collapse" data-target=".property_viewName .collapse">
+<h2>$viewName</h2>
+<pre>$viewName </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::$$viewName</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_viewPath"> </a><div class="element clickable property public property_viewPath" data-toggle="collapse" data-target=".property_viewPath .collapse">
+<h2>$viewPath</h2>
+<pre>$viewPath </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::$$viewPath</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_viewVars"> </a><div class="element clickable property public property_viewVars" data-toggle="collapse" data-target=".property_viewVars .collapse">
+<h2>$viewVars</h2>
+<pre>$viewVars </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\nuggets\View::$$viewVars</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-15T00:39:50+05:30.<br></footer></div>
+</div>
+</body>
+</html>

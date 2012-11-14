@@ -1,0 +1,3046 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a10" title="Nuggets-PHP">
+  <file path="index.php" hash="5e33cd0c0128aff3266bf82b40f4498e" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the procedures required to load and run the framework.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="21" type="Require Once" package="Default">
+      <name>bootstrap.php</name>
+    </include>
+  </file>
+  <file path="bootstrap.php" hash="229858aefb9f76199031f16696f437d4" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the bootstrap loader for the framework.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="30" type="Require Once" package="Default">
+      <name>core/Registry.php</name>
+    </include>
+    <include line="31" type="Require Once" package="Default">
+      <name>core/Engine.php</name>
+    </include>
+    <include line="32" type="Require Once" package="Default">
+      <name>core/Command.php</name>
+    </include>
+    <include line="33" type="Require Once" package="Default">
+      <name>core/Dispatcher.php</name>
+    </include>
+    <include line="34" type="Require Once" package="Default">
+      <name>core/Config.php</name>
+    </include>
+    <include line="35" type="Require Once" package="Default">
+      <name>core/Session.php</name>
+    </include>
+    <include line="71" type="Require Once" package="Default">
+      <name/>
+    </include>
+    <include line="97" type="Require Once" package="Default">
+      <name>static/errorDefault.php</name>
+    </include>
+    <constant namespace="nuggets" line="21" package="Default">
+      <name>DS</name>
+      <full_name>\nuggets\DS</full_name>
+      <value><![CDATA[DIRECTORY_SEPARATOR]]></value>
+    </constant>
+    <function namespace="nuggets" line="68" package="Default">
+      <name>nuggetsClassLoader</name>
+      <full_name>\nuggets\nuggetsClassLoader</full_name>
+      <docblock line="63">
+        <description><![CDATA[A custom class loader for the framework.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="63" name="param" description="" type="string" variable="$class">
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
+      <argument line="68">
+        <name>$class</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="nuggets" line="77" package="Default">
+      <name>nuggetsShutdown</name>
+      <full_name>\nuggets\nuggetsShutdown</full_name>
+      <docblock line="74">
+        <description><![CDATA[A shutdown function which executes before the script terminates.]]></description>
+        <long-description><![CDATA[]]></long-description>
+      </docblock>
+    </function>
+    <function namespace="nuggets" line="95" package="Default">
+      <name>defaultErrorHandler</name>
+      <full_name>\nuggets\defaultErrorHandler</full_name>
+      <docblock line="87">
+        <description><![CDATA[The default error handler for the framework.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="87" name="param" description="" type="int" variable="$level">
+          <type by_reference="false">int</type>
+        </tag>
+        <tag line="87" name="param" description="" type="string" variable="$message">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="87" name="param" description="" type="string" variable="$filename">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="87" name="param" description="" type="int" variable="$line">
+          <type by_reference="false">int</type>
+        </tag>
+      </docblock>
+      <argument line="95">
+        <name>$level</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="95">
+        <name>$message</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="95">
+        <name>$filename</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="95">
+        <name>$line</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="nuggets" line="107" package="Default">
+      <name>fetchErrorLevel</name>
+      <full_name>\nuggets\fetchErrorLevel</full_name>
+      <docblock line="101">
+        <description><![CDATA[Fetches the string representation of the error level.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="101" name="param" description="" type="int" variable="$value">
+          <type by_reference="false">int</type>
+        </tag>
+        <tag line="101" name="return" description="" type="string">
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
+      <argument line="107">
+        <name>$value</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="nuggets" line="119" package="Default">
+      <name>createErrorMessage</name>
+      <full_name>\nuggets\createErrorMessage</full_name>
+      <docblock line="113">
+        <description><![CDATA[Creates an error message based on the error information.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="113" name="param" description="" type="string[]" variable="$args">
+          <type by_reference="false">string[]</type>
+        </tag>
+        <tag line="113" name="return" description="" type="string">
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
+      <argument line="119">
+        <name>$args</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+  </file>
+  <file path="static/invalidCommand.php" hash="430757d7a6326e7f158613b35d61a6e9" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file static/invalidCommand.php</error>
+    </parse_markers>
+  </file>
+  <file path="static/errorDefault.php" hash="8b4c796cf2b3e6ddd4b1bfd7e52dc276" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file static/errorDefault.php</error>
+    </parse_markers>
+  </file>
+  <file path="app/theme/template/default_template.php" hash="867a51ee84f23cbcab49b54d7e2b9fc6" package="Default">
+    <include line="15" type="Require Once" package="Default">
+      <name/>
+    </include>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file app/theme/template/default_template.php</error>
+    </parse_markers>
+  </file>
+  <file path="core/view/XMLView.php" hash="7dd845268212ef449ad6090a5d74a7b2" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the XMLView class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="21" type="Require Once" package="Default">
+      <name>core/view/View.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="nuggets" line="35" package="nuggets">
+      <extends>\nuggets\View</extends>
+      <name>XMLView</name>
+      <full_name>\nuggets\XMLView</full_name>
+      <docblock line="23">
+        <description><![CDATA[This class represents an XML view.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="23" name="package" description="nuggets"/>
+        <tag line="23" name="category" description="PHP"/>
+        <tag line="23" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="23" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="23" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="23" name="version" description="GIT: v3.5"/>
+        <tag line="23" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="23" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="40" package="nuggets">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="37">
+          <description><![CDATA[Initializes the XML view.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="core/view/Default/default.php" hash="eb028b9e1c5105e7771f88437da80545" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file core/view/Default/default.php</error>
+    </parse_markers>
+  </file>
+  <file path="core/view/View.php" hash="e803d50e843b146b223939504e8a7550" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the View class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>View</name>
+      <full_name>\nuggets\View</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class represents a general view.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="36" namespace="nuggets" package="Default">
+        <name>$name</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="38" namespace="nuggets" package="Default">
+        <name>$viewVars</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="40" namespace="nuggets" package="Default">
+        <name>$viewPath</name>
+        <default><![CDATA[null]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="42" namespace="nuggets" package="Default">
+        <name>$viewName</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="44" namespace="nuggets" package="Default">
+        <name>$layout</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="46" namespace="nuggets" package="Default">
+        <name>$usesTemplate</name>
+        <default><![CDATA[false]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="48" namespace="nuggets" package="Default">
+        <name>$ext</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="50" namespace="nuggets" package="Default">
+        <name>$paths</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="57" package="nuggets">
+        <name>getEntityName</name>
+        <full_name>getEntityName</full_name>
+        <docblock line="52">
+          <description><![CDATA[Fetches the name of the entity associated with this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="52" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="67" package="nuggets">
+        <name>getVar</name>
+        <full_name>getVar</full_name>
+        <docblock line="61">
+          <description><![CDATA[Fetches a variable set by the controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="61" name="param" description="" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="61" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="67">
+          <name>$key</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="76" package="nuggets">
+        <name>getViewPath</name>
+        <full_name>getViewPath</full_name>
+        <docblock line="71">
+          <description><![CDATA[Fetches the path associated with this view.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="71" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="85" package="nuggets">
+        <name>getViewName</name>
+        <full_name>getViewName</full_name>
+        <docblock line="80">
+          <description><![CDATA[Fetches the name of this view.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="80" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="94" package="nuggets">
+        <name>getLayoutName</name>
+        <full_name>getLayoutName</full_name>
+        <docblock line="89">
+          <description><![CDATA[Fetches the type of layout associated with this view.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="89" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="103" package="nuggets">
+        <name>getExtension</name>
+        <full_name>getExtension</full_name>
+        <docblock line="98">
+          <description><![CDATA[Fetches the extension of view files.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="98" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="113" package="nuggets">
+        <name>addPath</name>
+        <full_name>addPath</full_name>
+        <docblock line="107">
+          <description><![CDATA[Adds a path to this view.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="107" name="param" description="" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="107" name="param" description="" type="string" variable="$path">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="113">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="113">
+          <name>$path</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="123" package="nuggets">
+        <name>getPath</name>
+        <full_name>getPath</full_name>
+        <docblock line="117">
+          <description><![CDATA[Fetches a path defined for this view.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="117" name="param" description="" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="117" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="123">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="36" code="50018">No DocBlock was found for property $name</error>
+      <error line="38" code="50018">No DocBlock was found for property $viewVars</error>
+      <error line="40" code="50018">No DocBlock was found for property $viewPath</error>
+      <error line="42" code="50018">No DocBlock was found for property $viewName</error>
+      <error line="44" code="50018">No DocBlock was found for property $layout</error>
+      <error line="46" code="50018">No DocBlock was found for property $usesTemplate</error>
+      <error line="48" code="50018">No DocBlock was found for property $ext</error>
+      <error line="50" code="50018">No DocBlock was found for property $paths</error>
+    </parse_markers>
+  </file>
+  <file path="core/view/HTMLView.php" hash="dc9af2f9ae5131b8130fc69e7d2d5452" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the HTMLView class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="21" type="Require Once" package="Default">
+      <name>core/view/View.php</name>
+    </include>
+    <include line="80" type="Require Once" package="Default">
+      <name>core/view/template.inc</name>
+    </include>
+    <include line="84" type="Require Once" package="Default">
+      <name/>
+    </include>
+    <class final="false" abstract="false" namespace="nuggets" line="35" package="nuggets">
+      <extends>\nuggets\View</extends>
+      <name>HTMLView</name>
+      <full_name>\nuggets\HTMLView</full_name>
+      <docblock line="23">
+        <description><![CDATA[This class represents a HTML view.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="23" name="package" description="nuggets"/>
+        <tag line="23" name="category" description="PHP"/>
+        <tag line="23" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="23" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="23" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="23" name="version" description="GIT: v3.5"/>
+        <tag line="23" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="23" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="42" package="nuggets">
+        <name>renderView</name>
+        <full_name>renderView</full_name>
+        <docblock line="37">
+          <description><![CDATA[Renders a view in HTML.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="37" name="param" description="" type="string" variable="$view">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="42">
+          <name>$view</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/mailer/Mailer.php" hash="8993dcc677164fc95460dcc09a9ba672" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Mailer class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="68" type="Require Once" package="Default">
+      <name>Mail.php</name>
+    </include>
+    <include line="69" type="Require Once" package="Default">
+      <name>Mail/mime.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Mailer</name>
+      <full_name>\nuggets\Mailer</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class provides mailing features.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="44" package="nuggets">
+        <name>sendMail</name>
+        <full_name>sendMail</full_name>
+        <docblock line="35">
+          <description><![CDATA[Sends a mail.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="35" name="param" description="" type="string" variable="$contact">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="35" name="param" description="" type="string" variable="$msg_text">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="35" name="param" description="" type="string" variable="$msg_html">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="35" name="param" description="" type="string" variable="$subject">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="35" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="44">
+          <name>$contact</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="44">
+          <name>$msg_text</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="44">
+          <name>$msg_html</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="44">
+          <name>$subject</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="67" package="nuggets">
+        <name>loadDependancies</name>
+        <full_name>loadDependancies</full_name>
+        <docblock line="64">
+          <description><![CDATA[Loads dependancies for sending a mail.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="core/model/Model.php" hash="1beae0dc29b53e9fcdac3d2d7157cd6a" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Model class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Model</name>
+      <full_name>\nuggets\Model</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class represents a general model.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="36" namespace="nuggets" package="Default">
+        <name>$name</name>
+        <default><![CDATA[""]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="38" namespace="nuggets" package="Default">
+        <name>$data</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="40" namespace="nuggets" package="Default">
+        <name>$coreModules</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="45" package="nuggets">
+        <name>init</name>
+        <full_name>init</full_name>
+        <docblock line="42">
+          <description><![CDATA[Initializes the model.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="54" package="nuggets">
+        <name>getEntityName</name>
+        <full_name>getEntityName</full_name>
+        <docblock line="49">
+          <description><![CDATA[Fetches the name of the entity associated with this model.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="49" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="36" code="50018">No DocBlock was found for property $name</error>
+      <error line="38" code="50018">No DocBlock was found for property $data</error>
+      <error line="40" code="50018">No DocBlock was found for property $coreModules</error>
+    </parse_markers>
+  </file>
+  <file path="core/model/DefaultModel.php" hash="1d1840e0d3a950ae2449c51867ac9455" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the DefaultModel class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends>\nuggets\Model</extends>
+      <name>DefaultModel</name>
+      <full_name>\nuggets\DefaultModel</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class provides the default model.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="35" namespace="nuggets" package="Default">
+        <name>$tables</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="36" namespace="nuggets" package="Default">
+        <name>$core</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+    </class>
+    <parse_markers>
+      <error line="35" code="50018">No DocBlock was found for property $tables</error>
+      <error line="36" code="50018">No DocBlock was found for property $core</error>
+    </parse_markers>
+  </file>
+  <file path="core/controller/DefaultController.php" hash="7c5bfc9cec8545465e52626db654b604" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the DefaultController class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends>\nuggets\Controller</extends>
+      <name>DefaultController</name>
+      <full_name>\nuggets\DefaultController</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class represents the default behaviour of the framework in response to an URL request.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="35" namespace="nuggets" package="Default">
+        <name>$usesModel</name>
+        <default><![CDATA[true]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="36" namespace="nuggets" package="Default">
+        <name>$usesView</name>
+        <default><![CDATA[true]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="37" namespace="nuggets" package="Default">
+        <name>$modules</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="38" namespace="nuggets" package="Default">
+        <name>$helpers</name>
+        <default><![CDATA[array("html", "css")]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="39" namespace="nuggets" package="Default">
+        <name>$layout</name>
+        <default><![CDATA["default"]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="40" namespace="nuggets" package="Default">
+        <name>$viewType</name>
+        <default><![CDATA["HTML"]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="45" package="nuggets">
+        <name>loadDefaultView</name>
+        <full_name>loadDefaultView</full_name>
+        <docblock line="42">
+          <description><![CDATA[Renders the default view for the framework.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="35" code="50018">No DocBlock was found for property $usesModel</error>
+      <error line="36" code="50018">No DocBlock was found for property $usesView</error>
+      <error line="37" code="50018">No DocBlock was found for property $modules</error>
+      <error line="38" code="50018">No DocBlock was found for property $helpers</error>
+      <error line="39" code="50018">No DocBlock was found for property $layout</error>
+      <error line="40" code="50018">No DocBlock was found for property $viewType</error>
+    </parse_markers>
+  </file>
+  <file path="core/controller/Controller.php" hash="0340e670634afe6a44c32698d77cfffb" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Controller class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="81" type="Require Once" package="Default">
+      <name>core/model/Model.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Controller</name>
+      <full_name>\nuggets\Controller</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class provides the general controller features.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="36" namespace="nuggets" package="Default">
+        <name>$name</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="38" namespace="nuggets" package="Default">
+        <name>$controllerName</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="40" namespace="nuggets" package="Default">
+        <name>$uses</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="42" namespace="nuggets" package="Default">
+        <name>$helpers</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="44" namespace="nuggets" package="Default">
+        <name>$requestParams</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="46" namespace="nuggets" package="Default">
+        <name>$response</name>
+        <default><![CDATA[NULL]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="48" namespace="nuggets" package="Default">
+        <name>$viewPath</name>
+        <default><![CDATA["core/view/Default/"]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="50" namespace="nuggets" package="Default">
+        <name>$viewVars</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="52" namespace="nuggets" package="Default">
+        <name>$layout</name>
+        <default><![CDATA["default"]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="54" namespace="nuggets" package="Default">
+        <name>$view</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="56" namespace="nuggets" package="Default">
+        <name>$model</name>
+        <default><![CDATA[NULL]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="58" namespace="nuggets" package="Default">
+        <name>$usesModel</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="60" namespace="nuggets" package="Default">
+        <name>$usesView</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="62" namespace="nuggets" package="Default">
+        <name>$viewType</name>
+        <default><![CDATA["HTML"]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="64" namespace="nuggets" package="Default">
+        <name>$usesTemplate</name>
+        <default><![CDATA[false]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="66" namespace="nuggets" package="Default">
+        <name>$ext</name>
+        <default><![CDATA["php"]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="68" namespace="nuggets" package="Default">
+        <name>$methods</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="70" namespace="nuggets" package="Default">
+        <name>$core</name>
+        <default><![CDATA[false]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="75" package="nuggets">
+        <name>init</name>
+        <full_name>init</full_name>
+        <docblock line="72">
+          <description><![CDATA[Initializes the controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="111" package="nuggets">
+        <name>getEntityName</name>
+        <full_name>getEntityName</full_name>
+        <docblock line="106">
+          <description><![CDATA[Fetches the name of the entity associated with this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="106" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="120" package="nuggets">
+        <name>getDependantModules</name>
+        <full_name>getDependantModules</full_name>
+        <docblock line="115">
+          <description><![CDATA[Fetches the dependant modules for this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="115" name="return" description="" type="string[]">
+            <type by_reference="false">string[]</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="129" package="nuggets">
+        <name>getDependantHelpers</name>
+        <full_name>getDependantHelpers</full_name>
+        <docblock line="124">
+          <description><![CDATA[Fetches the required helpers for this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="124" name="return" description="" type="string[]">
+            <type by_reference="false">string[]</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="138" package="nuggets">
+        <name>getViewPath</name>
+        <full_name>getViewPath</full_name>
+        <docblock line="133">
+          <description><![CDATA[Fetches the path to the view for this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="133" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="148" package="nuggets">
+        <name>setVar</name>
+        <full_name>setVar</full_name>
+        <docblock line="142">
+          <description><![CDATA[Sets a variable for this module object.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="142" name="param" description="" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="142" name="param" description="" type="mixed" variable="$value">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="148">
+          <name>$key</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="148">
+          <name>$value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="158" package="nuggets">
+        <name>getvar</name>
+        <full_name>getvar</full_name>
+        <docblock line="152">
+          <description><![CDATA[Fetches a variable previously stored.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="152" name="param" description="" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="152" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="158">
+          <name>$key</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="167" package="nuggets">
+        <name>getLayout</name>
+        <full_name>getLayout</full_name>
+        <docblock line="162">
+          <description><![CDATA[Fetches the layout associated with this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="162" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="176" package="nuggets">
+        <name>getViewType</name>
+        <full_name>getViewType</full_name>
+        <docblock line="171">
+          <description><![CDATA[Fetches the type of view for this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="171" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="185" package="nuggets">
+        <name>getViewExtension</name>
+        <full_name>getViewExtension</full_name>
+        <docblock line="180">
+          <description><![CDATA[Fetches the extension type for the view.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="180" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="194" package="nuggets">
+        <name>getMethods</name>
+        <full_name>getMethods</full_name>
+        <docblock line="189">
+          <description><![CDATA[Fetches the methods defined for this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="189" name="return" description="" type="string[]">
+            <type by_reference="false">string[]</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="203" package="nuggets">
+        <name>setResponse</name>
+        <full_name>setResponse</full_name>
+        <docblock line="198">
+          <description><![CDATA[Sets the response for this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="198" name="param" description="" type="string" variable="$response">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="203">
+          <name>$response</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="212" package="nuggets">
+        <name>getResponse</name>
+        <full_name>getResponse</full_name>
+        <docblock line="207">
+          <description><![CDATA[Fetches the response for this controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="207" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="221" package="nuggets">
+        <name>getParams</name>
+        <full_name>getParams</full_name>
+        <docblock line="216">
+          <description><![CDATA[Fetches the parameters provided with the URL request.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="216" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="36" code="50018">No DocBlock was found for property $name</error>
+      <error line="38" code="50018">No DocBlock was found for property $controllerName</error>
+      <error line="40" code="50018">No DocBlock was found for property $uses</error>
+      <error line="42" code="50018">No DocBlock was found for property $helpers</error>
+      <error line="44" code="50018">No DocBlock was found for property $requestParams</error>
+      <error line="46" code="50018">No DocBlock was found for property $response</error>
+      <error line="48" code="50018">No DocBlock was found for property $viewPath</error>
+      <error line="50" code="50018">No DocBlock was found for property $viewVars</error>
+      <error line="52" code="50018">No DocBlock was found for property $layout</error>
+      <error line="54" code="50018">No DocBlock was found for property $view</error>
+      <error line="56" code="50018">No DocBlock was found for property $model</error>
+      <error line="58" code="50018">No DocBlock was found for property $usesModel</error>
+      <error line="60" code="50018">No DocBlock was found for property $usesView</error>
+      <error line="62" code="50018">No DocBlock was found for property $viewType</error>
+      <error line="64" code="50018">No DocBlock was found for property $usesTemplate</error>
+      <error line="66" code="50018">No DocBlock was found for property $ext</error>
+      <error line="68" code="50018">No DocBlock was found for property $methods</error>
+      <error line="70" code="50018">No DocBlock was found for property $core</error>
+    </parse_markers>
+  </file>
+  <file path="core/Dispatcher.php" hash="d212ee2ff40724b676206885959d8e97" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Dispatcher class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="60" type="Require Once" package="Default">
+      <name>static/invalidCommand.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Dispatcher</name>
+      <full_name>\nuggets\Dispatcher</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class performs dispatching of procedures based on commands.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="34" namespace="nuggets" package="Default">
+        <name>$command</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="39" package="nuggets">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="36">
+          <description><![CDATA[Initializes the dispatcher.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+        <argument line="39">
+          <name>$command</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="51" package="nuggets">
+        <name>dispatch</name>
+        <full_name>dispatch</full_name>
+        <docblock line="48">
+          <description><![CDATA[Dispatches a controller.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="nuggets" line="82" package="nuggets">
+        <name>initController</name>
+        <full_name>initController</full_name>
+        <docblock line="75">
+          <description><![CDATA[Initializes a controller that is dispatched by this object.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="75" name="param" description="" type="object" variable="$controller">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="75" name="param" description="" type="string" variable="$entity">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="75" name="param" description="" type="mixed[]" variable="$params">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+        </docblock>
+        <argument line="82">
+          <name>$controller</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="82">
+          <name>$entity</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="82">
+          <name>$params</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="34" code="50018">No DocBlock was found for property $command</error>
+      <error line="36" code="50015">Argument $command is missing from the Docblock of __construct()</error>
+    </parse_markers>
+  </file>
+  <file path="core/Command.php" hash="f847ef8f22d141717c71e4235ec3cd5e" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Command class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Command</name>
+      <full_name>\nuggets\Command</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class interprets the commands supplied to the URL request.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="34" namespace="nuggets" package="Default">
+        <name>$command</name>
+        <default><![CDATA[null]]></default>
+      </property>
+      <property final="false" static="false" visibility="private" line="35" namespace="nuggets" package="Default">
+        <name>$parameters</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="false" visibility="private" line="36" namespace="nuggets" package="Default">
+        <name>$data</name>
+        <default><![CDATA[null]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="43" package="nuggets">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="38">
+          <description><![CDATA[Extracts the command and parameters from the URL request.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="38" name="param" description="" type="string[]" variable="$commandArray">
+            <type by_reference="false">string[]</type>
+          </tag>
+        </docblock>
+        <argument line="43">
+          <name>$commandArray</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="59" package="nuggets">
+        <name>setCommand</name>
+        <full_name>setCommand</full_name>
+        <docblock line="54">
+          <description><![CDATA[Manually sets the command for this command object.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="54" name="param" description="" type="string" variable="$cmd">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="59">
+          <name>$cmd</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="68" package="nuggets">
+        <name>getCommand</name>
+        <full_name>getCommand</full_name>
+        <docblock line="63">
+          <description><![CDATA[Fetches the command stored by this object.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="63" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="77" package="nuggets">
+        <name>getParameters</name>
+        <full_name>getParameters</full_name>
+        <docblock line="72">
+          <description><![CDATA[Fetches the parameters stored by this command object.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="72" name="return" description="" type="string[]">
+            <type by_reference="false">string[]</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="86" package="nuggets">
+        <name>getData</name>
+        <full_name>getData</full_name>
+        <docblock line="81">
+          <description><![CDATA[Fetches the post data supplied with the request.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="81" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="34" code="50018">No DocBlock was found for property $command</error>
+      <error line="35" code="50018">No DocBlock was found for property $parameters</error>
+      <error line="36" code="50018">No DocBlock was found for property $data</error>
+    </parse_markers>
+  </file>
+  <file path="core/Config.php" hash="19623a50beaaa25dcaba9f5f4cf70e29" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Config class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Config</name>
+      <full_name>\nuggets\Config</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class manages the configurations of the framework.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="true" visibility="private" line="35" namespace="nuggets" package="Default">
+        <name>$config</name>
+        <default><![CDATA[null]]></default>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="40" package="nuggets">
+        <name>init</name>
+        <full_name>init</full_name>
+        <docblock line="37">
+          <description><![CDATA[Checks extensions and loads the configuration.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="private" namespace="nuggets" line="48" package="nuggets">
+        <name>checkExtensions</name>
+        <full_name>checkExtensions</full_name>
+        <docblock line="45">
+          <description><![CDATA[Checks if required extensions are installed or not.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="60" package="nuggets">
+        <name>loadConfig</name>
+        <full_name>loadConfig</full_name>
+        <docblock line="57">
+          <description><![CDATA[Loads the configuration from a file.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="71" package="nuggets">
+        <name>read</name>
+        <full_name>read</full_name>
+        <docblock line="65">
+          <description><![CDATA[Reads a configuration setting.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="65" name="param" description="" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="65" name="return" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="71">
+          <name>$key</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="83" package="nuggets">
+        <name>readAttributes</name>
+        <full_name>readAttributes</full_name>
+        <docblock line="77">
+          <description><![CDATA[Reads all the configuration attributes of a particular entity.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="77" name="param" description="string" type="" variable="$entity"/>
+          <tag line="77" name="return" description="" type="string[]|null">
+            <type by_reference="false">string[]</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="83">
+          <name>$entity</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="35" code="50018">No DocBlock was found for property $config</error>
+    </parse_markers>
+  </file>
+  <file path="core/Authentication/PasswordAuthentication.php" hash="2105f29004b499d75d8492bdf48029e2" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the PasswordAuthentication class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="21" type="Require Once" package="Default">
+      <name>core/auth/Authentication.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="nuggets" line="35" package="nuggets">
+      <extends>\nuggets\Authentication</extends>
+      <name>PasswordAuthentication</name>
+      <full_name>\nuggets\PasswordAuthentication</full_name>
+      <docblock line="23">
+        <description><![CDATA[This class provides password authentication features.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="23" name="package" description="nuggets"/>
+        <tag line="23" name="category" description="PHP"/>
+        <tag line="23" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="23" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="23" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="23" name="version" description="GIT: v3.5"/>
+        <tag line="23" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="23" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="37" namespace="nuggets" package="Default">
+        <name>$field_user</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="private" line="38" namespace="nuggets" package="Default">
+        <name>$field_pass</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="47" package="nuggets">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="40">
+          <description><![CDATA[Initializes the authenticator with the required authentication information.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="40" name="param" description="" type="string" variable="$table">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="40" name="param" description="" type="mixed[]" variable="$auth_fields">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+          <tag line="40" name="param" description="" type="string" variable="$encryption">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="47">
+          <name>$table</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$auth_fields</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$encryption</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="63" package="nuggets">
+        <name>authenticate</name>
+        <full_name>authenticate</full_name>
+        <docblock line="56">
+          <description><![CDATA[Tries to authenticate with the given credentials.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="56" name="param" description="" type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="56" name="param" description="" type="string" variable="$pass">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="56" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="63">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="63">
+          <name>$pass</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="78" package="nuggets">
+        <name>retrieveCredentials</name>
+        <full_name>retrieveCredentials</full_name>
+        <docblock line="72">
+          <description><![CDATA[Retrieves the credentials from a XML string.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="72" name="param" description="" type="string" variable="$xml">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="72" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+        </docblock>
+        <argument line="78">
+          <name>$xml</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="96" package="nuggets">
+        <name>startAuth</name>
+        <full_name>startAuth</full_name>
+        <docblock line="90">
+          <description><![CDATA[Starts the authentication process.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="90" name="param" description="" type="string" variable="$xml">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="90" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="96">
+          <name>$xml</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="37" code="50018">No DocBlock was found for property $field_user</error>
+      <error line="38" code="50018">No DocBlock was found for property $field_pass</error>
+    </parse_markers>
+  </file>
+  <file path="core/Authentication/Authentication.php" hash="9e6cb8ab7ef58a99f8527ec15904e773" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Authentication class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Authentication</name>
+      <full_name>\nuggets\Authentication</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class provides the general authentication features.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="35" namespace="nuggets" package="Default">
+        <name>$auth_table</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="protected" line="36" namespace="nuggets" package="Default">
+        <name>$field_id</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="protected" line="37" namespace="nuggets" package="Default">
+        <name>$auth_type</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="protected" line="38" namespace="nuggets" package="Default">
+        <name>$encryption</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="protected" line="39" namespace="nuggets" package="Default">
+        <name>$user_id</name>
+        <default><![CDATA[null]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="47" package="nuggets">
+        <name>setUserID</name>
+        <full_name>setUserID</full_name>
+        <docblock line="41">
+          <description><![CDATA[Sets the user ID for this authentication object.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="41" name="param" description="" type="string" variable="$auth_field">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="41" name="param" description="" type="string" variable="$auth_id">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="47">
+          <name>$auth_field</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$auth_id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="nuggets" line="57" package="nuggets">
+        <name>authorize</name>
+        <full_name>authorize</full_name>
+        <docblock line="54">
+          <description><![CDATA[Authorizes the session for the user ID set previously.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="35" code="50018">No DocBlock was found for property $auth_table</error>
+      <error line="36" code="50018">No DocBlock was found for property $field_id</error>
+      <error line="37" code="50018">No DocBlock was found for property $auth_type</error>
+      <error line="38" code="50018">No DocBlock was found for property $encryption</error>
+      <error line="39" code="50018">No DocBlock was found for property $user_id</error>
+    </parse_markers>
+  </file>
+  <file path="core/Registry.php" hash="71f6c2c21dcd815619b42a8245c1af4c" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Registry class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Registry</name>
+      <full_name>\nuggets\Registry</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class maintains the registry for the application framework.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="true" visibility="private" line="36" namespace="nuggets" package="Default">
+        <name>$engine_routes</name>
+        <default><![CDATA[array("master", "config", "saveconfig")]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="38" namespace="nuggets" package="Default">
+        <name>$routes</name>
+        <default><![CDATA[array('default' => array("Default", "loadDefaultView"), 'master' => array("Default", "loadDefaultView"))]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="43" namespace="nuggets" package="Default">
+        <name>$paths</name>
+        <default><![CDATA[array("datastore" => "datastore/", "view" => "app/view/", "jquery" => "vendor/jquery.js", "jqueryui" => "vendor/jquery-ui/", "base64" => "vendor/base64.js", "scriptlib" => "vendor/scriptlib/")]]></default>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="55" package="nuggets">
+        <name>init</name>
+        <full_name>init</full_name>
+        <docblock line="52">
+          <description><![CDATA[Loads configurations and initializes the registry.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="76" package="nuggets">
+        <name>isEngineCommand</name>
+        <full_name>isEngineCommand</full_name>
+        <docblock line="70">
+          <description><![CDATA[Tells whether a command is an internal command or not.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="70" name="param" description="" type="string" variable="$command">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="76">
+          <name>$command</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="86" package="nuggets">
+        <name>getPath</name>
+        <full_name>getPath</full_name>
+        <docblock line="80">
+          <description><![CDATA[Fetches the path associated with a resource.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="80" name="param" description="" type="string" variable="$resource">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="80" name="return" description="" type="string|null">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="86">
+          <name>$resource</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="97" package="nuggets">
+        <name>getRoute</name>
+        <full_name>getRoute</full_name>
+        <docblock line="91">
+          <description><![CDATA[Fetches the route associated with a command.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="91" name="param" description="" type="string" variable="$command">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="91" name="return" description="" type="string[]|null">
+            <type by_reference="false">string[]</type>
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="97">
+          <name>$command</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="36" code="50018">No DocBlock was found for property $engine_routes</error>
+      <error line="38" code="50018">No DocBlock was found for property $routes</error>
+      <error line="43" code="50018">No DocBlock was found for property $paths</error>
+    </parse_markers>
+  </file>
+  <file path="core/Session.php" hash="da55fcaff353ee06f23ae8d1810ca453" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Session class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Session</name>
+      <full_name>\nuggets\Session</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class manages the sessions for the application.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="true" visibility="private" line="35" namespace="nuggets" package="Default">
+        <name>$authorized</name>
+        <default><![CDATA[false]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="36" namespace="nuggets" package="Default">
+        <name>$running</name>
+        <default><![CDATA[false]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="37" namespace="nuggets" package="Default">
+        <name>$session_id</name>
+        <default><![CDATA[null]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="38" namespace="nuggets" package="Default">
+        <name>$timeout</name>
+        <default><![CDATA[1800]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="39" namespace="nuggets" package="Default">
+        <name>$user_key</name>
+        <default><![CDATA["session_user"]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="40" namespace="nuggets" package="Default">
+        <name>$session_vars</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="41" namespace="nuggets" package="Default">
+        <name>$mandatory_vars</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="42" namespace="nuggets" package="Default">
+        <name>$control_keys</name>
+        <default><![CDATA[array('session_user', 'session_vars', 'mandatory_vars', 'expire_time')]]></default>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="47" package="nuggets">
+        <name>init</name>
+        <full_name>init</full_name>
+        <docblock line="44">
+          <description><![CDATA[Initializes the session manager.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="69" package="nuggets">
+        <name>isRunning</name>
+        <full_name>isRunning</full_name>
+        <docblock line="64">
+          <description><![CDATA[Tells whether a session is running or not.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="64" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="78" package="nuggets">
+        <name>start</name>
+        <full_name>start</full_name>
+        <docblock line="73">
+          <description><![CDATA[Starts a session.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="73" name="param" description="" type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="78">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="88" package="nuggets">
+        <name>stop</name>
+        <full_name>stop</full_name>
+        <docblock line="85">
+          <description><![CDATA[Stops a running session.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="100" package="nuggets">
+        <name>getUserID</name>
+        <full_name>getUserID</full_name>
+        <docblock line="95">
+          <description><![CDATA[Fetches the user ID associated with a session.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="95" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="112" package="nuggets">
+        <name>setVar</name>
+        <full_name>setVar</full_name>
+        <docblock line="104">
+          <description><![CDATA[Sets a variable for the current running session.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="104" name="param" description="" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="104" name="param" description="" type="string" variable="$value">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="104" name="param" description="" type="boolean" variable="$mandatory">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="104" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="112">
+          <name>$key</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="112">
+          <name>$value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="112">
+          <name>$mandatory</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="130" package="nuggets">
+        <name>getVar</name>
+        <full_name>getVar</full_name>
+        <docblock line="124">
+          <description><![CDATA[Fetches a variable associated with the running session.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="124" name="param" description="" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="124" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="130">
+          <name>$key</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="139" package="nuggets">
+        <name>getSessionID</name>
+        <full_name>getSessionID</full_name>
+        <docblock line="134">
+          <description><![CDATA[Fetches the previously set session ID for the current session.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="134" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="149" package="nuggets">
+        <name>setTimeout</name>
+        <full_name>setTimeout</full_name>
+        <docblock line="143">
+          <description><![CDATA[Sets the timeout for the session.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="143" name="param" description="" type="int" variable="$minutes">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="143" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="149">
+          <name>$minutes</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="161" package="nuggets">
+        <name>timedOut</name>
+        <full_name>timedOut</full_name>
+        <docblock line="156">
+          <description><![CDATA[Tells whether the session has timed out or not.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="156" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="172" package="nuggets">
+        <name>setAuthorized</name>
+        <full_name>setAuthorized</full_name>
+        <docblock line="167">
+          <description><![CDATA[Sets the current session as authorized or unauthorized.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="167" name="param" description="" type="boolean" variable="$auth">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="172">
+          <name>$auth</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="181" package="nuggets">
+        <name>isAuthorized</name>
+        <full_name>isAuthorized</full_name>
+        <docblock line="176">
+          <description><![CDATA[Tells whether the current session is authorized or not.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="176" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="35" code="50018">No DocBlock was found for property $authorized</error>
+      <error line="36" code="50018">No DocBlock was found for property $running</error>
+      <error line="37" code="50018">No DocBlock was found for property $session_id</error>
+      <error line="38" code="50018">No DocBlock was found for property $timeout</error>
+      <error line="39" code="50018">No DocBlock was found for property $user_key</error>
+      <error line="40" code="50018">No DocBlock was found for property $session_vars</error>
+      <error line="41" code="50018">No DocBlock was found for property $mandatory_vars</error>
+      <error line="42" code="50018">No DocBlock was found for property $control_keys</error>
+    </parse_markers>
+  </file>
+  <file path="core/Engine.php" hash="201aceb829676262ecb3c85638065038" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Engine class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="108" type="Require Once" package="Default">
+      <name/>
+    </include>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Engine</name>
+      <full_name>\nuggets\Engine</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class manages utility requirements of the framework.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="true" visibility="private" line="35" namespace="nuggets" package="Default">
+        <name>$version</name>
+        <default><![CDATA["3.0"]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="37" namespace="nuggets" package="Default">
+        <name>$modules</name>
+        <default><![CDATA[array('Authentication', 'Controller', 'Helper', 'Mailer', 'Model', 'View')]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="46" namespace="nuggets" package="Default">
+        <name>$moduleClass</name>
+        <default><![CDATA[array('Database' => 'core/Database.php', 'Session' => 'core/Session.php', 'HTMLHelper' => 'core/Helper/HTMLHelper.php', 'CSSHelper' => 'core/Helper/CSSHelper.php', 'HTMLView' => 'core/View/HTMLView.php')]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="54" namespace="nuggets" package="Default">
+        <name>$view_helpers</name>
+        <default><![CDATA[array("html" => "HTMLHelper", "css" => "CSSHelper", "js" => "JSHelper")]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="60" namespace="nuggets" package="Default">
+        <name>$errors</name>
+        <default><![CDATA[array(100 => "engine configuration file not found", 101 => "site configuration file not found", 200 => "libxml extension not loaded", 201 => "mcrypt extension not loaded", 202 => "mysql extension not loaded", 203 => "session extension not loaded", 300 => "php version is lower than 5", 400 => "unable to connect to database", 401 => "database does not exist")]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="72" namespace="nuggets" package="Default">
+        <name>$error_log</name>
+        <default><![CDATA[array("database" => array(), "config" => array(), "extension" => array(), "version" => array())]]></default>
+      </property>
+      <property final="false" static="true" visibility="private" line="79" namespace="nuggets" package="Default">
+        <name>$errorLogged</name>
+        <default><![CDATA[FALSE]]></default>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="86" package="nuggets">
+        <name>addIncludePath</name>
+        <full_name>addIncludePath</full_name>
+        <docblock line="81">
+          <description><![CDATA[Adds an include path to the PHP engine.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="81" name="param" description="" type="string" variable="$path">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="86">
+          <name>$path</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="96" package="nuggets">
+        <name>helper</name>
+        <full_name>helper</full_name>
+        <docblock line="91">
+          <description><![CDATA[Loads a helper class.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="91" name="param" description="" type="string" variable="$helper_name">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="96">
+          <name>$helper_name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="106" package="nuggets">
+        <name>uses</name>
+        <full_name>uses</full_name>
+        <docblock line="101">
+          <description><![CDATA[Loads a module class.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="101" name="param" description="" type="string" variable="$class">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="106">
+          <name>$class</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="117" package="nuggets">
+        <name>logError</name>
+        <full_name>logError</full_name>
+        <docblock line="111">
+          <description><![CDATA[Logs an error.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="111" name="param" description="" type="string" variable="$entity">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="111" name="param" description="" type="string" variable="$error">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="117">
+          <name>$entity</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="117">
+          <name>$error</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="127" package="nuggets">
+        <name>getErrors</name>
+        <full_name>getErrors</full_name>
+        <docblock line="122">
+          <description><![CDATA[Fetches the logged errors.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="122" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="144" package="nuggets">
+        <name>engineError</name>
+        <full_name>engineError</full_name>
+        <docblock line="139">
+          <description><![CDATA[Tells whether an error occured.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="139" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="153" package="nuggets">
+        <name>getError</name>
+        <full_name>getError</full_name>
+        <docblock line="148">
+          <description><![CDATA[Fetches the message associated with an error number.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="148" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="153">
+          <name>$errno</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="162" package="nuggets">
+        <name>getHostURL</name>
+        <full_name>getHostURL</full_name>
+        <docblock line="157">
+          <description><![CDATA[Fetches the URL of the document root for the application.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="157" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="182" package="nuggets">
+        <name>getVersion</name>
+        <full_name>getVersion</full_name>
+        <docblock line="177">
+          <description><![CDATA[Fetches the version of the engine.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="177" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="35" code="50018">No DocBlock was found for property $version</error>
+      <error line="37" code="50018">No DocBlock was found for property $modules</error>
+      <error line="46" code="50018">No DocBlock was found for property $moduleClass</error>
+      <error line="54" code="50018">No DocBlock was found for property $view_helpers</error>
+      <error line="60" code="50018">No DocBlock was found for property $errors</error>
+      <error line="72" code="50018">No DocBlock was found for property $error_log</error>
+      <error line="79" code="50018">No DocBlock was found for property $errorLogged</error>
+      <error line="148" code="50015">Argument $errno is missing from the Docblock of getError()</error>
+    </parse_markers>
+  </file>
+  <file path="core/Database.php" hash="8c74403e4d656cb2b0e8b2c177dc1bad" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Database class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Database</name>
+      <full_name>\nuggets\Database</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class provides an interface to the database.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="true" visibility="private" line="34" namespace="nuggets" package="Default">
+        <name>$con</name>
+        <default><![CDATA[FALSE]]></default>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="41" package="nuggets">
+        <name>connect</name>
+        <full_name>connect</full_name>
+        <docblock line="36">
+          <description><![CDATA[Connects to the database.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="36" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="58" package="nuggets">
+        <name>disconnect</name>
+        <full_name>disconnect</full_name>
+        <docblock line="55">
+          <description><![CDATA[Disconnects from the database.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="70" package="nuggets">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="62">
+          <description><![CDATA[Fetches data from the database in the form of associative arrays.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="62" name="param" description="" type="string" variable="$table">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="62" name="param" description="" type="string" variable="$values">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="62" name="param" description="" type="string" variable="$criterion">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="62" name="return" description="" type="\nuggets\mixed[][]">
+            <type by_reference="false">\nuggets\mixed[][]</type>
+          </tag>
+        </docblock>
+        <argument line="70">
+          <name>$table</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="70">
+          <name>$values</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="70">
+          <name>$criterion</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="91" package="nuggets">
+        <name>add</name>
+        <full_name>add</full_name>
+        <docblock line="83">
+          <description><![CDATA[Inserts data into the database.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="83" name="param" description="" type="string" variable="$table">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="83" name="param" description="" type="string[]" variable="$fields">
+            <type by_reference="false">string[]</type>
+          </tag>
+          <tag line="83" name="param" description="" type="string[]" variable="$data">
+            <type by_reference="false">string[]</type>
+          </tag>
+          <tag line="83" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="91">
+          <name>$table</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="91">
+          <name>$fields</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="91">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="112" package="nuggets">
+        <name>update</name>
+        <full_name>update</full_name>
+        <docblock line="103">
+          <description><![CDATA[Updates data in the database.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="103" name="param" description="" type="string" variable="$table">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="103" name="param" description="" type="string[]" variable="$fields">
+            <type by_reference="false">string[]</type>
+          </tag>
+          <tag line="103" name="param" description="" type="string[]" variable="$data">
+            <type by_reference="false">string[]</type>
+          </tag>
+          <tag line="103" name="param" description="" type="string" variable="$criterion">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="103" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="112">
+          <name>$table</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="112">
+          <name>$fields</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="112">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="112">
+          <name>$criterion</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="131" package="nuggets">
+        <name>remove</name>
+        <full_name>remove</full_name>
+        <docblock line="124">
+          <description><![CDATA[Deletes data from the database.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="124" name="param" description="" type="string" variable="$table">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="124" name="param" description="" type="string" variable="$match">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="124" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="131">
+          <name>$table</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="131">
+          <name>$match</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="146" package="nuggets">
+        <name>execute_query</name>
+        <full_name>execute_query</full_name>
+        <docblock line="140">
+          <description><![CDATA[Executes an arbitrary query on the database.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="140" name="param" description="" type="string" variable="$query">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="140" name="return" description="" type="boolean|resource">
+            <type by_reference="false">boolean</type>
+            <type by_reference="false">resource</type>
+          </tag>
+        </docblock>
+        <argument line="146">
+          <name>$query</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="34" code="50018">No DocBlock was found for property $con</error>
+    </parse_markers>
+  </file>
+  <file path="core/helper/HTMLHelper.php" hash="76a039ffedd4a109e2cd591dcf0ca973" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the HTMLHelper class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="21" type="Require Once" package="Default">
+      <name>core/Helper/Helper.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="nuggets" line="35" package="nuggets">
+      <extends>\nuggets\Helper</extends>
+      <name>HTMLHelper</name>
+      <full_name>\nuggets\HTMLHelper</full_name>
+      <docblock line="23">
+        <description><![CDATA[This class provides helper features for HTML.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="23" name="package" description="nuggets"/>
+        <tag line="23" name="category" description="PHP"/>
+        <tag line="23" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="23" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="23" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="23" name="version" description="GIT: v3.5"/>
+        <tag line="23" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="23" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="true" visibility="private" line="37" namespace="nuggets" package="Default">
+        <name>$inputs</name>
+        <default><![CDATA[array("checkbox" => "renderCheckBox", "radio" => "renderRadio")]]></default>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="51" package="nuggets">
+        <name>getInput</name>
+        <full_name>getInput</full_name>
+        <docblock line="42">
+          <description><![CDATA[Generates a text field.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="42" name="param" description="" type="string" variable="$type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="42" name="param" description="" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="42" name="param" description="" type="string" variable="$value">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="42" name="param" description="" type="string" variable="$class">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="42" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="51">
+          <name>$type</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="51">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="51">
+          <name>$value</name>
+          <default><![CDATA['']]></default>
+          <type/>
+        </argument>
+        <argument line="51">
+          <name>$class</name>
+          <default><![CDATA['']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="69" package="nuggets">
+        <name>renderCheckBox</name>
+        <full_name>renderCheckBox</full_name>
+        <docblock line="61">
+          <description><![CDATA[Generates a check box.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="61" name="param" description="" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="61" name="param" description="" type="string" variable="$value">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="61" name="param" description="" type="string" variable="$class">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="61" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="69">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="69">
+          <name>$value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="69">
+          <name>$class</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="82" package="nuggets">
+        <name>renderRadio</name>
+        <full_name>renderRadio</full_name>
+        <docblock line="73">
+          <description><![CDATA[Generates a radio button.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="73" name="param" description="" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="73" name="param" description="" type="string" variable="$value">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="73" name="param" description="" type="string" variable="$class">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="73" name="param" description="" type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="73" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="82">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="82">
+          <name>$value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="82">
+          <name>$class</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="82">
+          <name>$id</name>
+          <default><![CDATA['']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="95" package="nuggets">
+        <name>getImage</name>
+        <full_name>getImage</full_name>
+        <docblock line="86">
+          <description><![CDATA[Generates an image.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="86" name="param" description="" type="string" variable="$path">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="86" name="param" description="" type="int" variable="$width">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="86" name="param" description="" type="int" variable="$height">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="86" name="param" description="" type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="86" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="95">
+          <name>$path</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="95">
+          <name>$width</name>
+          <default><![CDATA['']]></default>
+          <type/>
+        </argument>
+        <argument line="95">
+          <name>$height</name>
+          <default><![CDATA['']]></default>
+          <type/>
+        </argument>
+        <argument line="95">
+          <name>$id</name>
+          <default><![CDATA['']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="108" package="nuggets">
+        <name>getLink</name>
+        <full_name>getLink</full_name>
+        <docblock line="100">
+          <description><![CDATA[Generates a hyperlink.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="100" name="param" description="" type="string" variable="$text">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="100" name="param" description="" type="string" variable="$url">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="100" name="param" description="" type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="100" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="108">
+          <name>$text</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="108">
+          <name>$url</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="108">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="119" package="nuggets">
+        <name>getTextArea</name>
+        <full_name>getTextArea</full_name>
+        <docblock line="113">
+          <description><![CDATA[Generates a text area.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="113" name="param" description="" type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="119">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="37" code="50018">No DocBlock was found for property $inputs</error>
+    </parse_markers>
+  </file>
+  <file path="core/helper/CSSHelper.php" hash="becb56de66ead911ea4f7415b21eac34" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the CSSHelper class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="21" type="Require Once" package="Default">
+      <name>core/Helper/Helper.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="nuggets" line="35" package="nuggets">
+      <extends>\nuggets\Helper</extends>
+      <name>CSSHelper</name>
+      <full_name>\nuggets\CSSHelper</full_name>
+      <docblock line="23">
+        <description><![CDATA[This class provides helper features for Cascading Style Sheets.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="23" name="package" description="nuggets"/>
+        <tag line="23" name="category" description="PHP"/>
+        <tag line="23" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="23" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="23" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="23" name="version" description="GIT: v3.5"/>
+        <tag line="23" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="23" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="47" package="nuggets">
+        <name>getShadow</name>
+        <full_name>getShadow</full_name>
+        <docblock line="37">
+          <description><![CDATA[Generates a CSS box shadow.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="37" name="param" description="" type="int" variable="$x">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="37" name="param" description="" type="int" variable="$y">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="37" name="param" description="" type="int" variable="$blur">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="37" name="param" description="" type="string" variable="$color">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="37" name="param" description="" type="boolean" variable="$inset">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="37" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="47">
+          <name>$x</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$y</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$blur</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$color</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$inset</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="64" package="nuggets">
+        <name>getGradient</name>
+        <full_name>getGradient</full_name>
+        <docblock line="57">
+          <description><![CDATA[Generates a CSS gradient.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="57" name="param" description="" type="string" variable="$start">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="57" name="param" description="" type="string" variable="$stop">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="57" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="64">
+          <name>$start</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="64">
+          <name>$stop</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="nuggets" line="93" package="nuggets">
+        <name>getTransparency</name>
+        <full_name>getTransparency</full_name>
+        <docblock line="87">
+          <description><![CDATA[Generates CSS transparency.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="87" name="param" description="" type="int" variable="$amount">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="87" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="93">
+          <name>$amount</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/helper/Helper.php" hash="a8a200bc9bd24faf9a2a8103266c5d31" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Helper class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Nuggets-PHP.
+Nuggets-PHP is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Nuggets-PHP is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Nuggets-PHP. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="nuggets" line="33" package="nuggets">
+      <extends/>
+      <name>Helper</name>
+      <full_name>\nuggets\Helper</full_name>
+      <docblock line="21">
+        <description><![CDATA[This class represents a generalized helper.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="21" name="package" description="nuggets"/>
+        <tag line="21" name="category" description="PHP"/>
+        <tag line="21" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="21" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="21" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="21" name="version" description="GIT: v3.5"/>
+        <tag line="21" name="link" description="https://github.com/dasrajdeep/nuggets-php" link="https://github.com/dasrajdeep/nuggets-php"/>
+        <tag line="21" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="nuggets" line="37" package="nuggets">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="34">
+          <description><![CDATA[Initializes the helper.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="vendor/valums/server/php.php" hash="60dc84e21eba358956fd286e9c4e5d42" package="Default">
+    <class final="false" abstract="false" namespace="global" line="6" package="Default">
+      <extends/>
+      <name>qqUploadedFileXhr</name>
+      <full_name>\qqUploadedFileXhr</full_name>
+      <docblock line="3">
+        <description><![CDATA[Handle file uploads via XMLHttpRequest]]></description>
+        <long-description><![CDATA[]]></long-description>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="11" package="Default">
+        <name>save</name>
+        <full_name>save</full_name>
+        <docblock line="7">
+          <description><![CDATA[Save the file to the specified path]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="7" name="return" description="TRUE on success" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="11">
+          <name>$path</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="28" package="Default">
+        <name>getName</name>
+        <full_name>getName</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="31" package="Default">
+        <name>getSize</name>
+        <full_name>getSize</full_name>
+      </method>
+    </class>
+    <class final="false" abstract="false" namespace="global" line="43" package="Default">
+      <extends/>
+      <name>qqUploadedFileForm</name>
+      <full_name>\qqUploadedFileForm</full_name>
+      <docblock line="40">
+        <description><![CDATA[Handle file uploads via regular form post (uses the $_FILES array)]]></description>
+        <long-description><![CDATA[]]></long-description>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="48" package="Default">
+        <name>save</name>
+        <full_name>save</full_name>
+        <docblock line="44">
+          <description><![CDATA[Save the file to the specified path]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="44" name="return" description="TRUE on success" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="48">
+          <name>$path</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="54" package="Default">
+        <name>getName</name>
+        <full_name>getName</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="57" package="Default">
+        <name>getSize</name>
+        <full_name>getSize</full_name>
+      </method>
+    </class>
+    <class final="false" abstract="false" namespace="global" line="62" package="Default">
+      <extends/>
+      <name>qqFileUploader</name>
+      <full_name>\qqFileUploader</full_name>
+      <property final="false" static="false" visibility="private" line="63" namespace="global" package="Default">
+        <name>$allowedExtensions</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="false" visibility="private" line="64" namespace="global" package="Default">
+        <name>$sizeLimit</name>
+        <default><![CDATA[8388608]]></default>
+      </property>
+      <property final="false" static="false" visibility="private" line="65" namespace="global" package="Default">
+        <name>$file</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="67" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="67">
+          <name>$allowedExtensions</name>
+          <default><![CDATA[array()]]></default>
+          <type>array</type>
+        </argument>
+        <argument line="67">
+          <name>$sizeLimit</name>
+          <default><![CDATA[8388608]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="84" package="Default">
+        <name>checkServerSettings</name>
+        <full_name>checkServerSettings</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="94" package="Default">
+        <name>toBytes</name>
+        <full_name>toBytes</full_name>
+        <argument line="94">
+          <name>$str</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="108" package="Default">
+        <name>handleUpload</name>
+        <full_name>handleUpload</full_name>
+        <docblock line="105">
+          <description><![CDATA[Returns array('success'=>true) or array('error'=>'error message')]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+        <argument line="108">
+          <name>$uploadDirectory</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="108">
+          <name>$replaceOldFile</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file vendor/valums/server/php.php</error>
+      <error line="7" code="50015">Argument $path is missing from the Docblock of save()</error>
+      <error line="28" code="50010">No DocBlock was found for method getName()</error>
+      <error line="31" code="50010">No DocBlock was found for method getSize()</error>
+      <error line="44" code="50015">Argument $path is missing from the Docblock of save()</error>
+      <error line="54" code="50010">No DocBlock was found for method getName()</error>
+      <error line="57" code="50010">No DocBlock was found for method getSize()</error>
+      <error line="62" code="50000">No DocBlock was found for \qqFileUploader</error>
+      <error line="63" code="50018">No DocBlock was found for property $allowedExtensions</error>
+      <error line="64" code="50018">No DocBlock was found for property $sizeLimit</error>
+      <error line="65" code="50018">No DocBlock was found for property $file</error>
+      <error line="67" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="84" code="50010">No DocBlock was found for method checkServerSettings()</error>
+      <error line="94" code="50010">No DocBlock was found for method toBytes()</error>
+      <error line="105" code="50015">Argument $uploadDirectory is missing from the Docblock of handleUpload()</error>
+      <error line="105" code="50015">Argument $replaceOldFile is missing from the Docblock of handleUpload()</error>
+    </parse_markers>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="nuggets" full_name="nuggets"/>
+  <namespace name="global" full_name="global"/>
+  <namespace name="nuggets" full_name="nuggets"/>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>

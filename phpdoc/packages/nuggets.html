@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Nuggets-PHP » nuggets</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Nuggets-PHP</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/nuggets.html"><i class="icon-folder-open"></i> nuggets</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">91</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
+<li>
+<a href="../packages/nuggets.html" title="nuggets"><i class="icon-folder-open"></i>nuggets</a><ul class="nav nav-list nav-packages"></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#XMLView" title="This class represents an XML view.">XMLView</a></li>
+<li><a href="#View" title="This class represents a general view.">View</a></li>
+<li><a href="#HTMLView" title="This class represents a HTML view.">HTMLView</a></li>
+<li><a href="#Mailer" title="This class provides mailing features.">Mailer</a></li>
+<li><a href="#Model" title="This class represents a general model.">Model</a></li>
+<li><a href="#DefaultModel" title="This class provides the default model.">DefaultModel</a></li>
+<li><a href="#DefaultController" title="This class represents the default behaviour of the framework in response to an URL request.">DefaultController</a></li>
+<li><a href="#Controller" title="This class provides the general controller features.">Controller</a></li>
+<li><a href="#Dispatcher" title="This class performs dispatching of procedures based on commands.">Dispatcher</a></li>
+<li><a href="#Command" title="This class interprets the commands supplied to the URL request.">Command</a></li>
+<li><a href="#Config" title="This class manages the configurations of the framework.">Config</a></li>
+<li><a href="#PasswordAuthentication" title="This class provides password authentication features.">PasswordAuthentication</a></li>
+<li><a href="#Authentication" title="This class provides the general authentication features.">Authentication</a></li>
+<li><a href="#Registry" title="This class maintains the registry for the application framework.">Registry</a></li>
+<li><a href="#Session" title="This class manages the sessions for the application.">Session</a></li>
+<li><a href="#Engine" title="This class manages utility requirements of the framework.">Engine</a></li>
+<li><a href="#Database" title="This class provides an interface to the database.">Database</a></li>
+<li><a href="#HTMLHelper" title="This class provides helper features for HTML.">HTMLHelper</a></li>
+<li><a href="#CSSHelper" title="This class provides helper features for Cascading Style Sheets.">CSSHelper</a></li>
+<li><a href="#Helper" title="This class represents a generalized helper.">Helper</a></li>
+</ul>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li class="active"><a href="../packages/nuggets.html">nuggets</a></li>
+</li></ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="Authentication" class="element ajax clickable class">
+<h1>Authentication<a href="../classes/nuggets.Authentication.html">¶</a>
+</h1>
+<p class="short_description">This class provides the general authentication features.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Authentication.html" class="more">« More »</a>
+</div>
+<div id="CSSHelper" class="element ajax clickable class">
+<h1>CSSHelper<a href="../classes/nuggets.CSSHelper.html">¶</a>
+</h1>
+<p class="short_description">This class provides helper features for Cascading Style Sheets.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.CSSHelper.html" class="more">« More »</a>
+</div>
+<div id="Command" class="element ajax clickable class">
+<h1>Command<a href="../classes/nuggets.Command.html">¶</a>
+</h1>
+<p class="short_description">This class interprets the commands supplied to the URL request.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Command.html" class="more">« More »</a>
+</div>
+<div id="Config" class="element ajax clickable class">
+<h1>Config<a href="../classes/nuggets.Config.html">¶</a>
+</h1>
+<p class="short_description">This class manages the configurations of the framework.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Config.html" class="more">« More »</a>
+</div>
+<div id="Controller" class="element ajax clickable class">
+<h1>Controller<a href="../classes/nuggets.Controller.html">¶</a>
+</h1>
+<p class="short_description">This class provides the general controller features.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Controller.html" class="more">« More »</a>
+</div>
+<div id="Database" class="element ajax clickable class">
+<h1>Database<a href="../classes/nuggets.Database.html">¶</a>
+</h1>
+<p class="short_description">This class provides an interface to the database.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Database.html" class="more">« More »</a>
+</div>
+<div id="DefaultController" class="element ajax clickable class">
+<h1>DefaultController<a href="../classes/nuggets.DefaultController.html">¶</a>
+</h1>
+<p class="short_description">This class represents the default behaviour of the framework in response to an URL request.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.DefaultController.html" class="more">« More »</a>
+</div>
+<div id="DefaultModel" class="element ajax clickable class">
+<h1>DefaultModel<a href="../classes/nuggets.DefaultModel.html">¶</a>
+</h1>
+<p class="short_description">This class provides the default model.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.DefaultModel.html" class="more">« More »</a>
+</div>
+<div id="Dispatcher" class="element ajax clickable class">
+<h1>Dispatcher<a href="../classes/nuggets.Dispatcher.html">¶</a>
+</h1>
+<p class="short_description">This class performs dispatching of procedures based on commands.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Dispatcher.html" class="more">« More »</a>
+</div>
+<div id="Engine" class="element ajax clickable class">
+<h1>Engine<a href="../classes/nuggets.Engine.html">¶</a>
+</h1>
+<p class="short_description">This class manages utility requirements of the framework.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Engine.html" class="more">« More »</a>
+</div>
+<div id="HTMLHelper" class="element ajax clickable class">
+<h1>HTMLHelper<a href="../classes/nuggets.HTMLHelper.html">¶</a>
+</h1>
+<p class="short_description">This class provides helper features for HTML.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.HTMLHelper.html" class="more">« More »</a>
+</div>
+<div id="HTMLView" class="element ajax clickable class">
+<h1>HTMLView<a href="../classes/nuggets.HTMLView.html">¶</a>
+</h1>
+<p class="short_description">This class represents a HTML view.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.HTMLView.html" class="more">« More »</a>
+</div>
+<div id="Helper" class="element ajax clickable class">
+<h1>Helper<a href="../classes/nuggets.Helper.html">¶</a>
+</h1>
+<p class="short_description">This class represents a generalized helper.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Helper.html" class="more">« More »</a>
+</div>
+<div id="Mailer" class="element ajax clickable class">
+<h1>Mailer<a href="../classes/nuggets.Mailer.html">¶</a>
+</h1>
+<p class="short_description">This class provides mailing features.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Mailer.html" class="more">« More »</a>
+</div>
+<div id="Model" class="element ajax clickable class">
+<h1>Model<a href="../classes/nuggets.Model.html">¶</a>
+</h1>
+<p class="short_description">This class represents a general model.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Model.html" class="more">« More »</a>
+</div>
+<div id="PasswordAuthentication" class="element ajax clickable class">
+<h1>PasswordAuthentication<a href="../classes/nuggets.PasswordAuthentication.html">¶</a>
+</h1>
+<p class="short_description">This class provides password authentication features.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.PasswordAuthentication.html" class="more">« More »</a>
+</div>
+<div id="Registry" class="element ajax clickable class">
+<h1>Registry<a href="../classes/nuggets.Registry.html">¶</a>
+</h1>
+<p class="short_description">This class maintains the registry for the application framework.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Registry.html" class="more">« More »</a>
+</div>
+<div id="Session" class="element ajax clickable class">
+<h1>Session<a href="../classes/nuggets.Session.html">¶</a>
+</h1>
+<p class="short_description">This class manages the sessions for the application.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.Session.html" class="more">« More »</a>
+</div>
+<div id="View" class="element ajax clickable class">
+<h1>View<a href="../classes/nuggets.View.html">¶</a>
+</h1>
+<p class="short_description">This class represents a general view.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.View.html" class="more">« More »</a>
+</div>
+<div id="XMLView" class="element ajax clickable class">
+<h1>XMLView<a href="../classes/nuggets.XMLView.html">¶</a>
+</h1>
+<p class="short_description">This class represents an XML view.</p>
+<div class="details collapse"></div>
+<a href="../classes/nuggets.XMLView.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-15T00:39:50+05:30.<br></footer></div>
+</div>
+</body>
+</html>
