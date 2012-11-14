@@ -1,10 +1,49 @@
 <?php
+/**
+ * This file contains the CSSHelper class.
+ * 
+ * PHP version 5.3
+ * 
+ * LICENSE: This file is part of Nuggets-PHP.
+ * Nuggets-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * Nuggets-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Nuggets-PHP. If not, see <http://www.gnu.org/licenses/>. 
+ */
 namespace nuggets;
 
 require_once('core/Helper/Helper.php');
 
+/**
+ * This class provides helper features for Cascading Style Sheets.
+ * 
+ * @package    nuggets
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v3.5
+ * @link       https://github.com/dasrajdeep/nuggets-php
+ * @since      Class available since Release 1.0
+ */
 class CSSHelper extends Helper {
     
+    /**
+     * Generates a CSS box shadow.
+     * 
+     * @param int $x
+     * @param int $y
+     * @param int $blur
+     * @param string $color
+     * @param boolean $inset
+     * @return string
+     */
     public static function getShadow($x,$y,$blur,$color,$inset=FALSE) {
         if($inset) $inset='inset';
         else $inset='';
@@ -15,6 +54,13 @@ class CSSHelper extends Helper {
         return sprintf($css,$attr,$attr,$attr);
     }
     
+    /**
+     * Generates a CSS gradient.
+     * 
+     * @param string $start
+     * @param string $stop
+     * @return string
+     */
     public static function getGradient($start,$stop) {
         $raw_xml='<?xml version="1.0" ?>
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1 1" preserveAspectRatio="none">
@@ -38,6 +84,12 @@ class CSSHelper extends Helper {
         return $css;
     }
     
+    /**
+     * Generates CSS transparency.
+     * 
+     * @param int $amount
+     * @return string
+     */
     public static function getTransparency($amount) {
         $css='filter:alpha(opacity=%s);
             -moz-opacity:%s;

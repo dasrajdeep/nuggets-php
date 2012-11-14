@@ -1,7 +1,35 @@
 <?php
-
+/**
+ * This file contains the Engine class.
+ * 
+ * PHP version 5.3
+ * 
+ * LICENSE: This file is part of Nuggets-PHP.
+ * Nuggets-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * Nuggets-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Nuggets-PHP. If not, see <http://www.gnu.org/licenses/>. 
+ */
 namespace nuggets;
 
+/**
+ * This class manages utility requirements of the framework.
+ * 
+ * @package    nuggets
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v3.5
+ * @link       https://github.com/dasrajdeep/nuggets-php
+ * @since      Class available since Release 1.0
+ */
 class Engine {
     
     private static $version="3.0";
@@ -50,26 +78,52 @@ class Engine {
     
     private static $errorLogged=FALSE;
     
+    /**
+     * Adds an include path to the PHP engine.
+     * 
+     * @param string $path
+     */
     public static function addIncludePath($path) {
         $newpath=get_include_path().PATH_SEPARATOR.$path;
         set_include_path($newpath);
     }
     
+    /**
+     * Loads a helper class.
+     * 
+     * @param string $helper_name
+     */
     public static function helper($helper_name) {
         $class=self::$view_helpers[$helper_name];
         self::uses($class);
     }
     
+    /**
+     * Loads a module class.
+     * 
+     * @param string $class
+     */
     public static function uses($class) {
         $classpath=self::$moduleClass[$class];
         require_once $classpath;
     }
     
+    /**
+     * Logs an error.
+     * 
+     * @param string $entity
+     * @param string $error
+     */
     public static function logError($entity,$error) {
         array_push(self::$error_log[$entity],$error);
         self::$errorLogged=TRUE;
     }
     
+    /**
+     * Fetches the logged errors.
+     * 
+     * @return mixed[]
+     */
     public static function getErrors() {
         $keys=array_keys(self::$error_log);
         $errorset=array();
@@ -81,15 +135,30 @@ class Engine {
         }
         return $errorset;
     }
-
+	
+	/**
+	 * Tells whether an error occured.
+	 * 
+	 * @return boolean
+	 */
     public static function engineError() {
         return self::$errorLogged;
     }
     
+    /**
+     * Fetches the message associated with an error number.
+     * 
+     * @return string
+     */
     public static function getError($errno) {
         return self::$errors[$errno];
     }
     
+    /**
+     * Fetches the URL of the document root for the application.
+     * 
+     * @return string
+     */
     public static function getHostURL() {
         $req=explode("/",$_SERVER["REQUEST_URI"]);
         $scr=explode("/",$_SERVER["SCRIPT_NAME"]);
@@ -105,6 +174,11 @@ class Engine {
         return $uri;
     }
     
+    /**
+     * Fetches the version of the engine.
+     * 
+     * @return string
+     */
     public static function getVersion() {
         return self::$version;
     }

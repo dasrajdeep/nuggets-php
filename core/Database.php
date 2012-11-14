@@ -1,17 +1,50 @@
 <?php
-
+/**
+ * This file contains the Database class.
+ * 
+ * PHP version 5.3
+ * 
+ * LICENSE: This file is part of Nuggets-PHP.
+ * Nuggets-PHP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * Nuggets-PHP is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Nuggets-PHP. If not, see <http://www.gnu.org/licenses/>. 
+ */
 namespace nuggets;
 
+/**
+ * This class provides an interface to the database.
+ * 
+ * @package    nuggets
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v3.5
+ * @link       https://github.com/dasrajdeep/nuggets-php
+ * @since      Class available since Release 1.0
+ */
 class Database {
     private static $con=FALSE;
     
+    /**
+     * Connects to the database.
+     * 
+     * @return boolean
+     */
     public static function connect() {
-        self::$con=@mysql_connect(Config::read("db_host"),Config::read("db_username"),Config::read("db_password"));
+        self::$con=mysql_connect(Config::read("db_host"),Config::read("db_username"),Config::read("db_password"));
         if(!self::$con) {
             Engine::logError("database", 400);
             return FALSE;
         }
-        $selected=@mysql_select_db(Config::read("db_name"),self::$con);
+        $selected=mysql_select_db(Config::read("db_name"),self::$con);
         if(!$selected) {
             Engine::logError("database", 401);
             return FALSE;
@@ -19,11 +52,21 @@ class Database {
         return TRUE;
     }
     
+    /**
+     * Disconnects from the database.
+     */
     public static function disconnect() {
-        @mysql_close(self::$con);
+        mysql_close(self::$con);
     }
     
-    //Operations on database.
+    /**
+     * Fetches data from the database in the form of associative arrays.
+     * 
+     * @param string $table
+     * @param string $values
+     * @param string $criterion
+     * @return mixed[][]
+     */
     public static function get($table,$values,$criterion) {
         if(!self::$con) return NULL;
         $table=Config::read("db_prefix").$table;
@@ -37,6 +80,14 @@ class Database {
         return $rows;
     }
     
+    /**
+     * Inserts data into the database.
+     * 
+     * @param string $table
+     * @param string[] $fields
+     * @param string[] $data
+     * @return boolean
+     */
     public static function add($table,$fields,$data) {
         if(!self::$con) return FALSE;
         $table=Config::read("db_prefix").$table;
@@ -49,6 +100,15 @@ class Database {
         return TRUE;
     }
     
+    /**
+     * Updates data in the database.
+     * 
+     * @param string $table
+     * @param string[] $fields
+     * @param string[] $data
+     * @param string $criterion
+     * @return boolean
+     */
     public static function update($table,$fields,$data,$criterion) {
         if(!self::$con) return FALSE;
         $table=Config::read("db_prefix").$table;
@@ -61,6 +121,13 @@ class Database {
         return true;
     }
     
+    /**
+     * Deletes data from the database.
+     * 
+     * @param string $table
+     * @param string $match
+     * @return boolean
+     */
     public static function remove($table,$match) {
         if(!self::$con) return false;
         $table=Config::read("db_prefix").$table;
@@ -70,6 +137,12 @@ class Database {
         return true;
     }
     
+    /**
+     * Executes an arbitrary query on the database.
+     * 
+     * @param string $query
+     * @return boolean|resource
+     */
     public static function execute_query($query) {
         if(!self::$con) return false;
         $result=mysql_query($query,self::$con);
