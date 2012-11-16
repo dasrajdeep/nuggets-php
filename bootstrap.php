@@ -65,7 +65,7 @@ register_shutdown_function('nuggets\nuggetsShutdown');
  * 
  * @param string $class
  */
-function nuggetsClassLoader($class) {echo get_include_path();
+function nuggetsClassLoader($class) {
 	if(strpos($class,'nuggets')!==false) $class=substr($class,8);
 	$classPath=$class.'.php';
 	require_once($classPath);

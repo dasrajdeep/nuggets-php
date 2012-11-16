@@ -45,7 +45,7 @@ class Controller {
     //response sent out by engine
     public $response=NULL;
     //path to views of this controller
-    public $viewPath="core/view/Default/";
+    public $viewPath="core/View/Default/";
     //variables to be handed over to the view
     public $viewVars=array();
     //layout to be used fo view used by this controller
@@ -78,7 +78,7 @@ class Controller {
         foreach($this->helpers as $h) Engine::helper($h);
         //declare model
         if($this->usesModel) {
-			require_once('core/model/Model.php');
+			require_once('core/Model/Model.php');
             $modelName='nuggets\\'.$this->name."Model";
             $this->model=new $modelName();
             //init model

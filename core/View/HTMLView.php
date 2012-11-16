@@ -18,7 +18,7 @@
  */
 namespace nuggets;
 
-require_once('core/view/View.php');
+require_once('core/View/View.php');
 
 /**
  * This class represents a HTML view.
@@ -59,8 +59,8 @@ class HTMLView extends View {
 		foreach($view['script'] as $s) array_push($scripts,$this->getViewPath().$s);
 		
 		if($layout==='default') {
-			array_push($scripts,'core/view/Default/script.js');
-			array_push($styles,'core/view/Default/style.css');
+			array_push($scripts,'core/View/Default/script.js');
+			array_push($styles,'core/View/Default/style.css');
 		} else if($layout==='theme') {
 			foreach($theme['style'] as $s) array_push($styles,'app/theme/styles/'.$s);
 			foreach($theme['script'] as $s) array_push($scripts,'app/theme/scripts/'.$s);
@@ -77,7 +77,7 @@ class HTMLView extends View {
 				$page_content='app/theme/template/'.$theme['template_file'];
 				$template_body=$this->getViewPath().$view['file'];
 			} else $page_content=$this->getViewPath().$view['file'];
-			require_once('core/view/template.inc');
+			require_once('core/View/template.inc');
 		} else {
 			foreach($styles as $s) echo sprintf($tag_style,$s);
 			foreach($scripts as $s) echo sprintf($tag_script,$s);

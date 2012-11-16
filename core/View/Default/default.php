@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the XMLView class.
+ * This file contains the HTML for rendering the default view.
  * 
  * PHP version 5.3
  * 
@@ -16,28 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with Nuggets-PHP. If not, see <http://www.gnu.org/licenses/>. 
  */
-namespace nuggets;
-
-require_once('core/view/View.php');
-
-/**
- * This class represents an XML view.
- * 
- * @package    nuggets
- * @category   PHP
- * @author     Rajdeep Das <das.rajdeep97@gmail.com>
- * @copyright  Copyright 2012 Rajdeep Das
- * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
- * @version    GIT: v3.5
- * @link       https://github.com/dasrajdeep/nuggets-php
- * @since      Class available since Release 1.0
- */
-class XMLView extends View {
-	
-	/**
-	 * Initializes the XML view.
-	 */
-	function __construct() {}
-}
-
-?>
+ ?>
+<div id="header" align="center">
+	<div style="height:50px"></div>
+    <h1>NUGGETS APPLICATION FRAMEWORK</h1>
+	<hr/>
+</div>
+<div align="center">
+	<img src="core/View/Default/images/icon_tick.png" />
+	<h2>NUGGETS IS PROPERLY INSTALLED</h2>
+</div>
