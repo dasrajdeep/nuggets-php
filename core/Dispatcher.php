@@ -38,11 +38,7 @@ class Dispatcher {
      */
     function __construct($command) {
         $this->command=$command;
-        if(Engine::engineError()) {
-            $cmd=$this->command->getCommand();
-            if(!Registry::isEngineCommand($cmd)) $cmd="master";
-            $this->command->setCommand($cmd);
-        }
+        if(Engine::engineError()) nuggetsErrorHandler();
     }
     
     /**

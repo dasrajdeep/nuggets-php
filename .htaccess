@@ -2,6 +2,6 @@
     Options +FollowSymLinks
     IndexIgnore */*
     RewriteEngine On
-	RewriteCond %{REQUEST_FILENAME} !(^.*\.(css|js|jpg|jpeg|png|gif|bmp|svg)$)
+    RewriteCond %{REQUEST_FILENAME} !(^.*\.(css|js|jpg|jpeg|png|gif|bmp|svg)$)
     RewriteRule . index.php
 </IfModule>

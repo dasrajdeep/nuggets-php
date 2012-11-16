@@ -58,10 +58,9 @@ class Engine {
     );
     
     private static $errors=array(
-        100=>"engine configuration file not found",
-        101=>"site configuration file not found",
+        100=>"configuration file not found",
+        101=>"not enough file permissions",
         200=>"libxml extension not loaded",
-        201=>"mcrypt extension not loaded",
         202=>"mysql extension not loaded",
         203=>"session extension not loaded",
         300=>"php version is lower than 5",
@@ -115,6 +114,7 @@ class Engine {
      * @param string $error
      */
     public static function logError($entity,$error) {
+		if(!array_key_exists($error,self::$errors)) return;
         array_push(self::$error_log[$entity],$error);
         self::$errorLogged=TRUE;
     }
@@ -130,7 +130,7 @@ class Engine {
         foreach($keys as $k) {
             $entity=self::$error_log[$k];
             if(count($entity)!=0) {
-                foreach($entity as $e) array_push($errorset,$e);
+                foreach($entity as $e) array_push($errorset,array($e,self::$errors[$e]));
             }
         }
         return $errorset;

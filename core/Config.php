@@ -33,25 +33,32 @@ namespace nuggets;
 class Config {
 
     private static $config=null;
+    
+    private static $tracker=null;
 	
 	/**
 	 * Checks extensions and loads the configuration.
 	 */
     public static function init() {
-        self::checkExtensions();
+        self::checkSetup();
         self::loadConfig();
+        self::loadTracker();
     }
     
     /**
      * Checks if required extensions are installed or not.
      */
-    private static function checkExtensions() {
+    private static function checkSetup() {
         $ver=explode(".",phpversion());
         if($ver[0]<5) Engine::logError ("version", 300);
         if(!extension_loaded("libxml")) Engine::logError("extension", 200);
-        if(!extension_loaded("mcrypt")) Engine::logError("extension", 201);
         if(!extension_loaded("mysql")) Engine::logError("extension", 202);
         if(!extension_loaded("session")) Engine::logError("extension", 203);
+        
+        $perm=substr(sprintf('%o',fileperms('.tracker')),-3);
+        if($perm!='777') {
+			if(!chmod('.tracker',0777)) Engine::logError('config', 101);
+		}
     }
     
     /**
@@ -63,15 +70,29 @@ class Config {
 	}
 	
 	/**
+	 * Loads the file modification tracker.
+	 */
+	public static function loadTracker() {
+		$tracker=parse_ini_file('.tracker');
+		self::$tracker=$tracker;
+	}
+	
+	/**
 	 * Reads a configuration setting.
 	 * 
 	 * @param string $key
+	 * @param string $set
 	 * @return string|null
 	 */
-    public static function read($key) {
-        $keys=array_keys(self::$config);
-		foreach($keys as $k) if(array_key_exists($key,self::$config[$k])) return self::$config[$k][$key];
-		return null;
+    public static function read($key,$set='global') {
+		if($set==='global') {
+			$keys=array_keys(self::$config);
+			foreach($keys as $k) if(array_key_exists($key,self::$config[$k])) return self::$config[$k][$key];
+			return null;
+		} else if($set==='tracker') {
+			if(array_key_exists($key,self::$tracker)) return self::$tracker[$key];
+			return null;
+		}
     }
     
     /**
@@ -85,6 +106,48 @@ class Config {
 		else return null;
     }
     
+    /**
+     * Writes a configuration value.
+     * 
+     * @param string $key
+     * @param string $value
+     * @param string $set
+     */
+    public static function write($key,$value,$set='tracker') {
+		if($set==='tracker') {
+			self::$tracker[$key]=$value;
+		} else if($set==='global') {
+			$keys=array_keys(self::$config);
+			foreach($keys as $k) if(array_key_exists($key,self::$config[$k])) self::$config[$k][$key]=$value;
+		}
+	}
+	
+	/**
+	 * Saves configuration settings to file.
+	 * 
+	 * @param string $set
+	 */
+	public static function save($set='tracker') {
+		if($set==='tracker') {
+			$cfg=fopen('.tracker','w+');
+			$output='';
+			$keys=array_keys(self::$tracker);
+			foreach($keys as $k) $output.=sprintf("%s=%s\n",$k,self::$tracker[$k]);
+			fwrite($cfg,$output);
+			fclose($cfg);
+		} else if($set==='global') {
+			$cfg=fopen('nuggets.ini','w+');
+			$output='';
+			$sections=array_keys(self::$config);
+			foreach($sections as $s) {
+				$output.=sprintf("\n[%s]\n",$s);
+				$keys=array_keys(self::$config[$s]);
+				foreach($keys as $k) $output.=sprintf("%s=%s\n",$k,self::$config[$s][$k]);
+			}
+			fwrite($cfg,$output);
+			fclose($cfg);
+		}
+	}
 }
 
 ?>

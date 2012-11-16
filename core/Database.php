@@ -31,7 +31,7 @@ namespace nuggets;
  * @since      Class available since Release 1.0
  */
 class Database {
-    private static $con=FALSE;
+    private static $con=NULL;
     
     /**
      * Connects to the database.
@@ -96,8 +96,7 @@ class Database {
         $data=implode(",", $data);
         $query=sprintf("INSERT INTO %s (%s) VALUES (%s)",$table,$fields,$data);
         $result=mysql_query($query,self::$con);
-        if(!$result) return FALSE;
-        return TRUE;
+        return $result;
     }
     
     /**
@@ -117,8 +116,7 @@ class Database {
         $set=implode(",", $assignments);
         $query=sprintf("UPDATE %s SET %s WHERE %s",$table,$set,$criterion);
         $result=mysql_query($query,self::$con);
-        if(!$result) return FALSE;
-        return true;
+        return $result;
     }
     
     /**
@@ -133,8 +131,7 @@ class Database {
         $table=Config::read("db_prefix").$table;
         $query=sprintf("DELETE FROM %s WHERE %s",$table,$match);
         $result=mysql_query($query,self::$con);
-        if(!$result) return FALSE;
-        return true;
+        return $result;
     }
     
     /**
@@ -146,8 +143,12 @@ class Database {
     public static function execute_query($query) {
         if(!self::$con) return false;
         $result=mysql_query($query,self::$con);
-        if(!$result) return false;
-        else return $result;
+        if(preg_match('/^(select|SELECT|show|SHOW|describe|DESCRIBE|desc|DESC|explain|EXPLAIN)[ ]/',$query)===1) {
+			$tmp=array();
+			while($r=mysql_fetch_assoc($result)) array_push($tmp,$r);
+			$result=$tmp;
+		}
+        return $result;
     }
 }
 ?>

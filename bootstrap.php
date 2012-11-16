@@ -75,7 +75,10 @@ function nuggetsClassLoader($class) {
  * A shutdown function which executes before the script terminates.
  */
 function nuggetsShutdown() {
+	global $basePath;
 	$error=error_get_last();
+	chdir($basePath);
+	Config::save();
 	if($error) call_user_func_array('nuggets\defaultErrorHandler',array_values($error));
 }
 
@@ -83,6 +86,13 @@ function nuggetsShutdown() {
 
 <?php
  namespace nuggets;
+ 
+ function nuggetsErrorHandler() {
+	 if(!Engine::engineError()) return;
+	 $errors=Engine::getErrors();
+	 require_once('static/nuggetsError.php');
+	 die();
+ }
  
  /**
   * The default error handler for the framework.

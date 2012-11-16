@@ -72,6 +72,8 @@ class HTMLView extends View {
 			foreach($view['style'] as $s) array_push($styles,$this->getViewPath().$s);
 		}
 		
+		$this->parseStyles($styles);
+		
 		if($view['category']==='page') {
 			if($this->usesTemplate) {
 				$page_content='app/theme/template/'.$theme['template_file'];
@@ -84,6 +86,19 @@ class HTMLView extends View {
 			require_once($this->getViewPath().$view['file']);
 		}
     }
+    
+    function parseStyles($stylesheets) {
+		require_once('core/View/StyleParser.php');
+		$parser=new StyleParser();
+		foreach($stylesheets as $file) {
+			$lastmod=Config::read($file,'tracker');
+			if($lastmod && $lastmod>=filemtime($file)) continue;
+			$parsed=$parser->parse($file);
+			copy($file,$file.'.raw');
+			$parser->transform($parsed,$file);
+			Config::write($file,filemtime($file));
+		}
+	}
 }
 
 ?>
