@@ -52,7 +52,7 @@ $includePaths=array(
 	'app'.DS.'extensions'
 );
 foreach($includePaths as &$i) $i=$basePath.DS.$i;
-array_push($includePaths,get_include_path());
+$includePaths=array_merge((array)get_include_path(),$includePaths);
 
 set_include_path(implode(PATH_SEPARATOR,$includePaths));
 
@@ -65,7 +65,7 @@ register_shutdown_function('nuggets\nuggetsShutdown');
  * 
  * @param string $class
  */
-function nuggetsClassLoader($class) {
+function nuggetsClassLoader($class) {echo get_include_path();
 	if(strpos($class,'nuggets')!==false) $class=substr($class,8);
 	$classPath=$class.'.php';
 	require_once($classPath);
