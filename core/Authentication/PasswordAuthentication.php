@@ -18,12 +18,13 @@
  */
 namespace nuggets;
 
-require_once('core/auth/Authentication.php');
+require_once('core/Database.php');
+require_once('core/Authentication/Authentication.php');
 
 /**
  * This class provides password authentication features.
  * 
- * @package    nuggets
+ * @package    nuggets\Authentication
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
@@ -34,7 +35,18 @@ require_once('core/auth/Authentication.php');
  */
 class PasswordAuthentication extends Authentication {
     
+    /**
+     * Contains the field name for the username.
+     * 
+     * @var string
+     */
     private $field_user;
+    
+    /**
+     * Contains the field name for the password.
+     * 
+     * @var string
+     */
     private $field_pass;
 	
 	/**

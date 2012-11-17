@@ -21,7 +21,7 @@ namespace nuggets;
 /**
  * This class represents the default behaviour of the framework in response to an URL request.
  * 
- * @package    nuggets
+ * @package    nuggets\Controller
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
@@ -32,18 +32,46 @@ namespace nuggets;
  */
 class DefaultController extends Controller {
     
+    /**
+     * Contains a flag to check whether the controller uses a model.
+     * 
+     * @var boolean
+     */
     public $usesModel=true;
+    
+    /**
+     * Contains a flag to check whether the controller uses a view.
+     * 
+     * @var boolean
+     */
     public $usesView=true;
-    public $modules=array();
-    public $helpers=array("html","css");
-    public $layout="default";
-    public $viewType="HTML";
+    
+    /**
+     * Contains the helpers required by the controller.
+     * 
+     * @var string[]
+     */
+    public $helpers=array('html','css');
+    
+    /**
+     * Contains the layout type.
+     * 
+     * @var string
+     */
+    public $layout='default';
+    
+    /**
+     * Contains the type fo view used.
+     * 
+     * @var string
+     */
+    public $viewType='HTML';
 	
 	/**
 	 * Renders the default view for the framework.
 	 */
     public function loadDefaultView() {
-        $this->view->renderView("default");
+        $this->view->renderView('default');
     }
 }
 

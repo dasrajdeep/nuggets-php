@@ -31,6 +31,12 @@ namespace nuggets;
  * @since      Class available since Release 1.0
  */
 class Database {
+	
+	/**
+	 * Contains the database connection object.
+	 * 
+	 * @var object
+	 */
     private static $con=NULL;
     
     /**

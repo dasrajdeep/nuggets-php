@@ -31,8 +31,26 @@ namespace nuggets;
  * @since      Class available since Release 1.0
  */
 class Command {
+	
+	/**
+	 * Contains the command.
+	 * 
+	 * @var string
+	 */
 	private $command=null;
+	
+	/**
+	 * Contains the parameters of the URL request.
+	 * 
+	 * @var mixed[]
+	 */
 	private $parameters=array();
+	
+	/**
+	 * Contains the POST data associated with the URL request.
+	 * 
+	 * @var mixed[]
+	 */
 	private $data=null;
 	
 	/**

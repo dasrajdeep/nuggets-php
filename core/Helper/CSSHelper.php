@@ -23,7 +23,7 @@ require_once('core/Helper/Helper.php');
 /**
  * This class provides helper features for Cascading Style Sheets.
  * 
- * @package    nuggets
+ * @package    nuggets\Helper
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das

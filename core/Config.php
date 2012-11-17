@@ -31,9 +31,19 @@ namespace nuggets;
  * @since      Class available since Release 1.0
  */
 class Config {
-
+	
+	/**
+	 * Contains the global configuration settings.
+	 * 
+	 * @var mixed[]
+	 */
     private static $config=null;
     
+    /**
+     * Contains the tracker information.
+     * 
+     * @var mixed[]
+     */
     private static $tracker=null;
 	
 	/**

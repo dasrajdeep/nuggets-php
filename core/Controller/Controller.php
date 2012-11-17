@@ -21,7 +21,7 @@ namespace nuggets;
 /**
  * This class provides the general controller features.
  * 
- * @package    nuggets
+ * @package    nuggets\Controller
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
@@ -32,41 +32,109 @@ namespace nuggets;
  */
 class Controller {
     
-    //name of this entity
+    /**
+     * Contains the name of this module.
+     * 
+     * @var string
+     */
     public $name;
-    //name of this controller
+    
+    /**
+     * Contains the name of the controller.
+     * 
+     * @var string
+     */
     public $controllerName;
-    //core modules used by this controller
-    public $uses;
-    //helpers used by this controller
+    
+    /**
+     * Contains the helpers used by the controller.
+     * 
+     * @var string[]
+     */
     public $helpers;
-    //array of parameters sent by http request
+    
+    /**
+     * Contains the URL request parameters.
+     * 
+     * @var mixed[]
+     */
     public $requestParams;
-    //response sent out by engine
+    
+    /**
+     * Contains the response set by the module.
+     * 
+     * @var mixed
+     */
     public $response=NULL;
-    //path to views of this controller
+    
+    /**
+     * Contains the path to the view for this controller.
+     * 
+     * @var string
+     */
     public $viewPath="core/View/Default/";
-    //variables to be handed over to the view
+    
+    /**
+     * Contains the variables for the view.
+     * 
+     * @var mixed[]
+     */
     public $viewVars=array();
-    //layout to be used fo view used by this controller
+    
+    /**
+     * Layout used by this module.
+     * 
+     * @var string
+     */
     public $layout="default";
-    //instance of the view class created during rendering
+    
+    /**
+     * Instance of the view class created during rendering.
+     * 
+     * @var object
+     */
     public $view;
-    //instance of the model class created
+    
+    /**
+     * Instance of the model class for this module.
+     * 
+     * @var object
+     */
     public $model=NULL;
-    //checks if controller uses a model
+    
+    /**
+     * A flag to check if controller uses a model.
+     * 
+     * @var boolean
+     */
     public $usesModel;
-    //checks if controller uses a view
+    
+    /**
+     * A flag to check if controller uses a view.
+     * 
+     * @var boolean
+     */
     public $usesView;
-    //type fo view to be rendered
+    
+    /**
+     * Contains the type of view to be rendered.
+     * 
+     * @var string
+     */
     public $viewType="HTML";
-    //template support
+    
+    /**
+     * Checks whether the view for this module uses a template.
+     * 
+     * @var boolean
+     */
     public $usesTemplate=false;
-    //extention for view files
-    public $ext="php";
-    //methods of this controller
-    public $methods;
-    //core or user-defined
+    
+    /**
+     * A flag which tells if the module is a core module.
+     * 
+     * @var boolean
+     */
     public $core=false;
 
 	/**
@@ -74,7 +142,6 @@ class Controller {
 	 */
     public function init() {
         $this->controllerName=$this->name."Controller";
-        foreach($this->uses as $m) Engine::uses($m);
         foreach($this->helpers as $h) Engine::helper($h);
         //declare model
         if($this->usesModel) {
@@ -110,15 +177,6 @@ class Controller {
      */
     public function getEntityName() {
         return $this->name;
-    }
-    
-    /**
-     * Fetches the dependant modules for this controller.
-     * 
-     * @return string[]
-     */
-    public function getDependantModules() {
-        return $this->uses;
     }
     
     /**
@@ -175,24 +233,6 @@ class Controller {
      */
     public function getViewType() {
         return $this->viewType;
-    }
-    
-    /**
-     * Fetches the extension type for the view.
-     * 
-     * @return string
-     */
-    public function getViewExtension() {
-        return $this->ext;
-    }
-    
-    /**
-     * Fetches the methods defined for this controller.
-     * 
-     * @return string[]
-     */
-    public function getMethods() {
-        return $this->methods;
     }
     
     /**

@@ -32,21 +32,35 @@ namespace nuggets;
  */
 class Registry {
 	
-	//list of engine specific routes
-	private static $engine_routes=array("master","config","saveconfig");
-	//array containing the routes defined by designer
+	/**
+	 * Contains the internal commands associated with the framework.
+	 * 
+	 * @var string[]
+	 */
+	private static $engine_routes=array('master');
+	
+	/**
+	 * Contains the routes for the commands.
+	 * 
+	 * @var mixed[]
+	 */
 	private static $routes=array(
-		'default'=>array("Default","loadDefaultView"),
-		'master'=>array("Default","loadDefaultView")
+		'default'=>array('Default','loadDefaultView'),
+		'master'=>array('Default','loadDefaultView')
 	);
 	
+	/**
+	 * Contains paths to resources.
+	 * 
+	 * @var mixed[]
+	 */
 	private static $paths=array(
-		"datastore"=>"datastore/",
-		"view"=>"app/view/",
-		"jquery"=>"vendor/jquery.js",
-		"jqueryui"=>"vendor/jquery-ui/",
-		"base64"=>"vendor/base64.js",
-		"scriptlib"=>"vendor/scriptlib/"
+		'datastore'=>'datastore/',
+		'view'=>'app/view/',
+		'jquery'=>'vendor/jquery.js',
+		'jqueryui'=>'vendor/jquery-ui/',
+		'base64'=>'vendor/base64.js',
+		'scriptlib'=>'vendor/scriptlib/'
 	);
 	
 	/**

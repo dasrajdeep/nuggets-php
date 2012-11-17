@@ -32,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">91</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -77,14 +77,10 @@
 </li>
 <li class="nav-header private">» Private
                     <ul>
-<li class="property private "><a href="#property_authorized" title="$authorized :: "><span class="description">$authorized</span><pre>$authorized</pre></a></li>
-<li class="property private "><a href="#property_control_keys" title="$control_keys :: "><span class="description">$control_keys</span><pre>$control_keys</pre></a></li>
-<li class="property private "><a href="#property_mandatory_vars" title="$mandatory_vars :: "><span class="description">$mandatory_vars</span><pre>$mandatory_vars</pre></a></li>
-<li class="property private "><a href="#property_running" title="$running :: "><span class="description">$running</span><pre>$running</pre></a></li>
-<li class="property private "><a href="#property_session_id" title="$session_id :: "><span class="description">$session_id</span><pre>$session_id</pre></a></li>
-<li class="property private "><a href="#property_session_vars" title="$session_vars :: "><span class="description">$session_vars</span><pre>$session_vars</pre></a></li>
-<li class="property private "><a href="#property_timeout" title="$timeout :: "><span class="description">$timeout</span><pre>$timeout</pre></a></li>
-<li class="property private "><a href="#property_user_key" title="$user_key :: "><span class="description">$user_key</span><pre>$user_key</pre></a></li>
+<li class="property private "><a href="#property_authorized" title="$authorized :: Contains information regarding whether a session is authorized or not."><span class="description">Contains information regarding whether a session is authorized or not.</span><pre>$authorized</pre></a></li>
+<li class="property private "><a href="#property_control_keys" title="$control_keys :: Contains the session control keys."><span class="description">Contains the session control keys.</span><pre>$control_keys</pre></a></li>
+<li class="property private "><a href="#property_running" title="$running :: Contains information regarding whether a session is running or not."><span class="description">Contains information regarding whether a session is running or not.</span><pre>$running</pre></a></li>
+<li class="property private "><a href="#property_timeout" title="$timeout :: Contains the session timeout in seconds."><span class="description">Contains the session timeout in seconds.</span><pre>$timeout</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -161,7 +157,7 @@
 </div>
 <a id="method_getVar"></a><div class="element clickable method public method_getVar" data-toggle="collapse" data-target=".method_getVar .collapse">
 <h2>Fetches a variable associated with the running session.</h2>
-<pre>getVar(string $key) : string</pre>
+<pre>getVar(string $key) : string | null</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -171,7 +167,9 @@
 <code>string</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>string</code></div>
+<div class="subelement response">
+<code>string</code><code>null</code>
+</div>
 </div></div>
 </div>
 <a id="method_init"></a><div class="element clickable method public method_init" data-toggle="collapse" data-target=".method_init .collapse">
@@ -230,7 +228,7 @@
 </div>
 <a id="method_setVar"></a><div class="element clickable method public method_setVar" data-toggle="collapse" data-target=".method_setVar .collapse">
 <h2>Sets a variable for the current running session.</h2>
-<pre>setVar(string $key, string $value, boolean $mandatory) : boolean</pre>
+<pre>setVar(string $key, string $value) : boolean</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -242,10 +240,6 @@
 <div class="subelement argument">
 <h4>$value</h4>
 <code>string</code>
-</div>
-<div class="subelement argument">
-<h4>$mandatory</h4>
-<code>boolean</code>
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>boolean</code></div>
@@ -283,50 +277,26 @@
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_authorized"> </a><div class="element clickable property private property_authorized" data-toggle="collapse" data-target=".property_authorized .collapse">
-<h2>$authorized</h2>
-<pre>$authorized </pre>
+<h2>Contains information regarding whether a session is authorized or not.</h2>
+<pre>$authorized : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_control_keys"> </a><div class="element clickable property private property_control_keys" data-toggle="collapse" data-target=".property_control_keys .collapse">
-<h2>$control_keys</h2>
-<pre>$control_keys </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_mandatory_vars"> </a><div class="element clickable property private property_mandatory_vars" data-toggle="collapse" data-target=".property_mandatory_vars .collapse">
-<h2>$mandatory_vars</h2>
-<pre>$mandatory_vars </pre>
+<h2>Contains the session control keys.</h2>
+<pre>$control_keys : string[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_running"> </a><div class="element clickable property private property_running" data-toggle="collapse" data-target=".property_running .collapse">
-<h2>$running</h2>
-<pre>$running </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_session_id"> </a><div class="element clickable property private property_session_id" data-toggle="collapse" data-target=".property_session_id .collapse">
-<h2>$session_id</h2>
-<pre>$session_id </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_session_vars"> </a><div class="element clickable property private property_session_vars" data-toggle="collapse" data-target=".property_session_vars .collapse">
-<h2>$session_vars</h2>
-<pre>$session_vars </pre>
+<h2>Contains information regarding whether a session is running or not.</h2>
+<pre>$running : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_timeout"> </a><div class="element clickable property private property_timeout" data-toggle="collapse" data-target=".property_timeout .collapse">
-<h2>$timeout</h2>
-<pre>$timeout </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_user_key"> </a><div class="element clickable property private property_user_key" data-toggle="collapse" data-target=".property_user_key .collapse">
-<h2>$user_key</h2>
-<pre>$user_key </pre>
+<h2>Contains the session timeout in seconds.</h2>
+<pre>$timeout : int</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -337,7 +307,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-11-15T00:39:50+05:30.<br></footer></div>
+            generated on 2012-11-17T13:15:25+05:30.<br></footer></div>
 </div>
 </body>
 </html>

@@ -23,7 +23,7 @@ require_once('core/View/View.php');
 /**
  * This class represents a HTML view.
  * 
- * @package    nuggets
+ * @package    nuggets\View
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
@@ -87,6 +87,11 @@ class HTMLView extends View {
 		}
     }
     
+    /**
+     * Parses custom styles in stylesheets and generates custom styles.
+     * 
+     * @param string[] $stylesheets
+     */
     function parseStyles($stylesheets) {
 		require_once('core/View/StyleParser.php');
 		$parser=new StyleParser();

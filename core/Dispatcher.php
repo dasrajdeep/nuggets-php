@@ -31,10 +31,18 @@ namespace nuggets;
  * @since      Class available since Release 1.0
  */
 class Dispatcher {
-    private $command;
+	
+	/**
+	 * Contains the command object.
+	 * 
+	 * @var Command
+	 */
+    private $command=null;
     
     /**
      * Initializes the dispatcher.
+     * 
+     * @param Command $command
      */
     function __construct($command) {
         $this->command=$command;

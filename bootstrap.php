@@ -87,6 +87,9 @@ function nuggetsShutdown() {
 <?php
  namespace nuggets;
  
+ /**
+  * The error handler for framework related errors.
+  */
  function nuggetsErrorHandler() {
 	 if(!Engine::engineError()) return;
 	 $errors=Engine::getErrors();

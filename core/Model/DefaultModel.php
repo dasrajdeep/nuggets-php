@@ -21,7 +21,7 @@ namespace nuggets;
 /**
  * This class provides the default model.
  * 
- * @package    nuggets
+ * @package    nuggets\Model
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
@@ -32,7 +32,11 @@ namespace nuggets;
  */
 class DefaultModel extends Model {
     
-    public $tables=array();
+    /**
+     * Contains the names of the core modules used by this model.
+     * 
+     * @var string[]
+     */
     public $core=array();
 	
 }

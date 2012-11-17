@@ -21,7 +21,7 @@ namespace nuggets;
 /**
  * This class provides the general authentication features.
  * 
- * @package    nuggets
+ * @package    nuggets\Authentication
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
@@ -32,10 +32,32 @@ namespace nuggets;
  */
 class Authentication {
     
+    /**
+     * Contains the table name for authentication.
+     * 
+     * @var string
+     */
     protected $auth_table;
+    
+    /**
+     * Contains the field name for the user ID.
+     * 
+     * @var string
+     */
     protected $field_id;
+    
+    /**
+     * Contains the type of authentication process.
+     * 
+     * @var string
+     */
     protected $auth_type;
-    protected $encryption;
+    
+    /**
+     * Contains the user ID.
+     * 
+     * @var string
+     */
     protected $user_id=null;
 	
 	/**

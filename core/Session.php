@@ -32,14 +32,33 @@ namespace nuggets;
  */
 class Session {
     
+    /**
+     * Contains information regarding whether a session is authorized or not.
+     * 
+     * @var boolean
+     */
     private static $authorized=false;
+    
+    /**
+     * Contains information regarding whether a session is running or not.
+     * 
+     * @var boolean
+     */
     private static $running=false;
-    private static $session_id=null;
+    
+    /**
+     * Contains the session timeout in seconds.
+     * 
+     * @var int
+     */
     private static $timeout=1800;
-    private static $user_key="session_user";
-    private static $session_vars=array();
-    private static $mandatory_vars=array();
-    private static $control_keys=array('session_user','session_vars','mandatory_vars','expire_time');
+    
+    /**
+     * Contains the session control keys.
+     * 
+     * @var string[]
+     */
+    private static $control_keys=array('session_user','session_vars','expire_time');
 	
 	/**
 	 * Initializes the session manager.
@@ -51,14 +70,7 @@ class Session {
                 return;
             }
             self::$running=TRUE;
-            self::$session_id=session_id();
-            self::$session_vars=$_SESSION['session_vars'];
-            self::$mandatory_vars=$_SESSION['mandatory_vars'];
-        }
-        else {
-            $_SESSION['session_vars']=array();
-            $_SESSION['mandatory_vars']=array();
-        }
+        } else $_SESSION=array();
     }
     
     /**
@@ -76,8 +88,8 @@ class Session {
      * @param string $id
      */
     public static function start($id) {
-        self::$session_id=session_id();
-        $_SESSION[self::$user_key]=$id;
+        $_SESSION['session_user']=$id;
+        $_SESSION['session_vars']=array();
         self::setTimeout(self::$timeout);
         self::$running=TRUE;
     }
@@ -86,8 +98,7 @@ class Session {
      * Stops a running session.
      */
     public static function stop() {
-        unset($_SESSION[self::$user_key]);
-        self::$session_id=NULL;
+        $_SESSION=array();
         session_destroy();
         self::$running=FALSE;
     }
@@ -98,7 +109,7 @@ class Session {
      * @return string
      */
     public static function getUserID() {
-        return $_SESSION[self::$user_key];
+        return $_SESSION['session_user'];
     }
     
     /**
@@ -106,29 +117,23 @@ class Session {
      * 
      * @param string $key
      * @param string $value
-     * @param boolean $mandatory
      * @return boolean
      */
-    public static function setVar($key,$value,$mandatory) {
-        if(in_array($key,self::$control_keys)) return FALSE;
-        self::$session_vars[$key]=$value;
-        $_SESSION[$key]=$value;
-        array_push($_SESSION['session_vars'],$key);
-        if($mandatory) {
-            array_push($_SESSION['mandatory_vars'],$key);
-            array_push(self::$compulsory_vars, $key);
-        }
-        return TRUE;
+    public static function setVar($key,$value) {
+		if(!self::$running) return false;
+		$_SESSION['session_vars'][$key]=$value;
+		return true;
     }
     
     /**
      * Fetches a variable associated with the running session.
      * 
      * @param string $key
-     * @return string
+     * @return string|null
      */
     public static function getVar($key) {
-        return $_SESSION[$key];
+		if(!self::$running) return null;
+        return $_SESSION['session_vars'][$key];
     }
     
     /**
@@ -137,7 +142,7 @@ class Session {
      * @return string
      */
     public static function getSessionID() {
-        return self::$session_id;
+        return $_SESSION['session_user'];
     }
     
     /**

@@ -32,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">91</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -74,13 +74,13 @@
 </li>
 <li class="nav-header private">» Private
                     <ul>
-<li class="property private "><a href="#property_errorLogged" title="$errorLogged :: "><span class="description">$errorLogged</span><pre>$errorLogged</pre></a></li>
-<li class="property private "><a href="#property_error_log" title="$error_log :: "><span class="description">$error_log</span><pre>$error_log</pre></a></li>
-<li class="property private "><a href="#property_errors" title="$errors :: "><span class="description">$errors</span><pre>$errors</pre></a></li>
-<li class="property private "><a href="#property_moduleClass" title="$moduleClass :: "><span class="description">$moduleClass</span><pre>$moduleClass</pre></a></li>
-<li class="property private "><a href="#property_modules" title="$modules :: "><span class="description">$modules</span><pre>$modules</pre></a></li>
-<li class="property private "><a href="#property_version" title="$version :: "><span class="description">$version</span><pre>$version</pre></a></li>
-<li class="property private "><a href="#property_view_helpers" title="$view_helpers :: "><span class="description">$view_helpers</span><pre>$view_helpers</pre></a></li>
+<li class="property private "><a href="#property_errorLogged" title="$errorLogged :: Contains information regarding whether an errors were logged or not."><span class="description">Contains information regarding whether an errors were logged or not.</span><pre>$errorLogged</pre></a></li>
+<li class="property private "><a href="#property_error_log" title="$error_log :: Contains the error log."><span class="description">Contains the error log.</span><pre>$error_log</pre></a></li>
+<li class="property private "><a href="#property_errors" title="$errors :: Contains the descriptions of the error codes."><span class="description">Contains the descriptions of the error codes.</span><pre>$errors</pre></a></li>
+<li class="property private "><a href="#property_moduleClass" title="$moduleClass :: Contains the locations of the module classes."><span class="description">Contains the locations of the module classes.</span><pre>$moduleClass</pre></a></li>
+<li class="property private "><a href="#property_modules" title="$modules :: Contains the names of the core modules."><span class="description">Contains the names of the core modules.</span><pre>$modules</pre></a></li>
+<li class="property private "><a href="#property_version" title="$version :: Contains the version of the framework."><span class="description">Contains the version of the framework.</span><pre>$version</pre></a></li>
+<li class="property private "><a href="#property_view_helpers" title="$view_helpers :: Contains the names of the helper classes."><span class="description">Contains the names of the helper classes.</span><pre>$view_helpers</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -160,12 +160,15 @@
 </div>
 <a id="method_getError"></a><div class="element clickable method public method_getError" data-toggle="collapse" data-target=".method_getError .collapse">
 <h2>Fetches the message associated with an error number.</h2>
-<pre>getError($errno) : string</pre>
+<pre>getError(int $errno) : string</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$errno</h4></div>
+<div class="subelement argument">
+<h4>$errno</h4>
+<code>int</code>
+</div>
 <h3>Returns</h3>
 <div class="subelement response"><code>string</code></div>
 </div></div>
@@ -246,44 +249,44 @@
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_errorLogged"> </a><div class="element clickable property private property_errorLogged" data-toggle="collapse" data-target=".property_errorLogged .collapse">
-<h2>$errorLogged</h2>
-<pre>$errorLogged </pre>
+<h2>Contains information regarding whether an errors were logged or not.</h2>
+<pre>$errorLogged : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_error_log"> </a><div class="element clickable property private property_error_log" data-toggle="collapse" data-target=".property_error_log .collapse">
-<h2>$error_log</h2>
-<pre>$error_log </pre>
+<h2>Contains the error log.</h2>
+<pre>$error_log : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_errors"> </a><div class="element clickable property private property_errors" data-toggle="collapse" data-target=".property_errors .collapse">
-<h2>$errors</h2>
-<pre>$errors </pre>
+<h2>Contains the descriptions of the error codes.</h2>
+<pre>$errors : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_moduleClass"> </a><div class="element clickable property private property_moduleClass" data-toggle="collapse" data-target=".property_moduleClass .collapse">
-<h2>$moduleClass</h2>
-<pre>$moduleClass </pre>
+<h2>Contains the locations of the module classes.</h2>
+<pre>$moduleClass : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_modules"> </a><div class="element clickable property private property_modules" data-toggle="collapse" data-target=".property_modules .collapse">
-<h2>$modules</h2>
-<pre>$modules </pre>
+<h2>Contains the names of the core modules.</h2>
+<pre>$modules : string[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_version"> </a><div class="element clickable property private property_version" data-toggle="collapse" data-target=".property_version .collapse">
-<h2>$version</h2>
-<pre>$version </pre>
+<h2>Contains the version of the framework.</h2>
+<pre>$version : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_view_helpers"> </a><div class="element clickable property private property_view_helpers" data-toggle="collapse" data-target=".property_view_helpers .collapse">
-<h2>$view_helpers</h2>
-<pre>$view_helpers </pre>
+<h2>Contains the names of the helper classes.</h2>
+<pre>$view_helpers : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -294,7 +297,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-11-15T00:39:50+05:30.<br></footer></div>
+            generated on 2012-11-17T13:15:25+05:30.<br></footer></div>
 </div>
 </body>
 </html>

@@ -23,7 +23,7 @@ require_once('core/Helper/CSSHelper.php');
 /**
  * This class provides a parser for custom CSS styles.
  * 
- * @package    nuggets
+ * @package    nuggets\View
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
@@ -34,12 +34,23 @@ require_once('core/Helper/CSSHelper.php');
  */
 class StyleParser {
 	
+	/**
+	 * Contains the regular expressions for matching custom CSS tags.
+	 * 
+	 * @var mixed[]
+	 */
 	private $matcher=array(
 		'gradient'=>'/gradient[\s]*:[\s]*#([0-9a-fA-F]{3,6})[\s]*#([0-9a-fA-F]{3,6})[\s]*;/',
 		'shadow'=>'/shadow[\s]*:[\s]*(inset)?[\s]*([0-9]+)px[\s]*([0-9]+)px[\s]*([0-9]+)px[\s]*#([0-9a-fA-F]{3,6})[\s]*;/',
 		'transparency'=>'/transparency[\s]*:[\s]*(0\.[0-9]+|1)[\s]*;/'
 	);
 	
+	/**
+	 * Parses a stylesheet and returns a processed string.
+	 * 
+	 * @param string $file
+	 * @return string
+	 */
 	function parse($file) {
 		$handle=fopen($file,'r+');
 		$size=filesize($file);
@@ -54,6 +65,12 @@ class StyleParser {
 		return $contents;
 	}
 	
+	/**
+	 * A callback for the parser.
+	 * 
+	 * @param string[] $match
+	 * @return string
+	 */
 	function replacer($match) {
 		if(strpos($match[0],'gradient')===0) {
 			return CSSHelper::getGradient($match[1],$match[2]);
@@ -65,6 +82,12 @@ class StyleParser {
 		return $match[0];
 	}
 	
+	/**
+	 * Modifies the stylesheet.
+	 * 
+	 * @param string $css
+	 * @param string $file
+	 */
 	function transform($css,$file) {
 		$fp=fopen($file,'w+');
 		fwrite($fp,$css);

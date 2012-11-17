@@ -32,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">91</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -58,13 +58,10 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method_getDependantHelpers" title="getDependantHelpers :: Fetches the required helpers for this controller."><span class="description">Fetches the required helpers for this controller.</span><pre>getDependantHelpers()</pre></a></li>
-<li class="method public "><a href="#method_getDependantModules" title="getDependantModules :: Fetches the dependant modules for this controller."><span class="description">Fetches the dependant modules for this controller.</span><pre>getDependantModules()</pre></a></li>
 <li class="method public "><a href="#method_getEntityName" title="getEntityName :: Fetches the name of the entity associated with this controller."><span class="description">Fetches the name of the entity associated with this controller.</span><pre>getEntityName()</pre></a></li>
 <li class="method public "><a href="#method_getLayout" title="getLayout :: Fetches the layout associated with this controller."><span class="description">Fetches the layout associated with this controller.</span><pre>getLayout()</pre></a></li>
-<li class="method public "><a href="#method_getMethods" title="getMethods :: Fetches the methods defined for this controller."><span class="description">Fetches the methods defined for this controller.</span><pre>getMethods()</pre></a></li>
 <li class="method public "><a href="#method_getParams" title="getParams :: Fetches the parameters provided with the URL request."><span class="description">Fetches the parameters provided with the URL request.</span><pre>getParams()</pre></a></li>
 <li class="method public "><a href="#method_getResponse" title="getResponse :: Fetches the response for this controller."><span class="description">Fetches the response for this controller.</span><pre>getResponse()</pre></a></li>
-<li class="method public "><a href="#method_getViewExtension" title="getViewExtension :: Fetches the extension type for the view."><span class="description">Fetches the extension type for the view.</span><pre>getViewExtension()</pre></a></li>
 <li class="method public "><a href="#method_getViewPath" title="getViewPath :: Fetches the path to the view for this controller."><span class="description">Fetches the path to the view for this controller.</span><pre>getViewPath()</pre></a></li>
 <li class="method public "><a href="#method_getViewType" title="getViewType :: Fetches the type of view for this controller."><span class="description">Fetches the type of view for this controller.</span><pre>getViewType()</pre></a></li>
 <li class="method public "><a href="#method_getvar" title="getvar :: Fetches a variable previously stored."><span class="description">Fetches a variable previously stored.</span><pre>getvar()</pre></a></li>
@@ -76,24 +73,21 @@
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
                     <ul>
-<li class="property public "><a href="#property_controllerName" title="$controllerName :: "><span class="description">$controllerName</span><pre>$controllerName</pre></a></li>
-<li class="property public "><a href="#property_core" title="$core :: "><span class="description">$core</span><pre>$core</pre></a></li>
-<li class="property public "><a href="#property_ext" title="$ext :: "><span class="description">$ext</span><pre>$ext</pre></a></li>
-<li class="property public "><a href="#property_helpers" title="$helpers :: "><span class="description">$helpers</span><pre>$helpers</pre></a></li>
-<li class="property public "><a href="#property_layout" title="$layout :: "><span class="description">$layout</span><pre>$layout</pre></a></li>
-<li class="property public "><a href="#property_methods" title="$methods :: "><span class="description">$methods</span><pre>$methods</pre></a></li>
-<li class="property public "><a href="#property_model" title="$model :: "><span class="description">$model</span><pre>$model</pre></a></li>
-<li class="property public "><a href="#property_name" title="$name :: "><span class="description">$name</span><pre>$name</pre></a></li>
-<li class="property public "><a href="#property_requestParams" title="$requestParams :: "><span class="description">$requestParams</span><pre>$requestParams</pre></a></li>
-<li class="property public "><a href="#property_response" title="$response :: "><span class="description">$response</span><pre>$response</pre></a></li>
-<li class="property public "><a href="#property_uses" title="$uses :: "><span class="description">$uses</span><pre>$uses</pre></a></li>
-<li class="property public "><a href="#property_usesModel" title="$usesModel :: "><span class="description">$usesModel</span><pre>$usesModel</pre></a></li>
-<li class="property public "><a href="#property_usesTemplate" title="$usesTemplate :: "><span class="description">$usesTemplate</span><pre>$usesTemplate</pre></a></li>
-<li class="property public "><a href="#property_usesView" title="$usesView :: "><span class="description">$usesView</span><pre>$usesView</pre></a></li>
-<li class="property public "><a href="#property_view" title="$view :: "><span class="description">$view</span><pre>$view</pre></a></li>
-<li class="property public "><a href="#property_viewPath" title="$viewPath :: "><span class="description">$viewPath</span><pre>$viewPath</pre></a></li>
-<li class="property public "><a href="#property_viewType" title="$viewType :: "><span class="description">$viewType</span><pre>$viewType</pre></a></li>
-<li class="property public "><a href="#property_viewVars" title="$viewVars :: "><span class="description">$viewVars</span><pre>$viewVars</pre></a></li>
+<li class="property public "><a href="#property_controllerName" title="$controllerName :: Contains the name of the controller."><span class="description">Contains the name of the controller.</span><pre>$controllerName</pre></a></li>
+<li class="property public "><a href="#property_core" title="$core :: A flag which tells if the module is a core module."><span class="description">A flag which tells if the module is a core module.</span><pre>$core</pre></a></li>
+<li class="property public "><a href="#property_helpers" title="$helpers :: Contains the helpers used by the controller."><span class="description">Contains the helpers used by the controller.</span><pre>$helpers</pre></a></li>
+<li class="property public "><a href="#property_layout" title="$layout :: Layout used by this module."><span class="description">Layout used by this module.</span><pre>$layout</pre></a></li>
+<li class="property public "><a href="#property_model" title="$model :: Instance of the model class for this module."><span class="description">Instance of the model class for this module.</span><pre>$model</pre></a></li>
+<li class="property public "><a href="#property_name" title="$name :: Contains the name of this module."><span class="description">Contains the name of this module.</span><pre>$name</pre></a></li>
+<li class="property public "><a href="#property_requestParams" title="$requestParams :: Contains the URL request parameters."><span class="description">Contains the URL request parameters.</span><pre>$requestParams</pre></a></li>
+<li class="property public "><a href="#property_response" title="$response :: Contains the response set by the module."><span class="description">Contains the response set by the module.</span><pre>$response</pre></a></li>
+<li class="property public "><a href="#property_usesModel" title="$usesModel :: A flag to check if controller uses a model."><span class="description">A flag to check if controller uses a model.</span><pre>$usesModel</pre></a></li>
+<li class="property public "><a href="#property_usesTemplate" title="$usesTemplate :: Checks whether the view for this module uses a template."><span class="description">Checks whether the view for this module uses a template.</span><pre>$usesTemplate</pre></a></li>
+<li class="property public "><a href="#property_usesView" title="$usesView :: A flag to check if controller uses a view."><span class="description">A flag to check if controller uses a view.</span><pre>$usesView</pre></a></li>
+<li class="property public "><a href="#property_view" title="$view :: Instance of the view class created during rendering."><span class="description">Instance of the view class created during rendering.</span><pre>$view</pre></a></li>
+<li class="property public "><a href="#property_viewPath" title="$viewPath :: Contains the path to the view for this controller."><span class="description">Contains the path to the view for this controller.</span><pre>$viewPath</pre></a></li>
+<li class="property public "><a href="#property_viewType" title="$viewType :: Contains the type of view to be rendered."><span class="description">Contains the type of view to be rendered.</span><pre>$viewType</pre></a></li>
+<li class="property public "><a href="#property_viewVars" title="$viewVars :: Contains the variables for the view."><span class="description">Contains the variables for the view.</span><pre>$viewVars</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -115,7 +109,7 @@
 <table class="table table-bordered">
 <tr>
 <th>package</th>
-<td><a href="../packages/nuggets.html">nuggets</a></td>
+<td><a href="../packages/nuggets.Controller.html">nuggets\Controller</a></td>
 </tr>
 <tr>
 <th>category</th>
@@ -158,16 +152,6 @@
 <div class="subelement response"><code>string[]</code></div>
 </div></div>
 </div>
-<a id="method_getDependantModules"></a><div class="element clickable method public method_getDependantModules" data-toggle="collapse" data-target=".method_getDependantModules .collapse">
-<h2>Fetches the dependant modules for this controller.</h2>
-<pre>getDependantModules() : string[]</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string[]</code></div>
-</div></div>
-</div>
 <a id="method_getEntityName"></a><div class="element clickable method public method_getEntityName" data-toggle="collapse" data-target=".method_getEntityName .collapse">
 <h2>Fetches the name of the entity associated with this controller.</h2>
 <pre>getEntityName() : string</pre>
@@ -188,16 +172,6 @@
 <div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
-<a id="method_getMethods"></a><div class="element clickable method public method_getMethods" data-toggle="collapse" data-target=".method_getMethods .collapse">
-<h2>Fetches the methods defined for this controller.</h2>
-<pre>getMethods() : string[]</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string[]</code></div>
-</div></div>
-</div>
 <a id="method_getParams"></a><div class="element clickable method public method_getParams" data-toggle="collapse" data-target=".method_getParams .collapse">
 <h2>Fetches the parameters provided with the URL request.</h2>
 <pre>getParams() : mixed[]</pre>
@@ -211,16 +185,6 @@
 <a id="method_getResponse"></a><div class="element clickable method public method_getResponse" data-toggle="collapse" data-target=".method_getResponse .collapse">
 <h2>Fetches the response for this controller.</h2>
 <pre>getResponse() : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string</code></div>
-</div></div>
-</div>
-<a id="method_getViewExtension"></a><div class="element clickable method public method_getViewExtension" data-toggle="collapse" data-target=".method_getViewExtension .collapse">
-<h2>Fetches the extension type for the view.</h2>
-<pre>getViewExtension() : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -302,110 +266,92 @@
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_controllerName"> </a><div class="element clickable property public property_controllerName" data-toggle="collapse" data-target=".property_controllerName .collapse">
-<h2>$controllerName</h2>
-<pre>$controllerName </pre>
+<h2>Contains the name of the controller.</h2>
+<pre>$controllerName : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_core"> </a><div class="element clickable property public property_core" data-toggle="collapse" data-target=".property_core .collapse">
-<h2>$core</h2>
-<pre>$core </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_ext"> </a><div class="element clickable property public property_ext" data-toggle="collapse" data-target=".property_ext .collapse">
-<h2>$ext</h2>
-<pre>$ext </pre>
+<h2>A flag which tells if the module is a core module.</h2>
+<pre>$core : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_helpers"> </a><div class="element clickable property public property_helpers" data-toggle="collapse" data-target=".property_helpers .collapse">
-<h2>$helpers</h2>
-<pre>$helpers </pre>
+<h2>Contains the helpers used by the controller.</h2>
+<pre>$helpers : string[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_layout"> </a><div class="element clickable property public property_layout" data-toggle="collapse" data-target=".property_layout .collapse">
-<h2>$layout</h2>
-<pre>$layout </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_methods"> </a><div class="element clickable property public property_methods" data-toggle="collapse" data-target=".property_methods .collapse">
-<h2>$methods</h2>
-<pre>$methods </pre>
+<h2>Layout used by this module.</h2>
+<pre>$layout : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_model"> </a><div class="element clickable property public property_model" data-toggle="collapse" data-target=".property_model .collapse">
-<h2>$model</h2>
-<pre>$model </pre>
+<h2>Instance of the model class for this module.</h2>
+<pre>$model : object</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_name"> </a><div class="element clickable property public property_name" data-toggle="collapse" data-target=".property_name .collapse">
-<h2>$name</h2>
-<pre>$name </pre>
+<h2>Contains the name of this module.</h2>
+<pre>$name : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_requestParams"> </a><div class="element clickable property public property_requestParams" data-toggle="collapse" data-target=".property_requestParams .collapse">
-<h2>$requestParams</h2>
-<pre>$requestParams </pre>
+<h2>Contains the URL request parameters.</h2>
+<pre>$requestParams : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_response"> </a><div class="element clickable property public property_response" data-toggle="collapse" data-target=".property_response .collapse">
-<h2>$response</h2>
-<pre>$response </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_uses"> </a><div class="element clickable property public property_uses" data-toggle="collapse" data-target=".property_uses .collapse">
-<h2>$uses</h2>
-<pre>$uses </pre>
+<h2>Contains the response set by the module.</h2>
+<pre>$response : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_usesModel"> </a><div class="element clickable property public property_usesModel" data-toggle="collapse" data-target=".property_usesModel .collapse">
-<h2>$usesModel</h2>
-<pre>$usesModel </pre>
+<h2>A flag to check if controller uses a model.</h2>
+<pre>$usesModel : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_usesTemplate"> </a><div class="element clickable property public property_usesTemplate" data-toggle="collapse" data-target=".property_usesTemplate .collapse">
-<h2>$usesTemplate</h2>
-<pre>$usesTemplate </pre>
+<h2>Checks whether the view for this module uses a template.</h2>
+<pre>$usesTemplate : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_usesView"> </a><div class="element clickable property public property_usesView" data-toggle="collapse" data-target=".property_usesView .collapse">
-<h2>$usesView</h2>
-<pre>$usesView </pre>
+<h2>A flag to check if controller uses a view.</h2>
+<pre>$usesView : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_view"> </a><div class="element clickable property public property_view" data-toggle="collapse" data-target=".property_view .collapse">
-<h2>$view</h2>
-<pre>$view </pre>
+<h2>Instance of the view class created during rendering.</h2>
+<pre>$view : object</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_viewPath"> </a><div class="element clickable property public property_viewPath" data-toggle="collapse" data-target=".property_viewPath .collapse">
-<h2>$viewPath</h2>
-<pre>$viewPath </pre>
+<h2>Contains the path to the view for this controller.</h2>
+<pre>$viewPath : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_viewType"> </a><div class="element clickable property public property_viewType" data-toggle="collapse" data-target=".property_viewType .collapse">
-<h2>$viewType</h2>
-<pre>$viewType </pre>
+<h2>Contains the type of view to be rendered.</h2>
+<pre>$viewType : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_viewVars"> </a><div class="element clickable property public property_viewVars" data-toggle="collapse" data-target=".property_viewVars .collapse">
-<h2>$viewVars</h2>
-<pre>$viewVars </pre>
+<h2>Contains the variables for the view.</h2>
+<pre>$viewVars : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -416,7 +362,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-11-15T00:39:50+05:30.<br></footer></div>
+            generated on 2012-11-17T13:15:25+05:30.<br></footer></div>
 </div>
 </body>
 </html>

@@ -21,7 +21,7 @@ namespace nuggets;
 /**
  * This class represents a general view.
  * 
- * @package    nuggets
+ * @package    nuggets\View
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
@@ -32,21 +32,53 @@ namespace nuggets;
  */
 class View {
     
-    //name of entity
+	/**
+	 * Contains the name of the module.
+	 * 
+	 * @var string
+	 */ 
     public $name;
-    //variables for view
+    
+    /**
+     * Contains the variables required to render this view.
+     * 
+     * @var mixed[]
+     */
     public $viewVars=array();
-    //path to view
+    
+    /**
+     * Contains the path to the view.
+     * 
+     * @var string
+     */
     public $viewPath=null;
-    //name of view
+    
+    /**
+     * Contains the name of the view.
+     * 
+     * @var string
+     */
     public $viewName;
-    //name of layout
+    
+    /**
+     * Contains the layout type for this view.
+     * 
+     * @var string
+     */
     public $layout;
-    //whether view uses a template or not
+    
+    /**
+     * Checks whether this view uses a template or not.
+     * 
+     * @var boolean
+     */
     public $usesTemplate=false;
-    //extension name
-    public $ext;
-    //paths for layout
+    
+    /**
+     * Contains paths required by the view.
+     * 
+     * @var mixed[]
+     */
     public $paths=array();
     
     /**
@@ -93,15 +125,6 @@ class View {
      */
     public function getLayoutName() {
         return $this->layout;
-    }
-    
-    /**
-     * Fetches the extension of view files.
-     * 
-     * @return string
-     */
-    public function getExtension() {
-        return $this->ext;
     }
     
     /**

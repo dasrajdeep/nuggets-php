@@ -21,7 +21,7 @@ namespace nuggets;
 /**
  * This class provides mailing features.
  * 
- * @package    nuggets
+ * @package    nuggets\Mailer
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das

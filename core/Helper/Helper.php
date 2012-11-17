@@ -21,7 +21,7 @@ namespace nuggets;
 /**
  * This class represents a generalized helper.
  * 
- * @package    nuggets
+ * @package    nuggets\Helper
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das

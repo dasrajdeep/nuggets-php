@@ -32,8 +32,18 @@ namespace nuggets;
  */
 class Engine {
     
-    private static $version="3.0";
+    /**
+     * Contains the version of the framework.
+     * 
+     * @var string
+     */
+    private static $version='3.0';
 	
+	/**
+	 * Contains the names of the core modules.
+	 * 
+	 * @var string[]
+	 */
 	private static $modules=array(
 		'Authentication',
 		'Controller',
@@ -43,6 +53,11 @@ class Engine {
 		'View'
 	);
 	
+	/**
+	 * Contains the locations of the module classes.
+	 * 
+	 * @var mixed[]
+	 */
     private static $moduleClass=array(
 		'Database'=>'core/Database.php',
 		'Session'=>'core/Session.php',
@@ -51,23 +66,38 @@ class Engine {
 		'HTMLView'=>'core/View/HTMLView.php'
 	);
     
+    /**
+     * Contains the names of the helper classes.
+     * 
+     * @var mixed[]
+     */
     private static $view_helpers=array(
-        "html"=>"HTMLHelper",
-        "css"=>"CSSHelper",
-        "js"=>"JSHelper"
+        'html'=>'HTMLHelper',
+        'css'=>'CSSHelper',
+        'js'=>'JSHelper'
     );
     
+    /**
+     * Contains the descriptions of the error codes.
+     * 
+     * @var mixed[]
+     */
     private static $errors=array(
-        100=>"configuration file not found",
-        101=>"not enough file permissions",
-        200=>"libxml extension not loaded",
-        202=>"mysql extension not loaded",
-        203=>"session extension not loaded",
-        300=>"php version is lower than 5",
-        400=>"unable to connect to database",
-        401=>"database does not exist"
+        100=>'configuration file not found',
+        101=>'not enough file permissions',
+        200=>'libxml extension not loaded',
+        202=>'mysql extension not loaded',
+        203=>'session extension not loaded',
+        300=>'php version is lower than 5',
+        400=>'unable to connect to database',
+        401=>'database does not exist'
     );
-
+	
+	/**
+	 * Contains the error log.
+	 * 
+	 * @var mixed[]
+	 */
     private static $error_log=array(
         "database"=>array(),
         "config"=>array(),
@@ -75,6 +105,11 @@ class Engine {
         "version"=>array()
     );
     
+    /**
+     * Contains information regarding whether an errors were logged or not.
+     * 
+     * @var boolean
+     */
     private static $errorLogged=FALSE;
     
     /**
@@ -148,6 +183,7 @@ class Engine {
     /**
      * Fetches the message associated with an error number.
      * 
+     * @param int $errno
      * @return string
      */
     public static function getError($errno) {

@@ -21,7 +21,7 @@ namespace nuggets;
 /**
  * This class represents a general model.
  * 
- * @package    nuggets
+ * @package    nuggets\Model
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
@@ -32,11 +32,18 @@ namespace nuggets;
  */
 class Model {
     
-    //name of entity
-    public $name="";
-    //data fetched or generated from model
-    public $data=array();
-    //core modules used by this model
+    /**
+     * Contains the name of the module.
+     * 
+     * @var string
+     */
+    public $name='';
+    
+    /**
+     * Contains the names of the core modules used by this model.
+     * 
+     * @var string[]
+     */
     public $coreModules=array();
 	
 	/**

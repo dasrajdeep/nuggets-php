@@ -23,7 +23,7 @@ require_once('core/View/View.php');
 /**
  * This class represents an XML view.
  * 
- * @package    nuggets
+ * @package    nuggets\View
  * @category   PHP
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das

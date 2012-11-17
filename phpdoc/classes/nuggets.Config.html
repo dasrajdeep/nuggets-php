@@ -32,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">91</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -59,19 +59,25 @@
                     <ul>
 <li class="method public "><a href="#method_init" title="init :: Checks extensions and loads the configuration."><span class="description">Checks extensions and loads the configuration.</span><pre>init()</pre></a></li>
 <li class="method public "><a href="#method_loadConfig" title="loadConfig :: Loads the configuration from a file."><span class="description">Loads the configuration from a file.</span><pre>loadConfig()</pre></a></li>
+<li class="method public "><a href="#method_loadTracker" title="loadTracker :: Loads the file modification tracker."><span class="description">Loads the file modification tracker.</span><pre>loadTracker()</pre></a></li>
 <li class="method public "><a href="#method_read" title="read :: Reads a configuration setting."><span class="description">Reads a configuration setting.</span><pre>read()</pre></a></li>
 <li class="method public "><a href="#method_readAttributes" title="readAttributes :: Reads all the configuration attributes of a particular entity."><span class="description">Reads all the configuration attributes of a particular entity.</span><pre>readAttributes()</pre></a></li>
+<li class="method public "><a href="#method_save" title="save :: Saves configuration settings to file."><span class="description">Saves configuration settings to file.</span><pre>save()</pre></a></li>
+<li class="method public "><a href="#method_write" title="write :: Writes a configuration value."><span class="description">Writes a configuration value.</span><pre>write()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header private">» Private
-                    <ul><li class="method private "><a href="#method_checkExtensions" title="checkExtensions :: Checks if required extensions are installed or not."><span class="description">Checks if required extensions are installed or not.</span><pre>checkExtensions()</pre></a></li></ul>
+                    <ul><li class="method private "><a href="#method_checkSetup" title="checkSetup :: Checks if required extensions are installed or not."><span class="description">Checks if required extensions are installed or not.</span><pre>checkSetup()</pre></a></li></ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
                     <ul></ul>
 </li>
 <li class="nav-header private">» Private
-                    <ul><li class="property private "><a href="#property_config" title="$config :: "><span class="description">$config</span><pre>$config</pre></a></li></ul>
+                    <ul>
+<li class="property private "><a href="#property_config" title="$config :: Contains the global configuration settings."><span class="description">Contains the global configuration settings.</span><pre>$config</pre></a></li>
+<li class="property private "><a href="#property_tracker" title="$tracker :: Contains the tracker information."><span class="description">Contains the tracker information.</span><pre>$tracker</pre></a></li>
+</ul>
 </li>
 </ul>
 </div>
@@ -137,15 +143,25 @@
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
+<a id="method_loadTracker"></a><div class="element clickable method public method_loadTracker" data-toggle="collapse" data-target=".method_loadTracker .collapse">
+<h2>Loads the file modification tracker.</h2>
+<pre>loadTracker() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 <a id="method_read"></a><div class="element clickable method public method_read" data-toggle="collapse" data-target=".method_read .collapse">
 <h2>Reads a configuration setting.</h2>
-<pre>read(string $key) : string | null</pre>
+<pre>read(string $key, string $set) : string | null</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$key</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$set</h4>
 <code>string</code>
 </div>
 <h3>Returns</h3>
@@ -169,17 +185,57 @@
 </div>
 </div></div>
 </div>
-<a id="method_checkExtensions"></a><div class="element clickable method private method_checkExtensions" data-toggle="collapse" data-target=".method_checkExtensions .collapse">
+<a id="method_save"></a><div class="element clickable method public method_save" data-toggle="collapse" data-target=".method_save .collapse">
+<h2>Saves configuration settings to file.</h2>
+<pre>save(string $set) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$set</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_write"></a><div class="element clickable method public method_write" data-toggle="collapse" data-target=".method_write .collapse">
+<h2>Writes a configuration value.</h2>
+<pre>write(string $key, string $value, string $set) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$set</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_checkSetup"></a><div class="element clickable method private method_checkSetup" data-toggle="collapse" data-target=".method_checkSetup .collapse">
 <h2>Checks if required extensions are installed or not.</h2>
-<pre>checkExtensions() </pre>
+<pre>checkSetup() </pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_config"> </a><div class="element clickable property private property_config" data-toggle="collapse" data-target=".property_config .collapse">
-<h2>$config</h2>
-<pre>$config </pre>
+<h2>Contains the global configuration settings.</h2>
+<pre>$config : mixed[]</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_tracker"> </a><div class="element clickable property private property_tracker" data-toggle="collapse" data-target=".property_tracker .collapse">
+<h2>Contains the tracker information.</h2>
+<pre>$tracker : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -190,7 +246,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-11-15T00:39:50+05:30.<br></footer></div>
+            generated on 2012-11-17T13:15:25+05:30.<br></footer></div>
 </div>
 </body>
 </html>
