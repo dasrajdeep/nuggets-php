@@ -1,5 +1,5 @@
 body {
-    background-color:#1c5a85;
+	background-color:#1c5a85;
     color:#ebedee;
     font-family:Arial, Helvetica, sans-serif;
     margin:0px;
@@ -25,6 +25,12 @@ button,input[type=button],input[type=submit],input[type=reset] {
     border-radius:5px;
     cursor:pointer;
     color:#1c5a85;
+    background-color:#ebedee;
+}
+
+button:hover,input[type=button]:hover,input[type=submit]:hover,input[type=reset]:hover {
+	background-color:#B0C4DE;
+	color:#cc0000;
 }
 
 span {
@@ -44,6 +50,10 @@ input[type=text],input[type=password] {
     color:#2c7cb4;
 }
 
+input[type=text]:focus,input[type=password]:focus {
+	shadow: inset 1px 1px 5px #1c5a85;
+}
+
 textarea {
     font-family:Arial, Helvetica, sans-serif;
     padding:5px;
@@ -56,19 +66,18 @@ textarea {
     color:#2c7cb4;
 }
 
-table {
-    background-color:#c8c8c8;
-    border-radius:5px;
-}
-
 th {
     padding:5px;
     background-color:#ebedee;
     color:#1c5a85;
+    border-radius:5px;
 }
 
 td {
     padding: 5px;
+    border-radius:5px;
+    border:solid;
+    border-width:1px;
 }
 
 hr {
@@ -94,15 +103,17 @@ hr {
 
 #header {
 	font-weight:bold;
-	border-radius:5px;
 	padding:5px;
-	margin:5px;
 }
 
-footer {
+#footer {
+	width:100%;
+	position: absolute;
+	bottom:0px;
     text-align:center;
     margin-top:25px;
-    padding:10px;
+    margin-bottom:10px;
+    padding:0px;
     font-style:italic;
 }
 

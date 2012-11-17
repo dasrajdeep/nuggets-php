@@ -53,6 +53,9 @@ namespace nuggets;
 
 <body>
     <?php require_once($page_content); ?>
-    <footer align="center"><?php echo Config::read('app_footer'); ?></footer>
+    <div id="footer">
+		<hr/>
+		<footer align="center"><?php echo Config::read('app_footer'); ?></footer>
+    </div>
 </body>
 </html>

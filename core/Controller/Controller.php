@@ -72,7 +72,7 @@ class Controller {
      * 
      * @var string
      */
-    public $viewPath="core/View/Default/";
+    public $viewPath="core/View/";
     
     /**
      * Contains the variables for the view.
@@ -143,7 +143,7 @@ class Controller {
     public function init() {
         $this->controllerName=$this->name."Controller";
         foreach($this->helpers as $h) Engine::helper($h);
-        //declare model
+        //initialize model
         if($this->usesModel) {
 			require_once('core/Model/Model.php');
             $modelName='nuggets\\'.$this->name."Model";

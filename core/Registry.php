@@ -69,6 +69,9 @@ class Registry {
 	public static function init() {
 		$config=parse_ini_file('app/app.ini',true);
 		
+		array_push(self::$engine_routes,Config::read('admin_location'));
+		self::$routes[Config::read('admin_location')]=array('Admin','showAdminPage');
+		
 		$route_keys=array_keys($config['ROUTES']);
 		$path_keys=array_keys($config['PATHS']);
 		

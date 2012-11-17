@@ -34,9 +34,13 @@ require_once('core/Dispatcher.php');
 require_once('core/Config.php');
 require_once('core/Session.php');
 
+register_shutdown_function('nuggets\nuggetsShutdown');
+
 Session::init();
-Registry::init();
 Config::init();
+Registry::init();
+
+$initialized=true;
 
 $includePaths=array(
 	'core',
@@ -58,7 +62,19 @@ set_include_path(implode(PATH_SEPARATOR,$includePaths));
 
 spl_autoload_register('nuggets\nuggetsClassLoader',false);
 
-register_shutdown_function('nuggets\nuggetsShutdown');
+$logFile=fopen('nuggets.log','a+');
+if($logFile===false) Engine::logError('config',101);
+nuggetsErrorHandler();
+
+/**
+ * Logs events to a file.
+ * 
+ * @param string $message
+ */
+function logEvent($message) {
+	$time=date('d-m-Y h:i:s a');
+	fwrite($GLOBALS['logFile'],sprintf("[%s] %s\n",$time,$message));
+}
 
 /**
  * A custom class loader for the framework.
@@ -75,10 +91,11 @@ function nuggetsClassLoader($class) {
  * A shutdown function which executes before the script terminates.
  */
 function nuggetsShutdown() {
-	global $basePath;
+	global $basePath,$logFile;
 	$error=error_get_last();
 	chdir($basePath);
-	Config::save();
+	if($logFile) fclose($logFile);
+	if(isset($GLOBALS['initialized'])) Config::save();
 	if($error) call_user_func_array('nuggets\defaultErrorHandler',array_values($error));
 }
 
@@ -107,6 +124,7 @@ function nuggetsShutdown() {
   */
  function defaultErrorHandler($level,$message,$filename,$line) {
 	$msg=createErrorMessage(func_get_args());
+	logEvent($message.' at '.$filename.' on line '.$line);
 	require_once('static/errorDefault.php');
 	die();
 }

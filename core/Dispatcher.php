@@ -86,7 +86,8 @@ class Dispatcher {
     private function initController($controller,$entity,$params) {
         $controller->name=$entity;
         $controller->requestParams=$params;
-        if($entity!=="Default") $controller->viewPath=sprintf("app/view/%s/",$entity);
+        if(in_array($entity,array('Default','Admin'))) $controller->viewPath.=$entity.'/';
+        else $controller->viewPath=sprintf("app/view/%s/",$entity);
         $controller->methods=get_class_methods($controller);
         $controller->init();
     }

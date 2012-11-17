@@ -84,7 +84,8 @@ class Config {
 	 */
 	public static function loadTracker() {
 		$tracker=parse_ini_file('.tracker');
-		self::$tracker=$tracker;
+		if(is_array($tracker)) self::$tracker=$tracker;
+		else self::$tracker=array();
 	}
 	
 	/**

@@ -59,8 +59,7 @@ class HTMLView extends View {
 		foreach($view['script'] as $s) array_push($scripts,$this->getViewPath().$s);
 		
 		if($layout==='default') {
-			array_push($scripts,'core/View/Default/script.js');
-			array_push($styles,'core/View/Default/style.css');
+			array_push($styles,'core/View/layout/style.css');
 		} else if($layout==='theme') {
 			foreach($theme['style'] as $s) array_push($styles,'app/theme/styles/'.$s);
 			foreach($theme['script'] as $s) array_push($scripts,'app/theme/scripts/'.$s);

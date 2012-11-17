@@ -72,58 +72,8 @@ td {
     padding: 5px;
 }
 
-footer {
-    text-align:center;
-    margin-top:25px;
-    padding:10px;
-    font-style:italic;
-}
-
 hr {
     color:#1c5a85;
     background-color:#1c5a85;
     border:none;
-}
-
-#navigation_bar {
-    position:fixed;
-    left:0px;
-    top:0px;
-    width:100%;
-    height:55px;
-}
-
-#header {
-        background-color:#ebedee;
-        color:#1c5a85;
-        border-radius:5px;
-        padding:10px;
-        margin:5px;
-}
-
-#msg0 {
-    font-size:36px;
-    font-style:bold;
-}
-#msg0 span {
-    position:relative;
-    bottom:40px;
-}
-#msg0 img {
-    width: 100px;
-    height: 100px;
-}
-
-#msg1 {
-    background-color:#FA8072;
-    font-size:24px;
-    font-style:bold;
-}
-#msg1 span {
-    position:relative;
-    bottom:20px;
-}
-#msg1 img {
-    width: 50px;
-    height: 50px;
 }
