@@ -64,7 +64,7 @@ class Session {
 	 * Initializes the session manager.
 	 */
     public static function init() {
-        if(isset($_SESSION[self::$user_key])) {
+        if(isset($_SESSION['session_user'])) {
             if(self::timedOut()) {
                 self::stop();
                 return;

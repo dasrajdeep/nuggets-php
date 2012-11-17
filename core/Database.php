@@ -74,7 +74,8 @@ class Database {
      * @return mixed[][]
      */
     public static function get($table,$values,$criterion) {
-        if(!self::$con) return NULL;
+		$con=self::$con;
+        if(!$con) self::connect();
         $table=Config::read("db_prefix").$table;
         if($criterion!=FALSE) $criterion=" WHERE ".$criterion;
         else $criterion="";
@@ -83,6 +84,7 @@ class Database {
         if(!$result) return NULL;
         $rows=array();
         while($row=mysql_fetch_assoc($result)) array_push($rows, $row); 
+        if(!$con) self::disconnect();
         return $rows;
     }
     
@@ -95,13 +97,15 @@ class Database {
      * @return boolean
      */
     public static function add($table,$fields,$data) {
-        if(!self::$con) return FALSE;
+        $con=self::$con;
+        if(!$con) self::connect();
         $table=Config::read("db_prefix").$table;
         $fields=implode(",", $fields);
         for($i=0;$i<count($data);$i++) $data[$i]=sprintf("'%s'",$data[$i]);
         $data=implode(",", $data);
         $query=sprintf("INSERT INTO %s (%s) VALUES (%s)",$table,$fields,$data);
         $result=mysql_query($query,self::$con);
+        if(!$con) self::disconnect();
         return $result;
     }
     
@@ -115,13 +119,15 @@ class Database {
      * @return boolean
      */
     public static function update($table,$fields,$data,$criterion) {
-        if(!self::$con) return FALSE;
+        $con=self::$con;
+        if(!$con) self::connect();
         $table=Config::read("db_prefix").$table;
         $assignments=array();
         for($i=0;$i<count($fields);$i++) array_push($assignments, sprintf("%s='%s'",$fields[$i],$data[$i]));
         $set=implode(",", $assignments);
         $query=sprintf("UPDATE %s SET %s WHERE %s",$table,$set,$criterion);
         $result=mysql_query($query,self::$con);
+        if(!$con) self::disconnect();
         return $result;
     }
     
@@ -133,10 +139,12 @@ class Database {
      * @return boolean
      */
     public static function remove($table,$match) {
-        if(!self::$con) return false;
+        $con=self::$con;
+        if(!$con) self::connect();
         $table=Config::read("db_prefix").$table;
         $query=sprintf("DELETE FROM %s WHERE %s",$table,$match);
         $result=mysql_query($query,self::$con);
+        if(!$con) self::disconnect();
         return $result;
     }
     
@@ -147,13 +155,15 @@ class Database {
      * @return boolean|resource
      */
     public static function execute_query($query) {
-        if(!self::$con) return false;
+        $con=self::$con;
+        if(!$con) self::connect();
         $result=mysql_query($query,self::$con);
         if(preg_match('/^(select|SELECT|show|SHOW|describe|DESCRIBE|desc|DESC|explain|EXPLAIN)[ ]/',$query)===1) {
 			$tmp=array();
 			while($r=mysql_fetch_assoc($result)) array_push($tmp,$r);
 			$result=$tmp;
 		}
+		if(!$con) self::disconnect();
         return $result;
     }
 }

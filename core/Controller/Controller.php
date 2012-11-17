@@ -164,7 +164,6 @@ class Controller {
             $view->viewPath=$this->viewPath;
             $view->viewName=$viewName;
             $view->layout=$this->layout;
-            $view->ext=$this->ext;
             $view->viewVars=&$this->viewVars;
             $view->usesTemplate=$this->usesTemplate;
         }
