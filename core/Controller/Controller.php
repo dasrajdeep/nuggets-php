@@ -59,6 +59,13 @@ class Controller {
      * @var mixed[]
      */
     public $requestParams;
+	
+	/**
+	* Contains the POST data from the request.
+	*
+	* @var mixed[]
+	*/
+	public $postData;
     
     /**
      * Contains the response set by the module.
@@ -260,6 +267,15 @@ class Controller {
     public function getParams() {
         return $this->requestParams;
     }
+	
+	/**
+	* Fetches the POST data received with the request.
+	*
+	* @return mixed[]
+	*/
+	public function getPostData() {
+		return $this->postData;
+	}
 }
 
 ?>

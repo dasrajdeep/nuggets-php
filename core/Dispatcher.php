@@ -55,6 +55,7 @@ class Dispatcher {
     public function dispatch() {
         $cmd=$this->command->getCommand();
         $params=$this->command->getParameters();
+		$data=$this->command->getData();
         
         if($cmd==NULL) $cmd="default";
         
@@ -71,7 +72,7 @@ class Dispatcher {
         $controller=new $class();
 		
         if(Registry::isEngineCommand($cmd) || $route[0]==="Default") $controller->core=true;
-        $this->initController($controller,$route[0],$params);
+        $this->initController($controller,$route[0],$params,$data);
         $controller->$route[1]();
         echo $controller->getResponse();
     }
@@ -83,9 +84,10 @@ class Dispatcher {
      * @param string $entity
      * @param mixed[] $params
      */
-    private function initController($controller,$entity,$params) {
+    private function initController($controller,$entity,$params,$data) {
         $controller->name=$entity;
         $controller->requestParams=$params;
+		$controller->postData=$data;
         if(in_array($entity,array('Default','Admin'))) $controller->viewPath.=$entity.'/';
         else $controller->viewPath=sprintf("app/view/%s/",$entity);
         $controller->methods=get_class_methods($controller);
