@@ -46,8 +46,8 @@ namespace nuggets;
         echo sprintf($script,$uri.Registry::getPath("scriptlib")."default.js");
     ?>
     <?php
-        foreach($styles as $s) echo sprintf('<link rel="stylesheet" href="%s" />',$s);
-		foreach($scripts as $s) echo sprintf('<script type="text/javascript" src="%s"></script>',$s);
+        foreach($styles as $s) echo sprintf('<link rel="stylesheet" href="%s" />',$uri.$s);
+		foreach($scripts as $s) echo sprintf('<script type="text/javascript" src="%s"></script>',$uri.$s);
     ?>
 </head>
 
