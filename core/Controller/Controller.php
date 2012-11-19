@@ -163,6 +163,7 @@ class Controller {
             $model->init();
         }
         if($this->usesView) {
+			$this->viewType=strtoupper($this->viewType);
             $viewName='nuggets\\'.$this->viewType."View";
             $this->view=new $viewName();
             //init view
@@ -170,7 +171,7 @@ class Controller {
             $view->name=$this->name;
             $view->viewPath=$this->viewPath;
             $view->viewName=$viewName;
-            $view->layout=$this->layout;
+            $view->layout=strtolower($this->layout);
             $view->viewVars=&$this->viewVars;
             $view->usesTemplate=$this->usesTemplate;
         }
