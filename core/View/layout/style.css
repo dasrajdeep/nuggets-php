@@ -82,7 +82,14 @@ td {
 }
 
 hr {
-    color:#1c5a85;
-    background-color:#1c5a85;
+    color:#ebedee;
+    background-color:#ebedee;
     border:none;
+}
+
+#footer {
+	width:100%;
+	text-align:center;
+	padding-bottom:10px;
+	margin-top:20px;
 }

@@ -40,9 +40,9 @@ class StyleParser {
 	 * @var mixed[]
 	 */
 	private $matcher=array(
-		'gradient'=>'/gradient[\s]*:[\s]*#([0-9a-fA-F]{3,6})[\s]*#([0-9a-fA-F]{3,6})[\s]*;/',
-		'shadow'=>'/shadow[\s]*:[\s]*(inset)?[\s]*([0-9]+)px[\s]*([0-9]+)px[\s]*([0-9]+)px[\s]*#([0-9a-fA-F]{3,6})[\s]*;/',
-		'transparency'=>'/transparency[\s]*:[\s]*(0\.[0-9]+|1)[\s]*;/'
+		'gradient'=>'/([\s]|{|;)gradient[\s]*:[\s]*#([0-9a-fA-F]{3,6})[\s]*#([0-9a-fA-F]{3,6})[\s]*;/',
+		'shadow'=>'/([\s]|{|;)shadow[\s]*:[\s]*(inset)?[\s]*([0-9]+)px[\s]*([0-9]+)px[\s]*([0-9]+)px[\s]*#([0-9a-fA-F]{3,6})[\s]*;/',
+		'transparency'=>'/([\s]|{|;)transparency[\s]*:[\s]*(0\.[0-9]+|1)[\s]*;/'
 	);
 	
 	/**
@@ -56,13 +56,19 @@ class StyleParser {
 		$size=filesize($file);
 		$contents=fread($handle,$size);
 		
-		$contents=preg_replace_callback($this->matcher['gradient'],array($this,'replacer'),$contents);
-		$contents=preg_replace_callback($this->matcher['shadow'],array($this,'replacer'),$contents);
-		$contents=preg_replace_callback($this->matcher['transparency'],array($this,'replacer'),$contents);
+		$count=0;
+		$total_count=0;
+		
+		$contents=preg_replace_callback($this->matcher['gradient'],array($this,'replacer'),$contents,-1,$count);
+		$total_count+=$count;
+		$contents=preg_replace_callback($this->matcher['shadow'],array($this,'replacer'),$contents,-1,$count);
+		$total_count+=$count;
+		$contents=preg_replace_callback($this->matcher['transparency'],array($this,'replacer'),$contents,-1,$count);
+		$total_count+=$count;
 		
 		fclose($handle);
 		
-		return $contents;
+		return array($total_count,$contents);
 	}
 	
 	/**
@@ -72,12 +78,12 @@ class StyleParser {
 	 * @return string
 	 */
 	function replacer($match) {
-		if(strpos($match[0],'gradient')===0) {
-			return CSSHelper::getGradient($match[1],$match[2]);
-		} else if(strpos($match[0],'shadow')===0) {
-			return CSSHelper::getShadow($match[2],$match[3],$match[4],$match[5],$match[1]);
-		} else if(strpos($match[0],'transparency')===0) {
-			return CSSHelper::getTransparency($match[1]);
+		if(strpos($match[0],'gradient')!==false) {
+			return $match[1].CSSHelper::getGradient($match[2],$match[3]);
+		} else if(strpos($match[0],'shadow')!==false) {
+			return $match[1].CSSHelper::getShadow($match[3],$match[4],$match[5],$match[6],$match[2]);
+		} else if(strpos($match[0],'transparency')!==false) {
+			return $match[1].CSSHelper::getTransparency($match[2]);
 		}
 		return $match[0];
 	}

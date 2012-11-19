@@ -68,13 +68,6 @@ class Controller {
 	public $postData;
     
     /**
-     * Contains the response set by the module.
-     * 
-     * @var mixed
-     */
-    public $response=NULL;
-    
-    /**
      * Contains the path to the view for this controller.
      * 
      * @var string
@@ -240,24 +233,6 @@ class Controller {
      */
     public function getViewType() {
         return $this->viewType;
-    }
-    
-    /**
-     * Sets the response for this controller.
-     * 
-     * @param string $response
-     */
-    public function setResponse($response) {
-        $this->response=$response;
-    }
-    
-    /**
-     * Fetches the response for this controller.
-     * 
-     * @return string
-     */
-    public function getResponse() {
-        return $this->response;
     }
     
     /**

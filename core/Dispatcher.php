@@ -74,7 +74,6 @@ class Dispatcher {
         if(Registry::isEngineCommand($cmd) || $route[0]==="Default") $controller->core=true;
         $this->initController($controller,$route[0],$params,$data);
         $controller->$route[1]();
-        echo $controller->getResponse();
     }
     
     /**
