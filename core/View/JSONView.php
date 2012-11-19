@@ -43,7 +43,7 @@ class JSONView extends View {
 		$cfg=parse_ini_file($this->getViewPath().'view.ini',true);
 		$view=$cfg[$view];
 		
-		require_once($view['file']);
+		require_once($this->getViewPath().$view['file']);
 		
 		if(isset($json)) echo json_encode($json);
 	}
