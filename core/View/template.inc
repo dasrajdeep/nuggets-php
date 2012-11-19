@@ -45,6 +45,7 @@ namespace nuggets;
         echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."scale.js");
         echo sprintf($script,$uri.Registry::getPath("scriptlib")."default.js");
     ?>
+	<script type="text/javascript">var hosturl='<?php echo $uri; ?>';</script>
     <?php
         foreach($styles as $s) echo sprintf('<link rel="stylesheet" href="%s" />',$uri.$s);
 		foreach($scripts as $s) echo sprintf('<script type="text/javascript" src="%s"></script>',$uri.$s);
