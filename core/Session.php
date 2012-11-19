@@ -109,7 +109,8 @@ class Session {
      * @return string
      */
     public static function getUserID() {
-        return $_SESSION['session_user'];
+        if(isset($_SESSION['session_user'])) return $_SESSION['session_user'];
+		else return null;
     }
     
     /**
@@ -133,16 +134,17 @@ class Session {
      */
     public static function getVar($key) {
 		if(!self::$running) return null;
-        return $_SESSION['session_vars'][$key];
+        if(isset($_SESSION['session_vars'][$key])) return $_SESSION['session_vars'][$key];
+		else return null;
     }
     
     /**
-     * Fetches the previously set session ID for the current session.
+     * Fetches the session ID for the current session.
      * 
      * @return string
      */
     public static function getSessionID() {
-        return $_SESSION['session_user'];
+        return session_id();
     }
     
     /**
