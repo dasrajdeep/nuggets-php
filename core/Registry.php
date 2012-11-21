@@ -57,10 +57,8 @@ class Registry {
 	private static $paths=array(
 		'datastore'=>'datastore/',
 		'view'=>'app/view/',
-		'jquery'=>'vendor/jquery.js',
 		'jqueryui'=>'vendor/jquery-ui/',
-		'base64'=>'vendor/base64.js',
-		'scriptlib'=>'vendor/scriptlib/'
+		'scriptlib'=>'core/view/scriptlib/'
 	);
 	
 	/**

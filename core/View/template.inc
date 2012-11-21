@@ -25,10 +25,15 @@ namespace nuggets;
     <title><?php echo Config::read('app_title'); ?></title>
     <?php
         $script='<script type="text/javascript" src="%s"></script>';
-        $effects="jquery.effects.";
         $uri=Engine::getHostURL();
-        echo sprintf($script,$uri.Registry::getPath("jquery"));
-        echo sprintf($script,$uri.Registry::getPath("base64"));
+		
+		$libPath=Registry::getPath('scriptlib');
+        echo sprintf($script,$uri.$libPath.'jquery.js');
+		echo sprintf($script,$uri.$libPath.'base64.js');
+		echo sprintf($script,$uri.$libPath.'utility.js');
+		echo sprintf($script,$uri.$libPath.'appearance.js');
+		
+		$effects="jquery.effects.";
         echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."core.js");
         echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."fade.js");
         echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."transfer.js");
@@ -43,7 +48,6 @@ namespace nuggets;
         echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."explode.js");
         echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."bounce.js");
         echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."scale.js");
-        echo sprintf($script,$uri.Registry::getPath("scriptlib")."default.js");
     ?>
 	<script type="text/javascript">var hosturl='<?php echo $uri; ?>';</script>
     <?php
