@@ -50,11 +50,19 @@ class Registry {
 	);
 	
 	/**
+	* Contains the base working directory.
+	* 
+	* @var string
+	*/
+	private static $basePath='';
+	
+	/**
 	 * Contains paths to resources.
 	 * 
 	 * @var mixed[]
 	 */
 	private static $paths=array(
+		'extensions'=>'app/extensions/',
 		'datastore'=>'datastore/',
 		'view'=>'app/view/',
 		'jqueryui'=>'vendor/jquery-ui/',
@@ -65,6 +73,8 @@ class Registry {
 	 * Loads configurations and initializes the registry.
 	 */
 	public static function init() {
+		self::$basePath=getcwd().'/';
+		
 		$config=parse_ini_file('app/app.ini',true);
 		
 		array_push(self::$engine_routes,Config::read('admin_location'));
@@ -90,6 +100,15 @@ class Registry {
 	 */
 	public static function isEngineCommand($command) {
 		return in_array($command, self::$engine_routes);
+	}
+	
+	/**
+	* Fetches the base path.
+	*
+	* @return string
+	*/
+	public static function getBasePath() {
+		return self::$basePath;
 	}
 	
 	/**
