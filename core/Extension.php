@@ -37,7 +37,7 @@ class Extension {
 	private static $extConfig=null;
 	
 	static function init() {
-		$extcfg=parse_ini_file('app/extensions.ini');
+		$extcfg=parse_ini_file('app/extensions.ini',true);
 		self::$extConfig=$extcfg;
 		
 		$extNames=array_keys($extcfg);
