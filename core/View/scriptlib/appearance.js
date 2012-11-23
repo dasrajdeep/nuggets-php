@@ -1,6 +1,6 @@
 var nf=nf || {};
 
-nf.prototype.changeCSSGradient=function(element,start,stop) {
+nf.changeCSSGradient=function(element,start,stop) {
     var xml_raw='<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1 1" preserveAspectRatio="none"><linearGradient id="grad-ucgg-generated" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%"stop-color="#'+start+'" stop-opacity="1"/><stop offset="100%"stop-color="#'+stop+'" stop-opacity="1"/></linearGradient><rect x="0" y="0" width="1" height="1" fill="url(#grad-ucgg-generated)" /></svg>';
     var xml_enc=Base64.encode(xml_raw);
     var attr="#"+start+" 0%, #"+stop+" 100%";
@@ -17,7 +17,7 @@ nf.prototype.changeCSSGradient=function(element,start,stop) {
     });
 }
 
-nf.prototype.changeCSSShadow=function(element,x,y,blur,color,inset) {
+nf.changeCSSShadow=function(element,x,y,blur,color,inset) {
     var attr=x+'px '+y+'px '+blur+'px #'+color;
     if(inset) attr='inset '+attr;
     $(element).css({
@@ -27,7 +27,7 @@ nf.prototype.changeCSSShadow=function(element,x,y,blur,color,inset) {
     });
 }
 
-nf.prototype.changeCSSTransparency=function(element,amount) {
+nf.changeCSSTransparency=function(element,amount) {
     $(element).css({
         'filter':'alpha(opacity='+amount*100+')',
         '-moz-opacity':amount,
