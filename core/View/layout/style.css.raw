@@ -51,7 +51,9 @@ input[type=text],input[type=password] {
 }
 
 input[type=text]:focus,input[type=password]:focus {
-	shadow: inset 1px 1px 5px #1c5a85;
+	box-shadow:inset 1px 1px 5px #1c5a85;
+	-moz-box-shadow:inset 1px 1px 5px #1c5a85;
+	-webkit-box-shadow:inset 1px 1px 5px #1c5a85;
 }
 
 textarea {
