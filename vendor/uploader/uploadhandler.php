@@ -126,7 +126,6 @@ class qqFileUploader {
         
         $pathinfo = pathinfo($this->file->getName());
         $filename = $pathinfo['filename'];
-        //$filename = md5(uniqid());
         $ext = $pathinfo['extension'];
 
         if($this->allowedExtensions && !in_array(strtolower($ext), $this->allowedExtensions)){
@@ -157,6 +156,6 @@ $allowedExtensions = array();
 $sizeLimit = 8 * 1024 * 1024;
 
 $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-$result = $uploader->handleUpload($upload_dir);
+$result = $uploader->handleUpload('datastore/');
 // to pass data through iframe you will need to encode all html tags
 echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);

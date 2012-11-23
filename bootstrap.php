@@ -33,12 +33,14 @@ require_once('core/Command.php');
 require_once('core/Dispatcher.php');
 require_once('core/Config.php');
 require_once('core/Session.php');
+require_once('core/Extension.php');
 
 register_shutdown_function('nuggets\nuggetsShutdown');
 
 Session::init();
 Config::init();
 Registry::init();
+Extension::init();
 
 $initialized=true;
 

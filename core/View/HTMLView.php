@@ -98,8 +98,9 @@ class HTMLView extends View {
 			$lastmod=Config::read($file,'tracker');
 			if($lastmod && $lastmod>=filemtime($file)) continue;
 			$parsed=$parser->parse($file);
+			if($parsed[0]==0) continue;
 			copy($file,$file.'.raw');
-			$parser->transform($parsed,$file);
+			$parser->transform($parsed[1],$file);
 			Config::write($file,filemtime($file));
 		}
 	}

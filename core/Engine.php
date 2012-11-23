@@ -63,7 +63,8 @@ class Engine {
 		'Session'=>'core/Session.php',
 		'HTMLHelper'=>'core/Helper/HTMLHelper.php',
 		'CSSHelper'=>'core/Helper/CSSHelper.php',
-		'HTMLView'=>'core/View/HTMLView.php'
+		'HTMLView'=>'core/View/HTMLView.php',
+		'JSONView'=>'core/View/JSONView.php'
 	);
     
     /**
@@ -209,7 +210,7 @@ class Engine {
         $uri="http://".$_SERVER["SERVER_NAME"].$port.$uri;
         return $uri;
     }
-    
+	
     /**
      * Fetches the version of the engine.
      * 

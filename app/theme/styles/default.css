@@ -9,8 +9,12 @@ body {
 
 a {
     text-decoration:none;
-    color:#B0C4DE;
+    color:#3FB2FF;
     cursor:pointer;
+}
+
+a:hover {
+	color:#FFAFC1;
 }
 
 img {
@@ -25,7 +29,13 @@ button,input[type=button],input[type=submit],input[type=reset] {
     border:none;
     border-radius:5px;
     cursor:pointer;
+	background-color:#ebedee;
+	font-weight:bold;
     color:#1c5a85;
+}
+
+button:hover,input[type=button]:hover,input[type=submit]:hover,input[type=reset]:hover {
+	background-color:#3FB2FF;
 }
 
 span {
@@ -57,19 +67,18 @@ textarea {
     color:#2c7cb4;
 }
 
-table.themed {
-    background-color:#c8c8c8;
-    border-radius:5px;
-}
-
 th {
     padding:5px;
     background-color:#ebedee;
     color:#1c5a85;
+	border-radius:5px;
 }
 
 td {
     padding: 5px;
+	border:solid;
+	border-radius:5px;
+	border-width:1px;
 }
 
 hr {

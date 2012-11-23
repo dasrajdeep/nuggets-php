@@ -59,13 +59,13 @@ class Controller {
      * @var mixed[]
      */
     public $requestParams;
-    
-    /**
-     * Contains the response set by the module.
-     * 
-     * @var mixed
-     */
-    public $response=NULL;
+	
+	/**
+	* Contains the POST data from the request.
+	*
+	* @var mixed[]
+	*/
+	public $postData;
     
     /**
      * Contains the path to the view for this controller.
@@ -156,6 +156,7 @@ class Controller {
             $model->init();
         }
         if($this->usesView) {
+			$this->viewType=strtoupper($this->viewType);
             $viewName='nuggets\\'.$this->viewType."View";
             $this->view=new $viewName();
             //init view
@@ -163,7 +164,7 @@ class Controller {
             $view->name=$this->name;
             $view->viewPath=$this->viewPath;
             $view->viewName=$viewName;
-            $view->layout=$this->layout;
+            $view->layout=strtolower($this->layout);
             $view->viewVars=&$this->viewVars;
             $view->usesTemplate=$this->usesTemplate;
         }
@@ -235,24 +236,6 @@ class Controller {
     }
     
     /**
-     * Sets the response for this controller.
-     * 
-     * @param string $response
-     */
-    public function setResponse($response) {
-        $this->response=$response;
-    }
-    
-    /**
-     * Fetches the response for this controller.
-     * 
-     * @return string
-     */
-    public function getResponse() {
-        return $this->response;
-    }
-    
-    /**
      * Fetches the parameters provided with the URL request.
      * 
      * @return mixed[]
@@ -260,6 +243,15 @@ class Controller {
     public function getParams() {
         return $this->requestParams;
     }
+	
+	/**
+	* Fetches the POST data received with the request.
+	*
+	* @return mixed[]
+	*/
+	public function getPostData() {
+		return $this->postData;
+	}
 }
 
 ?>
