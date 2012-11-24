@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the JSONView class.
+ * This file contains the Packer class.
  * 
  * PHP version 5.3
  * 
@@ -18,10 +18,8 @@
  */
 namespace nuggets;
 
-require_once('core/View/View.php');
-
 /**
- * This class represents an JSON view.
+ * This class is required for packing requested files.
  * 
  * @package    nuggets\View
  * @category   PHP
@@ -32,21 +30,44 @@ require_once('core/View/View.php');
  * @link       https://github.com/dasrajdeep/nuggets-php
  * @since      Class available since Release 3.6
  */
-class JSONView extends View {
+class Packer {
 	
-	/**
-	 * Renders a view in JSON.
-	 * 
-	 * @param string $view
-	 */
-	function renderView($view) {
-		$cfg=parse_ini_file($this->getViewPath().'view.ini',true);
-		$view=$cfg[$view];
-		
-		require_once($this->getViewPath().$view['file']);
-		
-		if(isset($json)) echo json_encode($json);
+	private $outputDir=null;
+	
+	function __construct($outputDir) {
+		$this->outputDir=$outputDir;
+	}
+	
+	function packStyles(&$styles=null) {
+		$stylesheet='';
+		$f=null;
+		foreach($styles as $s) {
+			$f=fopen($s,'r');
+			$content=fread($f,filesize($s));
+			$stylesheet.=$content."\n";
+			fclose($f);
+		}
+		$f=fopen($this->outputDir.'view.style.css','w+');
+		fwrite($f,$stylesheet);
+		fclose($f);
+		array_splice($styles,0);
+		array_push($styles,$this->outputDir.'view.style.css');
+	}
+	
+	function packScripts(&$scripts=null) {
+		$script='';
+		$f=null;
+		foreach($scripts as $s) {
+			$f=fopen($s,'r');
+			$content=fread($f,filesize($s));
+			$script.=$content."\n";
+			fclose($f);
+		}
+		$f=fopen($this->outputDir.'view.script.js','w+');
+		fwrite($f,$script);
+		fclose($f);
+		array_splice($scripts,0);
+		array_push($scripts,$this->outputDir.'view.script.js');
 	}
 }
-
 ?>

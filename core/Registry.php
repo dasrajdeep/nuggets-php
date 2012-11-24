@@ -66,7 +66,7 @@ class Registry {
 		'datastore'=>'datastore/',
 		'view'=>'app/view/',
 		'jqueryui'=>'vendor/jquery-ui/',
-		'scriptlib'=>'core/view/scriptlib/'
+		'scriptlib'=>'core/View/scriptlib/'
 	);
 	
 	/**

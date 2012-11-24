@@ -23,32 +23,7 @@ namespace nuggets;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo Config::read('app_title'); ?></title>
-    <?php
-        $script='<script type="text/javascript" src="%s"></script>';
-        $uri=Engine::getHostURL();
-		
-		$libPath=Registry::getPath('scriptlib');
-        echo sprintf($script,$uri.$libPath.'jquery.js');
-		echo sprintf($script,$uri.$libPath.'base64.js');
-		echo sprintf($script,$uri.$libPath.'utility.js');
-		echo sprintf($script,$uri.$libPath.'appearance.js');
-		
-		$effects="jquery.effects.";
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."core.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."fade.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."transfer.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."highlight.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."pulsate.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."blind.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."slide.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."drop.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."clip.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."fold.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."shake.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."explode.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."bounce.js");
-        echo sprintf($script,$uri.Registry::getPath("jqueryui").$effects."scale.js");
-    ?>
+    <?php $uri=Engine::getHostURL(); ?>
 	<script type="text/javascript">var hosturl='<?php echo $uri; ?>';</script>
     <?php
         foreach($styles as $s) echo sprintf('<link rel="stylesheet" href="%s" />',$uri.$s);

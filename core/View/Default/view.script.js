@@ -9044,3 +9044,255 @@ jQuery.each([ "Height", "Width" ], function( i, name ) {
 // Expose jQuery to the global object
 window.jQuery = window.$ = jQuery;
 })(window);
+
+var Base64 = {
+ 
+	// private property
+	_keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+ 
+	// public method for encoding
+	encode : function (input) {
+		var output = "";
+		var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+		var i = 0;
+ 
+		input = Base64._utf8_encode(input);
+ 
+		while (i < input.length) {
+ 
+			chr1 = input.charCodeAt(i++);
+			chr2 = input.charCodeAt(i++);
+			chr3 = input.charCodeAt(i++);
+ 
+			enc1 = chr1 >> 2;
+			enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+			enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+			enc4 = chr3 & 63;
+ 
+			if (isNaN(chr2)) {
+				enc3 = enc4 = 64;
+			} else if (isNaN(chr3)) {
+				enc4 = 64;
+			}
+ 
+			output = output +
+			this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) +
+			this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+ 
+		}
+ 
+		return output;
+	},
+ 
+	// public method for decoding
+	decode : function (input) {
+		var output = "";
+		var chr1, chr2, chr3;
+		var enc1, enc2, enc3, enc4;
+		var i = 0;
+ 
+		input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+ 
+		while (i < input.length) {
+ 
+			enc1 = this._keyStr.indexOf(input.charAt(i++));
+			enc2 = this._keyStr.indexOf(input.charAt(i++));
+			enc3 = this._keyStr.indexOf(input.charAt(i++));
+			enc4 = this._keyStr.indexOf(input.charAt(i++));
+ 
+			chr1 = (enc1 << 2) | (enc2 >> 4);
+			chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+			chr3 = ((enc3 & 3) << 6) | enc4;
+ 
+			output = output + String.fromCharCode(chr1);
+ 
+			if (enc3 != 64) {
+				output = output + String.fromCharCode(chr2);
+			}
+			if (enc4 != 64) {
+				output = output + String.fromCharCode(chr3);
+			}
+ 
+		}
+ 
+		output = Base64._utf8_decode(output);
+ 
+		return output;
+ 
+	},
+ 
+	// private method for UTF-8 encoding
+	_utf8_encode : function (string) {
+		string = string.replace(/\r\n/g,"\n");
+		var utftext = "";
+ 
+		for (var n = 0; n < string.length; n++) {
+ 
+			var c = string.charCodeAt(n);
+ 
+			if (c < 128) {
+				utftext += String.fromCharCode(c);
+			}
+			else if((c > 127) && (c < 2048)) {
+				utftext += String.fromCharCode((c >> 6) | 192);
+				utftext += String.fromCharCode((c & 63) | 128);
+			}
+			else {
+				utftext += String.fromCharCode((c >> 12) | 224);
+				utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+				utftext += String.fromCharCode((c & 63) | 128);
+			}
+ 
+		}
+ 
+		return utftext;
+	},
+ 
+	// private method for UTF-8 decoding
+	_utf8_decode : function (utftext) {
+		var string = "";
+		var i = 0;
+		var c = c1 = c2 = 0;
+ 
+		while ( i < utftext.length ) {
+ 
+			c = utftext.charCodeAt(i);
+ 
+			if (c < 128) {
+				string += String.fromCharCode(c);
+				i++;
+			}
+			else if((c > 191) && (c < 224)) {
+				c2 = utftext.charCodeAt(i+1);
+				string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+				i += 2;
+			}
+			else {
+				c2 = utftext.charCodeAt(i+1);
+				c3 = utftext.charCodeAt(i+2);
+				string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+				i += 3;
+			}
+ 
+		}
+ 
+		return string;
+	}
+ 
+}
+var nf=nf || {};
+
+nf.get=function(cmd,params,callback,loader_id) {
+    if(loader_id) $('#'+loader_id).show();
+    var paramset='';
+    for(var i in params) paramset+='/'+i+'='+params[i];
+    var query=hosturl+cmd+paramset;
+    $.get(query,{},function(data){
+        if(loader_id) $('#'+loader_id).hide();
+        callback(data);
+    });
+}
+
+nf.post=function(cmd,params,callback,loader_id) {
+	if(loader_id) $('#'+loader_id).show();
+	$.post(hosturl+cmd,params,function(data) {
+		if(loader_id) $('#'+loader_id).hide();
+		callback(data);
+	});
+}
+
+nf.load=function(selector,cmd,params,loader_id) {
+	this.get(cmd,params,function(data) {
+		$(selector).html(data);
+	},loader_id);
+}
+
+nf.base64Encode=function(data) {
+	return Base64.encode(data);
+}
+
+nf.base64Decode=function(data) {
+	return Base64.decode(data);
+}
+
+var nf=nf || {};
+
+nf.changeCSSGradient=function(element,start,stop) {
+    var xml_raw='<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1 1" preserveAspectRatio="none"><linearGradient id="grad-ucgg-generated" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%"stop-color="#'+start+'" stop-opacity="1"/><stop offset="100%"stop-color="#'+stop+'" stop-opacity="1"/></linearGradient><rect x="0" y="0" width="1" height="1" fill="url(#grad-ucgg-generated)" /></svg>';
+    var xml_enc=Base64.encode(xml_raw);
+    var attr="#"+start+" 0%, #"+stop+" 100%";
+    $(element).css({
+        'background':'#'+start,
+        'background':'url(data:image/svg+xml;base64,'+xml_enc+')',
+        'background':'-moz-linear-gradient(top,  '+attr+')',
+        'background':'-webkit-linear-gradient(top,  '+attr+')',
+        'background':'-o-linear-gradient(top,  '+attr+')',
+        'background':'-ms-linear-gradient(top,  '+attr+')',
+        'background':'linear-gradient(top,  '+attr+')',
+        'background':'-webkit-gradient(linear, left top, left bottom, color-stop(0%,#"'+start+'"), color-stop(100%,#"'+stop+'"))',
+        'filter':"progid:DXImageTransform.Microsoft.gradient( startColorstr='#"+start+"', endColorstr='#"+stop+"',GradientType=0 )"
+    });
+}
+
+nf.changeCSSShadow=function(element,x,y,blur,color,inset) {
+    var attr=x+'px '+y+'px '+blur+'px #'+color;
+    if(inset) attr='inset '+attr;
+    $(element).css({
+        'box-shadow':attr,
+        '-moz-box-shadow':attr,
+        '-webkit-box-shadow':attr
+    });
+}
+
+nf.changeCSSTransparency=function(element,amount) {
+    $(element).css({
+        'filter':'alpha(opacity='+amount*100+')',
+        '-moz-opacity':amount,
+        '-khtml-opacity':amount,
+        'opacity':amount,
+        '-ms-filter':'"progid:DXImageTransform.Microsoft.Alpha(Opacity='+amount*100+')"'
+    });
+}
+
+function nfLoader(element) {
+	this.element=element;
+	this.count=0;
+	this.colors=['#c7c7c7','#d7d7d7','#e7e7e7','#f7f7f7'];
+	this.size='30px';
+	this.stopped=false;
+	
+	this.render=function() {
+		var elem=$(this.element);
+		var html='<table align="center"><tr><td name="0"></td><td name="1"></td></tr><tr><td name="3"></td><td name="2"></td></tr></table>';
+		elem.html(html);
+		$(this.element+' td').css({width:this.size,height:this.size,padding:'0px',margin:'0px'});
+	}
+	
+	this.destroy=function() {
+		if(!this.stopped) this.stopped=true;
+		else $(element+' table').remove();
+		return true;
+	}
+	
+	this.animate=function() {
+		if(this.stopped) return this.destroy();
+		this.count=(this.count+1)%4;
+		for(var i=0;i<4;i++) {
+			var pos=(this.count+i)%4;
+			$(this.element+' td[name='+pos+']').css({'background-color':this.colors[i]});
+		}
+		var _this=this;
+		setTimeout(function() {_this.animate();},100);
+	}
+	
+	this.show=function() {
+		this.stopped=false;
+		this.render();
+		this.animate();
+	}
+	
+	this.hide=function() {
+		this.destroy();
+	}
+}
+

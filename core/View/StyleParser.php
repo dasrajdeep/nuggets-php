@@ -30,7 +30,7 @@ require_once('core/Helper/CSSHelper.php');
  * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
  * @version    GIT: v3.5
  * @link       https://github.com/dasrajdeep/nuggets-php
- * @since      Class available since Release 1.0
+ * @since      Class available since Release 3.6
  */
 class StyleParser {
 	

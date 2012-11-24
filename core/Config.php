@@ -66,9 +66,7 @@ class Config {
         if(!extension_loaded("session")) Engine::logError("extension", 203);
         
         $perm=substr(sprintf('%o',fileperms('.tracker')),-3);
-        if($perm!='777') {
-			if(!chmod('.tracker',0777)) Engine::logError('config', 101);
-		}
+        if($perm!='777') Engine::logError('config', 101);
     }
     
     /**

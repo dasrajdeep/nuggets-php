@@ -34,6 +34,14 @@ require_once('core/View/View.php');
  */
 class HTMLView extends View {
 	
+	private $libScript=array(
+		'jquery.js',
+		'base64.js',
+		'utility.js',
+		'appearance.js',
+		'loader.js'
+	);
+	
 	/**
 	 * Renders a view in HTML.
 	 * 
@@ -56,6 +64,9 @@ class HTMLView extends View {
 		$styles=array();
 		$scripts=array();
 		
+		$libPath=Registry::getPath('scriptlib');
+		foreach($this->libScript as $l) array_push($scripts,$libPath.$l);
+		
 		foreach($view['script'] as $s) array_push($scripts,$this->getViewPath().$s);
 		
 		if($layout==='default') {
@@ -72,6 +83,7 @@ class HTMLView extends View {
 		}
 		
 		$this->parseStyles($styles);
+		$this->pack($styles,$scripts);
 		
 		if($view['category']==='page') {
 			if($this->usesTemplate) {
@@ -86,6 +98,13 @@ class HTMLView extends View {
 		}
     }
     
+    function pack(&$styles,&$scripts) {
+		require_once('core/View/Packer.php');
+		$packer=new Packer($this->getViewPath());
+		$packer->packScripts($scripts);
+		$packer->packStyles($styles);
+	}
+	
     /**
      * Parses custom styles in stylesheets and generates custom styles.
      * 
