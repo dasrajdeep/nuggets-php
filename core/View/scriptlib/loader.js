@@ -9,7 +9,7 @@ function nfLoader(element) {
 		var elem=$(this.element);
 		var html='<table class="nfLoader" align="center"><tr><td name="0"></td><td name="1"></td></tr><tr><td name="3"></td><td name="2"></td></tr></table>';
 		elem.html(html);
-		$(this.element+' td').css({width:this.size,height:this.size,padding:'0px',margin:'0px',border:'none',border-radius:'0px'});
+		$(this.element+' td').css({width:this.size,height:this.size,padding:'0px',margin:'0px',border:'none','border-radius':'0px'});
 	}
 	
 	this.destroy=function() {
