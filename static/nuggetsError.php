@@ -32,6 +32,14 @@
 		hr {
 			color:#ebedee;
 		}
+		a {
+			color:#ADD8E6;
+			text-decoration:none;
+		}
+		a:hover {
+			color:#FFC0CB;
+		}
+		
 		.error {
 			font-weight:bold;
 			background-color:#FFC5BF;
@@ -62,7 +70,7 @@
 <body>
 	<div id="header" align="center">
 		<div style="height:50px"></div>
-		<h1>NUGGETS APPLICATION FRAMEWORK</h1>
+		<h1><a href="http://dasrajdeep.github.com/nuggets-php">NUGGETS APPLICATION FRAMEWORK</a></h1>
 		<hr/>
 	</div>
 	<div>
@@ -77,6 +85,6 @@
 			?>
 		</table>
 	</div>
-	<footer align="center" style="margin:50px"><i>Copyright 2012 Rajdeep Das</i></footer>
+	<footer align="center" style="margin:50px"><i>Copyright 2012 <a href="http://dasrajdeep.github.com/nuggets-php">Nuggets</a> by Rajdeep Das</i></footer>
 </body>
 </html>

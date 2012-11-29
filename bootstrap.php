@@ -20,11 +20,15 @@ namespace nuggets;
 
 define('DS',DIRECTORY_SEPARATOR);
 
+ini_set('display_errors',false);
+
 session_start();
 
 $basePath=getcwd();
 
-ini_set('display_errors',false);
+$logFile=fopen('nuggets.log','a+');
+if(!$logFile) defaultErrorHandler(2,'Possible lack of permissions','Bootstrap',27);
+
 set_error_handler('nuggets\defaultErrorHandler');
 
 require_once('core/Registry.php');
@@ -63,10 +67,6 @@ $includePaths=array_merge((array)get_include_path(),$includePaths);
 set_include_path(implode(PATH_SEPARATOR,$includePaths));
 
 spl_autoload_register('nuggets\nuggetsClassLoader',false);
-
-$logFile=fopen('nuggets.log','a+');
-if($logFile===false) Engine::logError('config',101);
-nuggetsErrorHandler();
 
 /**
  * Logs events to a file.
