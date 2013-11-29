@@ -68,10 +68,28 @@ class AdminController extends Controller {
     public $viewType='HTML';
 	
 	function showAdminPage() {
-		$user=Config::read('admin_username');
-		$pass=Config::read('admin_password');
-		if(!$user) $this->view->renderView('home');
-		else $this->view->renderView('login');
+		$user=Session::getVar('admin_user');
+		
+		if($user) {
+			$files=Config::read('logfile');
+			$this->setVar('logfiles',$files);
+			
+			$this->view->renderView('home');
+		} else $this->view->renderView('login');
+	}
+	
+	function authenticateAdmin() {
+		$data=$this->getPostData();
+		
+		$this->model->authorize($data['username'],$data['password']);
+		
+		header('Location: admin');
+	}
+	
+	function logoffAdmin() {
+		Session::stop();
+		
+		header('Location: admin');
 	}
 }
 

@@ -20,7 +20,7 @@ namespace nuggets;
 
 define('DS',DIRECTORY_SEPARATOR);
 
-ini_set('display_errors',false);
+//ini_set('display_errors',false);
 
 session_start();
 

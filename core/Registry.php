@@ -37,7 +37,7 @@ class Registry {
 	 * 
 	 * @var string[]
 	 */
-	private static $engine_routes=array('master');
+	private static $engine_routes=array('master','adminlogin');
 	
 	/**
 	 * Contains the routes for the commands.
@@ -46,7 +46,9 @@ class Registry {
 	 */
 	private static $routes=array(
 		'default'=>array('Default','loadDefaultView'),
-		'master'=>array('Default','loadDefaultView')
+		'master'=>array('Default','loadDefaultView'),
+		'adminlogin'=>array('Admin','authenticateAdmin'),
+		'adminlogout'=>array('Admin','logoffAdmin')
 	);
 	
 	/**

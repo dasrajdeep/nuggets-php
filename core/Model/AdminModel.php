@@ -39,6 +39,16 @@ class AdminModel extends Model {
      */
     public $core=array();
 	
+	function authorize($username,$password) {
+		$user=Config::read('admin_username');
+		$pass=Config::read('admin_password');
+		
+		if($user==$username && $pass==$password) {
+			Session::start($user);
+			Session::setVar('admin_user',$user);
+			return true;
+		} else return false;
+	}
 }
 
 ?>
