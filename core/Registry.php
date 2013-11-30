@@ -77,6 +77,8 @@ class Registry {
 	public static function init() {
 		self::$basePath=getcwd().'/';
 		
+		if(!file_exists('app/app.ini')) file_put_contents('app/app.ini',"[ROUTES]\n\n[PATHS]\n");
+		
 		$config=parse_ini_file('app/app.ini',true);
 		
 		array_push(self::$engine_routes,Config::read('admin_location'));

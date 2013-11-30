@@ -42,6 +42,21 @@ class HTMLView extends View {
 		'loader.js'
 	);
 	
+	public function uncompressThemeFiles() {
+		
+		$zip=zip_open('app/theme/theme.zip');
+		
+		while($entry=zip_read($zip)) {
+			
+			$data=zip_entry_read($entry,zip_entry_filesize($entry));
+			
+			$entryName=zip_entry_name($entry);
+			
+			if(substr($entryName,strlen($entryName)-1,1)=="/") mkdir('app/theme/'.$entryName); 
+			else file_put_contents('app/theme/'.zip_entry_name($entry),$data);
+		}
+	}
+	
 	/**
 	 * Renders a view in HTML.
 	 * 
@@ -49,6 +64,21 @@ class HTMLView extends View {
 	 */
     public function renderView($view) {
         $cfg=parse_ini_file($this->getViewPath().'view.ini',true);
+        
+        if(!file_exists('app/theme/theme.ini')) {
+			$this->uncompressThemeFiles();
+			
+			file_put_contents('app/theme/theme.ini',"
+				template_file=default_template.php\n
+				\n
+				style[]=default.css\n
+				\n
+				script[]=default.js\n
+				\n
+				image[]=\n
+			");
+		}
+        
 		$theme=parse_ini_file('app/theme/theme.ini');
 		
 		$view=$cfg[$view];

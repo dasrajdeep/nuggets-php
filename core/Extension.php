@@ -37,6 +37,30 @@ class Extension {
 	private static $extConfig=null;
 	
 	static function init() {
+		
+		if(!file_exists('app/extensions.ini')) file_put_contents('app/extensions.ini',"
+			;This file contains the extensions to the application.\n
+			;Each extension must be defined under a the section header.\n
+			;The section header must be the name of the extension\n
+			;Compulsory attributes include:\n
+			;1. Extension directory\n
+			;2. Extension main class\n
+			;3. Extension namespace\n
+			;4. Extension status\n
+			;\n
+			;Optional attributes include:\n
+			;1. Extension main method\n
+			;\n
+			;Example extension definition\n
+			;\n
+			;[EXTENSION_NAME]\n
+			;directory=extension_dir\n
+			;mainclass=ExtensionMain\n
+			;namespace=extension_namespace\n
+			;status=enabled\n
+			;mainmethod=main\n
+		");
+		
 		$extcfg=parse_ini_file('app/extensions.ini',true);
 		self::$extConfig=$extcfg;
 		

@@ -68,11 +68,33 @@ class Config {
         $perm=substr(sprintf('%o',fileperms('.tracker')),-3);
         if($perm!='777') Engine::logError('config', 101);
     }
-    
+	
+	public static function generateConfig() {
+		
+		$config=array(
+			'ADMIN'=>array('admin_location="admin"','admin_username="admin"','admin_password="admin"'),
+			'DATABASE'=>array('db_host="localhost"','db_port="3306"','db_username="root"','db_password=""','db_name="nuggets"','db_prefix="nuggets_"'),
+			'MAIL'=>array('mail_host=""','mail_port=""','mail_username=""','mail_password=""','mail_sender=""'),
+			'APP'=>array('app_title="Nuggets"','app_header="Nuggets Application Framework"','app_footer="Copyright 2012 Rajdeep Das"','app_caption="Create Your Apps In A Breeze!"'),
+			'LOG'=>array('logfile[]="nuggets.log"')
+		);
+		
+		$configString='';
+		
+		foreach(array_keys($config) as $key) {
+			$configString.=sprintf("[%s]\n\n",$key);
+			foreach($config[$key] as $entry) $configString.=$entry."\n";
+			$configString.="\n";
+		}
+		
+		file_put_contents('nuggets.ini',$configString);
+	}
+		
     /**
      * Loads the configuration from a file.
      */
 	public static function loadConfig() {
+		if(!file_exists('nuggets.ini')) self::generateConfig();
 		$config=parse_ini_file('nuggets.ini',true);
 		self::$config=$config;
 	}
