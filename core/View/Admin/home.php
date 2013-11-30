@@ -10,12 +10,12 @@
 <div>
 	<?php
 		$files=$this->getVar('logfiles');
-		$numFiles=count($files);
-		$colSize=100/$numFiles-1;
+		
+		//$numFiles=count($files);
 		
 		foreach($files as $file) {
 			$info=pathinfo($file);
-			echo '<div style="text-align:center;float:left;width="'.$colSize.'%"><b>'.$info['filename'].'</b><br/><pre>';
+			echo '<div style="text-align:center"><b>'.$info['basename'].'</b><br/><pre>';
 			print_r(file_get_contents($file));
 			echo '</pre></div>';
 		}
