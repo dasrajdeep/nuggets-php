@@ -1,0 +1,7 @@
+*.ini
+*.log
+
+app/theme/images
+app/theme/scripts
+app/theme/styles
+app/theme/template
