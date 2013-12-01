@@ -24,11 +24,26 @@ namespace nuggets;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo Config::read('app_title'); ?></title>
     <?php $uri=Engine::getHostURL(); ?>
-	<script type="text/javascript">var hosturl='<?php echo $uri; ?>';</script>
+	<script type="text/javascript">
+		var hosturl='<?php echo $uri; ?>';
+	</script>
     <?php
         foreach($styles as $s) echo sprintf('<link rel="stylesheet" href="%s" />',$uri.$s);
 		foreach($scripts as $s) echo sprintf('<script type="text/javascript" src="%s"></script>',$uri.$s);
     ?>
+    <script>
+		$(document).ready(function() {
+			
+			var bodyHeight=document.body.clientHeight;
+			var bodyWidth=document.body.clientWidth;
+			var windowHeight=window.innerHeight;
+			var windowWidth=window.innerWidth;
+			
+			if(bodyHeight<(windowHeight-25)) {
+				$('#footer').css({'position':'absolute','bottom':'25px','width':'100%'});
+			} 
+		});
+    </script>
 </head>
 
 <body>

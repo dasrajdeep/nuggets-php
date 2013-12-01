@@ -82,6 +82,7 @@ td {
 }
 
 hr {
+	height:1px;
     color:#ebedee;
     background-color:#ebedee;
     border:none;
