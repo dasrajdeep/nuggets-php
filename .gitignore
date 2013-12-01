@@ -5,3 +5,7 @@ app/theme/images
 app/theme/scripts
 app/theme/styles
 app/theme/template
+
+app/controller/*.php
+app/model/*.php
+app/view/*
