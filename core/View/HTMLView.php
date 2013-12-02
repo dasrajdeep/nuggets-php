@@ -42,6 +42,8 @@ class HTMLView extends View {
 		'loader.js'
 	);
 	
+	private $config=null;
+	
 	public function uncompressThemeFiles() {
 		
 		$zip=zip_open('app/theme/theme.zip');
@@ -57,13 +59,20 @@ class HTMLView extends View {
 		}
 	}
 	
+	public function addComponent($viewName) {
+		
+		$view=$this->config[$viewName];
+		
+		require_once($this->getViewPath().$view['file']);
+	}
+	
 	/**
 	 * Renders a view in HTML.
 	 * 
 	 * @param string $view
 	 */
     public function renderView($view) {
-        $cfg=parse_ini_file($this->getViewPath().'view.ini',true);
+        $this->config=parse_ini_file($this->getViewPath().'view.ini',true);
         
         if(!file_exists('app/theme/theme.ini')) {
 			$this->uncompressThemeFiles();
@@ -81,7 +90,7 @@ class HTMLView extends View {
         
 		$theme=parse_ini_file('app/theme/theme.ini');
 		
-		$view=$cfg[$view];
+		$view=$this->config[$view];
 		
 		if(!isset($view['style'])) $view['style']=array();
 		if(!isset($view['script'])) $view['script']=array();
